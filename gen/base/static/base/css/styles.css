@@ -11,13 +11,13 @@
 }
 
 header {
-    border-radius: 4vh;
-    margin-top: 4vh;
+    border-radius: 2vh;
+    margin-top: 1vh;
     margin-left: 30vh;
     display: flex;
-    height: 8vh;
-    background-color: #370C3A;
-    position: sticky;
+    height: 6vh;
+    background-color: #000;
+    position: fixed;
     width: 70%;
     top: 0;
     z-index: 1000;
@@ -68,28 +68,173 @@ body{
 footer {
     display: flex;
     margin-left: 30vh;
-
     height: 40vh;
     width: 70%;
     margin-top: auto;
-    background-color: #370C3A;
+    background-color: #8E7290;
     border: #fff solid 1px;
-    border-radius: 5vh;
+    border-radius: 2vh;
 }
 
 #content {
-    width: 70%;
+    /*width: 70%;*/
     height: 700vh;
     display: block;
-    margin-left: 30vh;
-    border: #fff solid 1px;
-    border-radius: 3vh;
-    margin-top: 4vh;
+    /*margin-left: 30vh;*/
+    border-radius: 2vh;
+    /*margin-top: 4vh;*/
 }
 
-.inddiv1 {
-    width: 50%;
-    height: 10vh;
-    background-color: #fff;
+.index-div1 {
+    font-family: "Montserrat", sans-serif;
     display: flex;
+    background-color: #181419;
+    border-radius: 2vh;
+    height: auto;
+    border: gold solid 1px;
+}
+
+.inddiv11 {
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 40vh;
+    display: flex;
+}
+
+.inddiv11 h2 {
+    font-size: 10vh;
+    color: #fff;
+}
+
+.inddiv12 {
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 40vh;
+    display: flex;
+    padding: 1vh;
+}
+
+.inddiv12 p {
+    font-size: 2.5vh;
+    color: #fff;
+}
+
+.index-div2 {
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    margin-top: 5vh;
+    flex-direction: column;
+    background-color: #181419;
+    border-radius: 2vh;
+    border: gold solid 1px;
+    padding: 2vh;
+    color: #fff;
+}
+
+.index-div2 dl{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.index-div2 dd{
+    margin-top: 1vh;
+    margin-left: 1vh;
+    margin-bottom: 1vh;
+}
+
+.index-div2 h2{
+    margin-bottom: 2vh;
+    align-self: center;
+    font-size: 3vh;
+}
+
+.index-div2 p{
+    margin-bottom: 1vh;
+    font-size: 2vh;
+}
+
+.index-div2 dt {
+    font-weight: bold;
+    font-size: 2vh;
+}
+
+.index-div2 dd {
+    font-size: 1.5vh;
+}
+
+.index-div3 {
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    margin-top: 5vh;
+    flex-direction: column;
+    background-color: #181419;
+    border-radius: 2vh;
+    border: gold solid 1px;
+    padding: 2vh;
+    color: #fff;
+}
+
+.index-div3 h2{
+    align-self: center;
+    margin-bottom: 2vh;
+}
+
+.index-div3 p{
+    margin-bottom: 2vh;
+}
+
+.index-div3 li{
+    margin-bottom: 1vh;
+}
+
+.index-div4 {
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    margin-top: 5vh;
+    flex-direction: column;
+    background-color: #181419;
+    border-radius: 2vh;
+    border: gold solid 1px;
+    padding: 2vh;
+    color: #fff;
+}
+
+.index-div4 h2{
+    align-self: center;
+    margin-bottom: 2vh;
+}
+
+.index-div4 p{
+    line-height: 2.7vh;
+}
+
+.index-divdob {
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    margin-top: 5vh;
+    flex-direction: column;
+    background-color: #181419;
+    border-radius: 2vh;
+    border: gold solid 1px;
+    padding: 2vh;
+    color: #fff;
+}
+
+.index-divdob h2{
+    align-self: center;
+}
+
+.index-photo {
+    background-image: url('/static/base/img/photo-index-new.png');
+    background-size: cover; /* Масштабируем изображение */
+    background-position: center; /* Центрируем изображение */
+    background-repeat: no-repeat; /* Убираем повторение */
+    height: 100vh; /* Высота экрана */
+}
+
+.index-gen {
+    width: 70%;
+    margin-left: 30vh;
 }
