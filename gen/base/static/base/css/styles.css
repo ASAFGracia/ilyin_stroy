@@ -11,14 +11,13 @@
 }
 
 header {
-    border-radius: 2vh;
-    margin-top: 1vh;
-    margin-left: 5vh;
+    margin-top: 8vh;
+    margin-left: 2vh;
     display: flex;
-    height: 80vh;
+    height: 70vh;
     position: fixed;
-    width: 18vh;
-    top: 0;
+    border-radius: 1vw;
+    width: 9vw;
     flex-direction: column;
     z-index: 1000;
     border: #fff solid 1px;
@@ -29,13 +28,13 @@ header {
     font-size: 2vh;
     color: #fff;
     flex-direction: column;
-    display:flex;
-    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.ul-gen ol {
+.ul-gen p {
     margin-bottom: 6vh;
-    align-self: center;
 }
 
 .logo-left {
@@ -64,19 +63,17 @@ body{
 }
 
 .ssgen:hover {
-    color: #9136A1;
+    color: #818181;
     transition: all 1s ease;
 }
 
 footer {
     display: flex;
-    margin-left: 30vh;
+    margin-left: 25vh;
     height: 40vh;
-    width: 70%;
+    width: 75%;
     margin-top: auto;
-    background-color: #8E7290;
-    border: #fff solid 1px;
-    border-radius: 2vh;
+    border-top: #fff solid 1px;
 }
 
 #content {
@@ -104,7 +101,6 @@ footer {
     display: flex;
     border-left: #fff solid 1px;
     border-top: #fff solid 1px;
-    border-top-left-radius: 2vh;
 }
 
 .inddiv11 h2 {
@@ -121,7 +117,6 @@ footer {
     padding: 1vh;
     border-right: #fff solid 1px;
     border-bottom: #fff solid 1px;
-    border-bottom-right-radius: 2vh;
 }
 
 .inddiv12 p {
@@ -134,7 +129,7 @@ footer {
     display: flex;
     margin-top: 5vh;
     flex-direction: column;
-    border: #fff dashed 1px;
+    border: #fff solid 1px;
     padding: 2vh;
     color: #fff;
 }
@@ -162,7 +157,6 @@ footer {
 }
 
 .index-div2 dt {
-    font-weight: bold;
     font-size: 2vh;
     margin-bottom: 2vh;
 }
@@ -174,26 +168,63 @@ footer {
 .index-div3 {
     font-family: "Montserrat", sans-serif;
     display: flex;
-    margin-top: 5vh;
+    margin-top: 10vh;
+    padding-bottom: 5vh;
     flex-direction: column;
-    background-color: #181419;
-    border-radius: 2vh;
-    border: gold solid 1px;
-    padding: 2vh;
+    border-top: #fff solid 1px;
+    border-bottom: #fff solid 1px;
+    padding-top: 10vh;
+    background-color: #000;
     color: #fff;
 }
 
-.index-div3 h2{
-    align-self: center;
+.photo-div3 img {
+    max-width: 70%;
+    margin-top: 2vh;
+    max-height: 70%;
+    margin-left: 40vw;
+    position: absolute;
+    z-index: 0;
+}
+
+.index-div3 h2 {
+    align-self: self-end;
+    margin-top: -5vh;
+    font-weight: 800;
+    position: absolute;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to left, #777777, #fff);
+    color: transparent;
+    font-size: 4vh;
+}
+
+.index-div3 p {
     margin-bottom: 2vh;
 }
 
-.index-div3 p{
-    margin-bottom: 2vh;
-}
-
-.index-div3 li{
+.index-div3 p {
     margin-bottom: 1vh;
+}
+
+.limyi {
+    font-family: "Montserrat", sans-serif;
+    border-bottom: #262626 solid 4px;
+    margin-bottom: 3.5vh;
+    max-width: 50%;
+}
+
+.limyi p {
+    max-width: 20vw;
+    font-size: 1.7vh;
+    opacity: 60%;
+    margin-bottom: 3vh;
+}
+
+.limyi h3 {
+    margin-bottom: 3vh;
+    font-weight: 500;
+    font-size: 2.7vh;
 }
 
 .index-div4 {
@@ -201,20 +232,24 @@ footer {
     display: flex;
     margin-top: 5vh;
     flex-direction: column;
-    background-color: #181419;
-    border-radius: 2vh;
-    border: gold solid 1px;
     padding: 2vh;
     color: #fff;
+    margin-bottom: 3vh;
 }
 
-.index-div4 h2{
+.index-div4 h2 {
     align-self: center;
     margin-bottom: 2vh;
+    font-size: 5vh;
 }
 
-.index-div4 p{
+.index-div4 p {
     line-height: 2.7vh;
+    font-size: 2vh;
+    align-self: center;
+    text-align: center;
+    margin-left: 10vw;
+    margin-right: 10vw;
 }
 
 .index-divdob {
@@ -283,7 +318,6 @@ footer {
     background-image: url('/static/base/img/pod-div1.png');
     background-attachment: fixed;
     background-size: cover;
-    filter: blur(1px);
     background-position: center;
     background-repeat: no-repeat;
     height: 60vh;
@@ -297,6 +331,7 @@ footer {
 }
 
 .index-divdob1 {
+    transition: all 0.8s ease;
     display: flex;
     flex-direction: row;
     margin-top: 5vh;
@@ -332,4 +367,178 @@ footer {
     margin-left: 20vw;
     height: 40vh;
     width: 50vw;
+}
+
+.index-divdob1:hover {
+    transform: scale(1.02);
+    background-color: #1C1C1C;
+    cursor: pointer;
+}
+
+.index-divdob2 {
+    transition: all 0.8s ease;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5vh;
+}
+
+.index-divdob2-txt {
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    width: 45vw;
+    height: auto;
+    padding: 2vh;
+    border-top: #fff solid 1px;
+    border-bottom: #fff solid 1px;
+    border-left: #fff solid 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+.index-divdob2-txt h2 {
+    font-weight: 600;
+    font-size: 3vh;
+    align-self: center;
+}
+
+.index-divdob2-txt p {
+    margin-top: 10vh;
+    align-self: center;
+    font-size: 2.5vh;
+}
+
+.index-divdob2-photo {
+    background-image: url('/static/base/img/drenaj.png');
+    margin-left: 20vw;
+    height: 40vh;
+    width: 50vw;
+}
+
+.index-divdob2:hover {
+    transform: scale(1.02);
+    background-color: #1C1C1C;
+    cursor: pointer;
+}
+
+.index-divdob3 {
+    transition: all 0.8s ease;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5vh;
+}
+
+.index-divdob3-txt {
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    width: 45vw;
+    height: auto;
+    padding: 2vh;
+    border-top: #fff solid 1px;
+    border-bottom: #fff solid 1px;
+    border-left: #fff solid 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+.index-divdob3-txt h2 {
+    font-weight: 600;
+    font-size: 3vh;
+    align-self: center;
+}
+
+.index-divdob3-txt p {
+    margin-top: 10vh;
+    align-self: center;
+    font-size: 2.5vh;
+}
+
+.index-divdob3-photo {
+    background-image: url('/static/base/img/bet-pol.jpg');
+    margin-left: 20vw;
+    height: 40vh;
+    width: 50vw;
+}
+
+.index-divdob3:hover {
+    transform: scale(1.02);
+    background-color: #1C1C1C;
+    cursor: pointer;
+}
+
+.index-divdob4 {
+    transition: all 0.8s ease;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5vh;
+}
+
+.index-divdob4-txt {
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    width: 45vw;
+    height: auto;
+    padding: 2vh;
+    border-top: #fff solid 1px;
+    border-bottom: #fff solid 1px;
+    border-left: #fff solid 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+.index-divdob4-txt h2 {
+    font-weight: 600;
+    font-size: 3vh;
+    align-self: center;
+}
+
+.index-divdob4-txt p {
+    margin-top: 10vh;
+    align-self: center;
+    font-size: 2.5vh;
+}
+
+.index-divdob4-photo {
+    background-image: url('/static/base/img/steni.jpg');
+    margin-left: 20vw;
+    height: 40vh;
+    width: 50vw;
+}
+
+.index-divdob4:hover {
+    transform: scale(1.02);
+    background-color: #1C1C1C;
+    cursor: pointer;
+}
+
+.div-znach h3 {
+    text-align: center;
+}
+
+.znach4 {
+    display: flex;
+    font-family: "Montserrat", sans-serif;
+    align-items: center;
+    color: #fff;
+    justify-content: space-around;
+    justify-items: center;
+    border-top: #fff solid 1px;
+    border-bottom: #fff solid 1px;
+}
+
+.div-znach {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.div-znach p {
+    line-height: 1;
+}
+
+.index-gen {
+    font-family: "Montserrat", sans-serif;
+}
+
+.znach4:hover {
+    transition: all 0.7s ease;
+    background-color: #262626;
 }
