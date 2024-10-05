@@ -11,6 +11,7 @@
 }
 
 header {
+    font-family: "Montserrat", sans-serif;
     margin-top: 8vh;
     margin-left: 2vh;
     display: flex;
@@ -20,11 +21,10 @@ header {
     width: 9vw;
     flex-direction: column;
     z-index: 1000;
-    border: #fff solid 1px;
+    border: #fff solid 2px;
 }
 
 .ul-gen {
-    font-family: "Montserrat", sans-serif;
     font-size: 2vh;
     color: #fff;
     flex-direction: column;
@@ -289,11 +289,16 @@ footer {
 }
 
 .index-div-photo1 p {
+    letter-spacing: 0.1em;
     font-family: "Montserrat", sans-serif;
-    font-size: 10vh;
     color: #fff;
+    position: fixed;
+    border: 2px solid #fff;
+    margin-left: 67vw;
+    font-size: 5vh;
+    padding: 3vh;
     font-weight: 600;
-    justify-content: center;
+    border-radius: 1vh;
     align-self: center;
 }
 
