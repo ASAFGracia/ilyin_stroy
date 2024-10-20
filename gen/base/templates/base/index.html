@@ -1,4 +1,4 @@
-{% extends 'base/base.html' %}
+    {% extends 'base/base.html' %}
 {% load static %}
 {% block title %}
 IlyinStroy
@@ -22,18 +22,14 @@ IlyinStroy
                 <p>Мы — строительная компания с многолетним опытом, предоставляющая полный спектр строительных и ремонтных услуг.
                     Наша команда профессионалов помогает реализовать любые проекты,
                     от небольших косметических ремонтов до возведения крупных объектов.
-                    Мы не только строим дома, но и делаем их уютными и функциональными.
-                    Надёжность и качество — наши главные приоритеты, что подтверждается
-                    многолетним опытом и множеством довольных клиентов.</p>
+                    Мы не только строим дома, но и делаем их уютными и функциональными.</p>
             </div>
         </div>
         <div class="photo-div1">
 
         </div>
         <div class="index-div2">
-            <h2>Наши услуги</h2>
-            <p>Мы предлагаем комплексные решения для строительства и ремонта.
-                Среди наших основных направлений:</p>
+            <h2>Основные направления наших услуги</h2>
             <dl>
                 <dt>Строительство частных и коммерческих объектов:</dt>
                     <dd>Мы проектируем и строим дома и здания любой сложности,
@@ -65,9 +61,11 @@ IlyinStroy
         </div>
 
         <div class="index-divdob">
+
             <div class="inf-ugol">
                 <h2>Полезная информация</h2>
             </div>
+
             <div class="index-divdob1">
                 <div class="index-divdob1-txt">
                     <h2>Фундамент</h2>
@@ -75,8 +73,10 @@ IlyinStroy
                         Включает в себя закладку и гидроизоляцию.</p>
                 </div>
                 <div class="index-divdob1-photo">
+                    <img src="/static/base/img/fundament.jpg" alt="">
                 </div>
             </div>
+
             <div class="index-divdob2">
                 <div class="index-divdob2-txt">
                     <h2>Дренажная система и коммуникации</h2>
@@ -84,8 +84,10 @@ IlyinStroy
                         и других подземных коммуникаций.</p>
                 </div>
                 <div class="index-divdob2-photo">
+                    <img src="/static/base/img/drenaj.png" alt="">
                 </div>
             </div>
+
             <div class="index-divdob3">
                 <div class="index-divdob3-txt">
                     <h2>Полы нижнего этажа</h2>
@@ -93,8 +95,10 @@ IlyinStroy
                         с использованием гидро- и теплоизоляции.</p>
                 </div>
                 <div class="index-divdob3-photo">
+                    <img src="/static/base/img/bet-pol.jpg" alt="">
                 </div>
             </div>
+
             <div class="index-divdob4">
                 <div class="index-divdob4-txt">
                     <h2>Наружные и внутренние стены</h2>
@@ -102,6 +106,7 @@ IlyinStroy
                         перегородок, которые формируют комнаты.</p>
                 </div>
                 <div class="index-divdob4-photo">
+                    <img src="/static/base/img/steni.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -134,34 +139,22 @@ IlyinStroy
             </ul>
         </div>
 
-        <div class="index-div4">
-            <h2>Свяжитесь с нами</h2>
-            <p>Мы всегда готовы ответить на любые ваши вопросы и помочь в
-                реализации вашего проекта. Независимо от того, строите ли вы дом
-                мечты или просто планируете ремонт, мы обеспечим профессиональный
-                подход на всех этапах работы. Доверьте строительство и ремонт
-                профессионалам — и наслаждайтесь результатом долгие годы!</p>
-        </div>
-            <div class="znach4">
-                <div class="div-znach">
-                    <h3>Позвоните <br> сегодня</h3>
-                    <p>+375(29)595-92-61</p>
-                </div>
-                <div class="div-znach">
-                    <h3>Адрес</h3>
-                    <p>пр.Фунзе,д.20</p>
-                </div>
-                <div class="div-znach">
-                    <h3>Электронная <br> почта</h3>
-                    <p>ilyinstroy@gmail.com</p>
-                </div>
-                <div class="div-znach">
-                    <h3>Часы <br> работы</h3>
-                    <p>ПН-СБ: 9:00 - 18:00 <br>ВС: выходной</p>
-                </div>
-            </div>
     <div class="svyaz">
-        <form action=""></form>
+        <div class="formasvyazi">
+            <form class="form1">
+                <label class="labelf1" for="fio">ФИО</label><br>
+                <input class="inputf1" type="text" id="fio" placeholder="Введите ФИО" name="fio"><br>
+                <label class="labelf1" for="email">Email</label><br>
+                <input class="inputf1" type="text" placeholder="Введите email" id="email" name="email">
+                <label class="labelf1" for="txt">Сообщение</label><br>
+                <textarea class="inputf1" id="txt" rows="4" cols="50" placeholder="Отправьте нам сообщение"></textarea>
+                <input class="butform1" type="submit" value="Отправить">
+            </form>
+        </div>
+        <div class="imgvan">
+            <img src="/static/base/img/vannaya.jpg" alt="">
+        </div>
     </div>
+
     </div>
 {% endblock %}

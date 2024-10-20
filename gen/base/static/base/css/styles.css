@@ -68,17 +68,15 @@ body{
 }
 
 footer {
-    display: flex;
-    margin-left: 25vh;
-    height: 40vh;
-    width: 75%;
+    margin-left: 12vw;
     margin-top: auto;
+    width: 76vw;
     border-top: #fff solid 1px;
 }
 
 #content {
     /*width: 70%;*/
-    height: 700vh;
+    height: 750vh;
     display: block;
     /*margin-left: 30vh;*/
     border-radius: 2vh;
@@ -135,14 +133,16 @@ footer {
 }
 
 .index-div2 dl{
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
 }
 
 .index-div2 dd{
     margin-top: 1vh;
     margin-left: 1vh;
     margin-bottom: 3vh;
+    font-size: 2vh;
+    font-weight: 300;
 }
 
 .index-div2 h2{
@@ -151,18 +151,11 @@ footer {
     font-size: 3vh;
 }
 
-.index-div2 p{
-    margin-bottom: 1vh;
-    font-size: 2vh;
-}
 
 .index-div2 dt {
-    font-size: 2vh;
+    font-size: 2.5vh;
     margin-bottom: 2vh;
-}
-
-.index-div2 dd {
-    font-size: 1.5vh;
+    font-weight: 500;
 }
 
 .index-div3 {
@@ -231,6 +224,7 @@ footer {
     font-family: "Montserrat", sans-serif;
     display: flex;
     margin-top: 5vh;
+    width: 75vw;
     flex-direction: column;
     padding: 2vh;
     color: #fff;
@@ -248,8 +242,8 @@ footer {
     font-size: 2vh;
     align-self: center;
     text-align: center;
-    margin-left: 10vw;
-    margin-right: 10vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
 }
 
 .index-divdob {
@@ -261,8 +255,12 @@ footer {
     color: #fff;
 }
 
-.index-divdob .inf-ugol {
+.inf-ugol {
     align-self: center;
+}
+
+.inf-ugol h2 {
+    font-size: 3vh;
 }
 
 .index-photo {
@@ -305,7 +303,7 @@ footer {
 .index-div-photo2 {
     width: 30vw;
     height: 10vh;
-    margin-left: 70vw;
+    margin-left: 60vw;
     margin-top: 80vh;
     display: flex;
     position: absolute;
@@ -367,11 +365,9 @@ footer {
     font-size: 2.5vh;
 }
 
-.index-divdob1-photo {
-    background-image: url('/static/base/img/fundament.jpg');
-    margin-left: 20vw;
+.index-divdob1-photo img {
     height: 40vh;
-    width: 50vw;
+    width: 25vw;
 }
 
 .index-divdob1:hover {
@@ -412,11 +408,9 @@ footer {
     font-size: 2.5vh;
 }
 
-.index-divdob2-photo {
-    background-image: url('/static/base/img/drenaj.png');
-    margin-left: 20vw;
+.index-divdob2-photo img {
     height: 40vh;
-    width: 50vw;
+    width: 25vw;
 }
 
 .index-divdob2:hover {
@@ -457,11 +451,9 @@ footer {
     font-size: 2.5vh;
 }
 
-.index-divdob3-photo {
-    background-image: url('/static/base/img/bet-pol.jpg');
-    margin-left: 20vw;
+.index-divdob3-photo img {
     height: 40vh;
-    width: 50vw;
+    width: 25vw;
 }
 
 .index-divdob3:hover {
@@ -502,11 +494,9 @@ footer {
     font-size: 2.5vh;
 }
 
-.index-divdob4-photo {
-    background-image: url('/static/base/img/steni.jpg');
-    margin-left: 20vw;
+.index-divdob4-photo img {
     height: 40vh;
-    width: 50vw;
+    width: 25vw;
 }
 
 .index-divdob4:hover {
@@ -517,33 +507,127 @@ footer {
 
 .div-znach h3 {
     text-align: center;
+    font-size: 3vh;
 }
 
 .znach4 {
     display: flex;
     font-family: "Montserrat", sans-serif;
+    transition: all 0.7s ease;
     align-items: center;
     color: #fff;
-    justify-content: space-around;
-    justify-items: center;
+    justify-content: center;
     border-top: #fff solid 1px;
     border-bottom: #fff solid 1px;
 }
 
 .div-znach {
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .div-znach p {
     line-height: 1;
+    font-size: 2vh;
 }
 
 .index-gen {
     font-family: "Montserrat", sans-serif;
 }
 
-.znach4:hover {
-    transition: all 0.7s ease;
-    background-color: #262626;
+.svyaz {
+    display: flex;
+}
+
+.imgvan img {
+    height: 50vw;
+    width: 40vw;
+    border-radius: 10%;
+    position: relative;
+    margin-top: 7vh;
+    margin-left: 5vw;
+}
+
+.form1 {
+    display: flex;
+    margin-top: 7vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form1 input {
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-bottom: #fff solid 1px;
+}
+
+.form1 input {
+    margin-bottom: 5vh;
+    margin-top: 1vh;
+}
+
+.form1 #txt {
+    height: 30vh;
+    border: #fff solid 1px;
+    background-color: #000;
+    color: #fff;
+}
+
+.labelf1 {
+    color: #fff;
+    font-size: 2vh;
+    font-family: Montserrat, sans-serif;
+}
+
+.inputf1 {
+    width: 20vw;
+    font-size: 2vh;
+    padding: 1vh;
+}
+
+.form1 textarea {
+    margin-top: 1vh;
+}
+
+.butform1 {
+    transition: all 0.3s ease;
+    font-size: 2.2vh;
+}
+
+.formasvyazi {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 5vw;
+    margin-top: 20vh;
+}
+
+.butform1:hover {
+    color: #777777;
+}
+
+.inputf1:focus::placeholder {
+    color: transparent;
+}
+
+.inputf1::placeholder{
+    font-size: 2vh;
+}
+
+.txt-footer p {
+    font-size: 1.5vh;
+    margin-bottom: 0;
+    filter: opacity(0.6);
+    line-height: 0.6;
+}
+
+.txt-footer p:first-child {
+    margin-top: 3vh;
+}
+
+.txt-footer p:last-child {
+    margin-bottom: 0;
 }
