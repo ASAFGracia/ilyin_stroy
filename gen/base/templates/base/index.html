@@ -1,4 +1,4 @@
-    {% extends 'base/base.html' %}
+{% extends 'base/base.html' %}
 {% load static %}
 {% block title %}
 IlyinStroy
@@ -6,9 +6,7 @@ IlyinStroy
 
 {% block content %}
     <div class="index-photo">
-        <div class="index-div-photo1">
-            <p>Ilyin <br> Stroy</p>
-        </div>
+        
         <div class="index-div-photo2">
             <p>Качественно, быстро, профессионально</p>
         </div>
@@ -66,7 +64,7 @@ IlyinStroy
                 <h2>Полезная информация</h2>
             </div>
 
-            <div class="index-divdob1">
+            <a href="{% url 'fundament' %}"><div class="index-divdob1">
                 <div class="index-divdob1-txt">
                     <h2>Фундамент</h2>
                     <p>- Основа здания, на которую опирается вся конструкция.
@@ -75,7 +73,7 @@ IlyinStroy
                 <div class="index-divdob1-photo">
                     <img src="/static/base/img/fundament.jpg" alt="">
                 </div>
-            </div>
+            </div></a>
 
             <div class="index-divdob2">
                 <div class="index-divdob2-txt">

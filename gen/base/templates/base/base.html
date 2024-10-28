@@ -18,10 +18,13 @@
     <header>
         <img src="{% static 'base/img/logo_zeus.png' %}" alt="logo" class="logo-left">
         <div class="ul-gen">
-                <a href="" class="ssgen"><p>Главная</p></a>
-                <a href="" class="ssgen"><p>О нас</p></a>
+                <a href="{% url 'home' %}" class="ssgen"><p>Главная</p></a>
+                <a href="{% url 'onas' %}" class="ssgen"><p>О нас</p></a>
                 <a href="" class="ssgen"><p>Контакты</p></a>
                 <a href="" class="ssgen"><p>Поддержка</p></a>
+        </div>
+        <div class="index-div-photo1">
+            <p>Ilyin <br> Stroy</p>
         </div>
     </header>
     <main id="content">
@@ -39,7 +42,7 @@
             <div class="znach4">
                 <div class="div-znach">
                     <h3>Позвоните <br> сегодня</h3>
-                    <p>+375(29)595-92-61</p>
+                    <p>+375(29)595-92-63</p>
                 </div>
                 <div class="div-znach">
                     <h3>Адрес</h3>
