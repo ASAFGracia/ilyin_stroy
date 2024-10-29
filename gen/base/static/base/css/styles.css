@@ -673,13 +673,14 @@ a {
 
 .onas-gen1 {
     position: relative;
-    height: 300vh;
+    height: 520vh;
 }
 
 .o-nas-gen {
     display: flex;
     height: 70vh;
     width: 60vw;
+    opacity: 0.7;
     margin-left: 15vw;
     flex-direction: column;
     background-color: #fff;
@@ -692,8 +693,9 @@ a {
     color: #000;
     font-family: Montserrat, sans-serif;
     font-size: 10vh;
-    align-self: center;
+    align-items: center;
     font-weight: 500;
+    justify-content: center;
 }
 
 .o-nas-gen p {
@@ -771,4 +773,66 @@ a {
 .onas-uslugi p, li {
     font-weight: 300;
     font-size: 2.3vh;
+}
+
+.primeri {
+    display: flex;
+    flex-direction: column;
+    margin-top: 195vh;
+    margin-left: 17vw;
+    position: absolute;
+    height: 60vh;
+    width: 66vw;
+}
+
+.primeri h3 {
+    font-family: Montserrat, sans-serif;
+    font-size: 5vh;
+    padding: 3vh 0 1vh 0;
+    margin-bottom: 2vh;
+    color: #fff;
+    font-weight: 500;
+    border-bottom: 1px solid #fff;
+    align-self: center;
+}
+
+.foto-primerov {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 60vh;
+    width: 66vw;
+}
+
+.foto-primerov img {
+    height: 40vh;
+    border-radius: 0.5vh;
+    width: 20vw;
+    margin: 1vw;
+}
+
+.map {
+    width: 70vw;
+    height:80vh;
+    position: absolute;
+    margin-top: 435vh;
+    display: flex;
+    flex-direction: column;
+    margin-left: 15vw;
+    border-top: 1px solid #fff;
+}
+
+#map-google {
+    height: 60vh;
+    width: 70vw;
+}
+
+.map h3 {
+    color: #fff;
+    margin-bottom: 5vh;
+    align-self: center;
+    padding-top: 5vh;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 5vh;
 }
