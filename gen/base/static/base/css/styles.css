@@ -673,7 +673,7 @@ a {
 
 .onas-gen1 {
     position: relative;
-    height: 520vh;
+    height: 430vh;
 }
 
 .o-nas-gen {
@@ -682,6 +682,7 @@ a {
     width: 60vw;
     opacity: 0.7;
     margin-left: 15vw;
+    border-radius: 0.5vw;
     flex-direction: column;
     background-color: #fff;
     position: absolute;
@@ -713,6 +714,7 @@ a {
     background-repeat: no-repeat;
     height: 50vh;
     width: 40vw;
+    border-radius: 0.5vw;
     position: absolute;
     display: block;
     margin-top: 45vh;
@@ -744,6 +746,7 @@ a {
     width: 30vw;
     position: absolute;
     display: block;
+    border-radius: 0.5vw;
     margin-top: 116vh;
     margin-left: 13vw;
 }
@@ -788,7 +791,7 @@ a {
 .primeri h3 {
     font-family: Montserrat, sans-serif;
     font-size: 5vh;
-    padding: 3vh 0 1vh 0;
+    padding: 3vh 1vw 1vh 1vw;
     margin-bottom: 2vh;
     color: #fff;
     font-weight: 500;
@@ -815,7 +818,7 @@ a {
     width: 70vw;
     height:80vh;
     position: absolute;
-    margin-top: 435vh;
+    margin-top: 345vh;
     display: flex;
     flex-direction: column;
     margin-left: 15vw;
@@ -835,4 +838,98 @@ a {
     font-family: Montserrat, sans-serif;
     font-weight: 500;
     font-size: 5vh;
+}
+
+.otstup {
+    height: 10vh;
+}
+
+.santehnik {
+    width: 50vw;
+    margin-left: 25vw;
+    height: 45vh;
+    background-color: #f8f8f8;
+    margin-bottom: 10vh;
+    border-radius: 1vw;
+    padding: 2vh;
+    background-image: url('/static/base/img/santehnik.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s ease;
+}
+
+.santehnik h3 {
+    align-self: center;
+    font-family: Montserrat, sans-serif;
+    font-size: 4vh;
+    margin-top: 2vh;
+    font-weight: 550;
+    background-image: linear-gradient(to left, #777777, #fff);
+    opacity: 0.8;
+    color: #000;
+}
+
+.santehnik:hover {
+    filter: drop-shadow(0 0 0.75rem #fff);
+    transform: scale(1.01);
+}
+
+.santehnik p {
+    font-family: Montserrat, sans-serif;
+    font-size: 3vh;
+    font-weight: 400;
+    opacity: 0.9;
+    margin: 5vh 0 3vh 0;
+    align-self: flex-start;
+    color: #000;
+}
+
+.stariybog {
+    width: 50vw;
+    margin-left: 25vw;
+    height: 45vh;
+    background-color: #f8f8f8;
+    margin-bottom: 10vh;
+    border-radius: 1vw;
+    padding: 2vh;
+    background-image: url('/static/base/img/stariybog.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s ease;
+}
+
+.stariybog:hover {
+    filter: drop-shadow(0 0 0.75rem crimson);
+    transform: scale(1.01);
+}
+
+.stariybog h3 {
+    align-self: center;
+    font-family: Montserrat, sans-serif;
+    font-size: 4vh;
+    margin-top: 2vh;
+    font-weight: 550;
+	-webkit-background-clip: text;
+	background-clip: text;
+    border: 1px solid #000;
+    padding: 1vw;
+    color: #000;
+}
+
+.stariybog p {
+    font-family: Montserrat, sans-serif;
+    font-size: 3vh;
+    font-weight: 500;
+    margin: 2vh 0 2vh 0;
+    align-self: flex-start;
+    color: #000;
+    background-image: linear-gradient(to left, #777777, #fff);
+    padding: 0.5vw;
+    opacity: 0.7;
 }

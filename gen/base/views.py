@@ -11,3 +11,6 @@ def fundament(request):
 
 def onas(request):
     return render (request, "base/onas.html")
+
+def contacts(request):
+    return render (request, "base/contacts.html")
