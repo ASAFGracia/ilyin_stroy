@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{% static 'base/css/styles.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="{% static "base/img/logo_zeus.png" %}">
 </head>
 <body>
@@ -21,7 +20,7 @@
                 <a href="{% url 'home' %}" class="ssgen"><p>Главная</p></a>
                 <a href="{% url 'onas' %}" class="ssgen"><p>О нас</p></a>
                 <a href="{% url 'contacts' %}" class="ssgen"><p>Контакты</p></a>
-                <a href="" class="ssgen"><p>Поддержка</p></a>
+                <a href="{% url 'support' %}" class="ssgen"><p>Поддержка</p></a>
         </div>
         <div class="index-div-photo1">
             <p>Ilyin <br> Stroy</p>
@@ -46,7 +45,7 @@
                 </div>
                 <div class="div-znach">
                     <h3>Адрес</h3>
-                    <p>пр.Фунзе,д.55</p>
+                    <p>пр.Фунзе,д.55 помещение-21</p>
                 </div>
                 <div class="div-znach">
                     <h3>Электронная <br> почта</h3>
@@ -54,7 +53,7 @@
                 </div>
                 <div class="div-znach">
                     <h3>Часы <br> работы</h3>
-                    <p>ПН-СБ: 9:00 - 18:00<br>ВС: выходной</p>
+                    <p>ПН-СБ: 9:00-18:00<br>ВС:выходной</p>
                 </div>
             </div>
             <div class="txt-footer">

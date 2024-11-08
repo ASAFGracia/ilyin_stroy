@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Контакты
+{% endblock %}
+
+{% block content %}
+<div class="support-gen">
+    <div class="ques">
+        <h3>Нашли ошибку на сайте или есть предложения?</h3>
+    </div>
+    <div class="sup1">
+        <form class="form-sup">
+            <label class="labelfsup" for="predi">Ваши предложения</label><br>
+            <textarea class="inputfsup" id="predi" rows="4" cols="50" placeholder="Напишите нам"></textarea><br>
+            <input type="submit" class="butfsup" value="Отправить">
+        </form>
+    </div>
+</div>
+{% endblock %}

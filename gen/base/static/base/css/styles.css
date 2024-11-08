@@ -3,6 +3,55 @@
     padding: 0;
 }
 
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Thin.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
 .montserrat-<uniquifier> {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -14,10 +63,11 @@ header {
     font-family: "Montserrat", sans-serif;
     margin-top: 8vh;
     margin-left: 2vh;
+    filter: drop-shadow(0 0 0.04rem white);
     display: flex;
     height: 70vh;
     position: fixed;
-    border-radius: 1vw;
+    border-radius: 0.5vw;
     width: 9vw;
     flex-direction: column;
     z-index: 1000;
@@ -173,10 +223,11 @@ footer {
 
 .photo-div3 img {
     max-width: 70%;
-    margin-top: 2vh;
+    margin-top: 13vh;
     max-height: 70%;
-    margin-left: 40vw;
+    margin-left: 33vw;
     position: absolute;
+    filter: drop-shadow(1vw 1vw 0.9rem snow);
     z-index: 0;
 }
 
@@ -283,6 +334,7 @@ footer {
     margin-left: 19vw;
     margin-top: 2vh;
     display: flex;
+    filter: drop-shadow(0 0 0.03rem white);
     position: absolute;
 }
 
@@ -528,7 +580,7 @@ footer {
 }
 
 .div-znach p {
-    line-height: 1;
+    line-height: 1.5;
     font-size: 2vh;
 }
 
@@ -608,10 +660,15 @@ footer {
 
 .butform1:hover {
     color: #777777;
+    transform: scale(1.03);
 }
 
 .inputf1:focus::placeholder {
     color: transparent;
+}
+
+.inputf1:focus {
+    outline: none;
 }
 
 .inputf1::placeholder{
@@ -661,7 +718,7 @@ a {
 
 .pfound-index {
     color: #fff;
-    border-bottom: 3px solid #000;
+    border-bottom: 3px solid #fff;
     font-family: Montserrat, sans-serif;
     font-size: 3vh;
     font-weight: 400;
@@ -678,6 +735,7 @@ a {
 
 .o-nas-gen {
     display: flex;
+    filter: drop-shadow(0 0 0.40rem white);
     height: 70vh;
     width: 60vw;
     opacity: 0.7;
@@ -810,6 +868,7 @@ a {
 .foto-primerov img {
     height: 40vh;
     border-radius: 0.5vh;
+    border: 1px solid #fff;
     width: 20vw;
     margin: 1vw;
 }
@@ -826,6 +885,7 @@ a {
 }
 
 #map-google {
+    filter: drop-shadow(0 0 0.40rem white);
     height: 60vh;
     width: 70vw;
 }
@@ -841,7 +901,29 @@ a {
 }
 
 .otstup {
-    height: 10vh;
+    height: 7vh;
+}
+
+.cont {
+    width: 40vw;
+    height: 7vh;
+    margin-left: 30vw;
+    background-color: #fff;
+    display: flex;
+    margin-bottom: 10vh;
+    border-radius: 1vw;
+    flex-direction: column;
+    filter: drop-shadow(0 0 0.2rem white);
+}
+
+.cont h3 {
+    align-self: center;
+    justify-self: center;
+    font-family: Montserrat, sans-serif;
+    padding: 1vh;
+    font-size: 4vh;
+    font-weight: 550;
+    color: #000;
 }
 
 .santehnik {
@@ -859,6 +941,7 @@ a {
     display: flex;
     flex-direction: column;
     transition: all 0.5s ease;
+    border: 1px solid #fff
 }
 
 .santehnik h3 {
@@ -895,17 +978,18 @@ a {
     margin-bottom: 10vh;
     border-radius: 1vw;
     padding: 2vh;
-    background-image: url('/static/base/img/stariybog.jpg');
+    background-image: url('/static/base/img/stariyboh.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     transition: all 0.5s ease;
+    border: 1px solid #fff
 }
 
 .stariybog:hover {
-    filter: drop-shadow(0 0 0.75rem crimson);
+    filter: drop-shadow(0 0 0.75rem limegreen);
     transform: scale(1.01);
 }
 
@@ -915,11 +999,8 @@ a {
     font-size: 4vh;
     margin-top: 2vh;
     font-weight: 550;
-	-webkit-background-clip: text;
-	background-clip: text;
-    border: 1px solid #000;
-    padding: 1vw;
-    color: #000;
+    padding: 0.5vw;
+    color: #fff;
 }
 
 .stariybog p {
@@ -928,8 +1009,178 @@ a {
     font-weight: 500;
     margin: 2vh 0 2vh 0;
     align-self: flex-start;
-    color: #000;
-    background-image: linear-gradient(to left, #777777, #fff);
-    padding: 0.5vw;
+    color: #fff;
     opacity: 0.7;
+}
+
+.support-gen {
+    height: 55vh;
+}
+
+.ques {
+    width: 50vw;
+    height: 4vh;
+    margin-left: 25vw;
+    margin-top: 5vh;
+    position: absolute;
+    background-color: #fff;
+    display: flex;
+    margin-bottom: 10vh;
+    border-radius: 1vw;
+    flex-direction: column;
+    filter: drop-shadow(0 0 0.3rem white);
+}
+
+.ques h3 {
+    justify-self: center;
+    align-self: center;
+    align-content: center;
+    justify-content: center;
+    font-family: Montserrat, serif;
+    font-weight: 550;
+    color: #000;
+    font-size: 3vh;
+}
+
+.sup1 {
+    position: absolute;
+    margin: 20vh 0 10vh 30vw;
+
+}
+
+.form-sup {
+    display: flex;
+    flex-direction: column;
+}
+
+.labelfsup{
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 2.5vh;
+    align-self: center;
+}
+
+.inputfsup {
+    width: 40vw;
+    margin-top: 2vh;
+    border-radius: 0.4vh;
+    border: 1px solid #fff;
+    background-color: #000;
+    color: #fff;
+    padding: 0.8vh;
+    font-family: Montserrat, sans-serif;
+    filter: drop-shadow(0 0 0.1rem snow);
+}
+
+.inputfsup:focus::placeholder {
+    color: transparent;
+}
+
+.inputfsup:focus {
+    outline: none;
+    font-family: Montserrat, sans-serif;
+}
+
+.butfsup {
+    font-family: Montserrat, sans-serif;
+    font-size: 2vh;
+    font-weight: 500;
+    filter: drop-shadow(0 0 0.1rem snow);
+    width: 8vw;
+    height: 5vh;
+    margin-top: 3vh;
+    align-self: center;
+    border-radius: 0.4vh;
+}
+
+.fund-gen {
+    height: 600vh;
+}
+
+.fund-ques {
+    margin: 5vh 0 3vh 30vw;
+    width: 40vw;
+    justify-content: center;
+    height: 6vh;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    filter: drop-shadow(0 0 0.2rem snow);
+}
+
+.fund-ques h3 {
+    display: flex;
+    align-items: center;
+    font-size: 3vh;
+    font-weight: 550;
+    font-family: Montserrat, sans-serif;
+}
+
+.fund1 {
+    margin: 5vh 0 5vh 17vw;
+    border: 1px solid #fff;
+    width: 66vw;
+    height: 60vh;
+    background-image: url('/static/base/img/fund.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.fundp1 {
+    margin: 7vh 0 3vh 15vw;
+    width: 70vw;
+}
+
+.fundp1 p {
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 3vh;
+}
+
+.fundat1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.fundaat1 {
+    display: flex;
+    flex-direction: column;
+    margin: 10vh 0 3vh 15vw;
+    justify-content: center;
+    width: 30vw;
+}
+
+.fundaat1 h1, p, ol li {
+    font-family: Montserrat, sans-serif;
+    color: #fff;
+}
+
+.fundaat1 h1 {
+    font-size: 4.2vh;
+    font-weight: 400;
+    align-self: center;
+}
+
+.fundaat1 p {
+    font-size: 2.2vh;
+    margin: 1vw;
+}
+
+.fundaat1 ol li {
+    font-size: 2.4vh;
+}
+
+.fundf1 {
+    width: 35vw;
+    height: 35vw;
+    background-image: url('/static/base/img/fund1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 10vh 0 5vh 3vw;
+    border: 1px solid #fff;
+    border-radius: 1vw;
 }
