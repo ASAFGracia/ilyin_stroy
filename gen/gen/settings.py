@@ -64,10 +64,10 @@ WSGI_APPLICATION = 'gen.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ilyinstroy',
-        'USER': 'asaf',
+        'NAME': 'default_db',
+        'USER': 'gen_user',
         'PASSWORD': 'nuttertools',
-        'HOST': 'localhost',
+        'HOST': '92.255.109.31',
         'PORT': '5432',
     }
 }
