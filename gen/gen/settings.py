@@ -5,9 +5,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-7af$b@npurf1ue_*v(x38@#2(sns(une*(46m*(@_qlqd*&_9k'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ilyin-stroy.xyz]
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
