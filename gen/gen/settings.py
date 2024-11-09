@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-7af$b@npurf1ue_*v(x38@#2(sns(une*(46m*(@_qlqd*&_9k
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['ilyin-stroy.twc1.net', 'www.ilyin-stroy.twc1.net', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['ilyin-stroy.xyz', 'www.ilyin-stroy.xyz', 'http://ilyin-stroy.xyz/', '127.0.0.1', 'localhost']
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
