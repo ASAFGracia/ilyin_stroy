@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -7,7 +8,7 @@ SECRET_KEY = 'django-insecure-7af$b@npurf1ue_*v(x38@#2(sns(une*(46m*(@_qlqd*&_9k
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['ilyin-stroy.xyz', 'www.ilyin-stroy.xyz', 'http://ilyin-stroy.xyz/', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['ilyin-stroy.xyz', 'www.ilyin-stroy.xyz', '127.0.0.1', 'localhost']
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -18,7 +19,7 @@ EMAIL_HOST_USER = 'ilyin.rostislaw@gmail.com'
 EMAIL_HOST_PASSWORD = 'nuttertoolsN1'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -45,7 +46,7 @@ ROOT_URLCONF = 'gen.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'base/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,6 +101,6 @@ STATICFILES_DIRS = [
     BASE_DIR / 'base/static',
 ]
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
