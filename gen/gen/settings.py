@@ -11,6 +11,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['ilyin-stroy.xyz', 'www.ilyin-stroy.xyz', '127.0.0.1', 'localhost']
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -20,7 +21,7 @@ EMAIL_HOST_USER = 'ilyin.rostislaw@gmail.com'
 EMAIL_HOST_PASSWORD = 'nuttertoolsN1'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-STATIC_ROOT = "/var/www/ilyin_stroy/gen/staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, 'gen/staticfiles')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
