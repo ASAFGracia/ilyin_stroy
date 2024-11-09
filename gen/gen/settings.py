@@ -20,7 +20,7 @@ EMAIL_HOST_USER = 'ilyin.rostislaw@gmail.com'
 EMAIL_HOST_PASSWORD = 'nuttertoolsN1'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-STATIC_ROOT = '/var/www/ilyin_stroy/gen/staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -102,6 +102,6 @@ STATICFILES_DIRS = [
     BASE_DIR / 'base/static',
 ]
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
