@@ -126,7 +126,6 @@ footer {
 
 #content {
     /*width: 70%;*/
-
     display: block;
     /*margin-left: 30vh;*/
     border-radius: 2vh;
@@ -170,6 +169,10 @@ footer {
 .inddiv12 p {
     font-size: 2.5vh;
     color: #fff;
+}
+
+.inddiv12 p::after {
+    content: "Мы — строительная компания с многолетним опытом, предоставляющая полный спектр строительных и ремонтных услуг. Наша команда профессионалов помогает реализовать любые проекты, от небольших косметических ремонтов до возведения крупных объектов. Мы не только строим дома, но и делаем их уютными и функциональными.";
 }
 
 .index-div2 {
@@ -295,6 +298,10 @@ footer {
     text-align: center;
     margin-left: 5vw;
     margin-right: 5vw;
+}
+
+.ind-div4::after {
+    content: "Мы всегда готовы ответить на любые ваши вопросы и помочь в реализации вашего проекта. Независимо от того, строите ли вы дом мечты или просто планируете ремонт, мы обеспечим профессиональный подход на всех этапах работы. Доверьте строительство и ремонт профессионалам — и наслаждайтесь результатом долгие годы!";
 }
 
 .index-divdob {
@@ -1183,4 +1190,303 @@ a {
     margin: 10vh 0 5vh 3vw;
     border: 1px solid #fff;
     border-radius: 1vw;
+}
+
+@media (max-width: 320px) {
+    header {
+        margin-top: 2vh;
+        margin-left: 2vw;
+        filter: drop-shadow(0 0 0.02rem white);
+        height: 10vh;
+        width: 96vw;
+        display: flex;
+        border-radius: 2vw;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ul-gen {
+        flex-direction: row;
+        display: flex;
+        width: 90%;
+        align-items: center;
+        padding-top: 5vh;
+        justify-content: space-between;
+    }
+
+    header p {
+        font-size: 1.8vh;
+    }
+
+    .logo-left {
+        display: none;
+    }
+
+    .index-div-photo1 {
+        display: none;
+    }
+
+    .index-div-photo1 p {
+        display: none;
+    }
+
+    footer {
+        margin-left: 5vw;
+        margin-top: auto;
+        width: 90vw;
+        display: flex;
+        justify-content: center;
+        border-top: #fff solid 1px;
+    }
+
+    .ind-div4::after {
+        content: "Мы всегда готовы ответить на любые ваши вопросы и помочь в реализации вашего проекта. Мы обеспечим профессиональный подход на всех этапах работы";
+    }
+
+    .index-div4 {
+        width: 90vw;
+        padding: 0;
+    }
+
+    .index-div4 h2 {
+        font-size: 3.5vh;
+        margin-top: -4vh;
+    }
+
+    .znach4 {
+        display: none;
+    }
+
+    .txt-footer {
+        font-size: 1.5vh;
+        margin-bottom: 0;
+        filter: opacity(0.6);
+        line-height: 1;
+    }
+
+    .index-div-photo2 {
+        margin-left: 55vw;
+    }
+
+    .index-div-photo2 p {
+        font-size: 2.4vh;
+    }
+
+    .index-gen {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .inddiv11 {
+        width: 50%;
+        height: 40vh;
+    }
+
+    .inddiv11 h2 {
+        font-size: 5vh;
+    }
+
+    .inddiv12 {
+        width: 50%;
+        height: 40vh;
+        padding: 1vh;
+    }
+
+    .inddiv12 p {
+        font-size: 2.2vh;
+    }
+
+    .inddiv12 p::after {
+        content: "Мы — строительная компания с многолетним опытом, предоставляющая полный спектр строительных и ремонтных услуг.";
+    }
+
+    .index-divdob1-txt {
+        width: 45vw;
+        padding: 1vw;
+    }
+
+    .index-divdob1-txt h2 {
+        font-weight: 600;
+        font-size: 1.6vh;
+        padding: 1.5vw;
+    }
+
+    .index-divdob1-txt p {
+        margin-top: 1vh;
+        font-size: 1.6vh;
+    }
+
+    .index-divdob1-photo img {
+        height: 25vh;
+        width: 25vh;
+    }
+
+    .index-divdob2-txt {
+        width: 45vw;
+        padding: 1vw;
+    }
+
+    .index-divdob2-txt h2 {
+        font-weight: 600;
+        font-size: 1.6vh;
+        padding: 1.5vw;
+    }
+
+    .index-divdob2-txt p {
+        margin-top: 1vh;
+        font-size: 1.6vh;
+    }
+
+    .index-divdob2-photo img {
+        height: 25vh;
+        width: 25vh;
+    }
+
+    .index-divdob3-txt {
+        width: 45vw;
+        padding: 1vw;
+    }
+
+    .index-divdob3-txt h2 {
+        font-weight: 600;
+        font-size: 1.6vh;
+        padding: 1.5vw;
+    }
+
+    .index-divdob3-txt p {
+        margin-top: 1vh;
+        font-size: 1.6vh;
+    }
+
+    .index-divdob3-photo img {
+        height: 25vh;
+        width: 25vh;
+    }
+
+    .index-divdob4-txt {
+        width: 45vw;
+        padding: 1vw;
+    }
+
+    .index-divdob4-txt h2 {
+        font-weight: 600;
+        font-size: 1.6vh;
+        padding: 1.5vw;
+    }
+
+    .index-divdob4-txt p {
+        margin-top: 1vh;
+        font-size: 1.6vh;
+    }
+
+    .index-divdob4-photo img {
+        height: 25vh;
+        width: 25vh;
+    }
+
+    .index-div3 {
+        margin-top: 10vh;
+        padding-bottom: 5vh;
+        padding-top: 10vh;
+    }
+
+    .index-div3 h2 {
+        align-self: center;
+        margin-top: -7vh;
+        font-size: 3.5vh;
+    }
+
+    .photo-div3 img {
+        display: none;
+    }
+
+    .limyi {
+        margin-bottom: 3.5vh;
+        max-width: 90%;
+        border-bottom: #262626 solid 2px;
+    }
+
+    .limyi p {
+        max-width: 90vw;
+        font-size: 1.7vh;
+        opacity: 60%;
+        margin-bottom: 2vh;
+    }
+
+    .limyi h3 {
+        margin-bottom: 2vh;
+        font-weight: 500;
+        font-size: 2.7vh;
+    }
+
+    .imgvan img {
+        display: none;
+
+    }
+
+    .svyaz {
+        display: block;
+        width: 90%;
+        margin-bottom: 2vh;
+    }
+
+    .form1 {
+        margin-top: 5vh;
+        width: 90%;
+    }
+
+    .form1 input {
+        margin-bottom: 5vh;
+        margin-top: 1vh;
+    }
+
+    .form1 #txt {
+        height: 20vh;
+    }
+
+    .labelf1 {
+        color: #fff;
+        font-size: 2vh;
+        font-family: Montserrat, sans-serif;
+    }
+
+    .inputf1 {
+        width: 90vw;
+        font-size: 2vh;
+    }
+
+    .form1 textarea {
+        margin-top: 1vh;
+    }
+
+    .butform1 {
+        font-size: 2.2vh;
+    }
+
+    .formasvyazi {
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .butform1:hover {
+        color: #777777;
+        transform: scale(1.03);
+    }
+
+    .inputf1:focus::placeholder {
+        color: transparent;
+    }
+
+    .inputf1:focus {
+        outline: none;
+    }
+
+    .inputf1::placeholder{
+        font-size: 2vh;
+    }
 }

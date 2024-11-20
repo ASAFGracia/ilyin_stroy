@@ -15,16 +15,16 @@ admin.site.register(Payment)
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('product_name', 'category', 'purchase_price', 'quantity')
-    list_filter = ('category',)  # Добавляем фильтр по категории
-    search_fields = ('product_name',)  # Поле поиска по названию товара
+    list_filter = ('category',)
+    search_fields = ('product_name',)
 
 @admin.register(ProductCategory)
 class ProductCategoryAdmin(admin.ModelAdmin):
     list_display = ('category_name', 'category_created_at')
-    search_fields = ('category_name',)  # Поле поиска по названию категории
+    search_fields = ('category_name',)
 
 @admin.register(Supplier)
 class SupplierAdmin(admin.ModelAdmin):
     list_display = ('supplier_name', 'supplier_city')
-    list_filter = ('supplier_city',)  # Фильтр по городу поставщика
-    search_fields = ('supplier_name',)  # Поле поиска по названию поставщика
+    list_filter = ('supplier_city',)
+    search_fields = ('supplier_name',)

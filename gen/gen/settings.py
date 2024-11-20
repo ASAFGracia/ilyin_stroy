@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-7af$b@npurf1ue_*v(x38@#2(sns(une*(46m*(@_qlqd*&_9k
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['ilyin-stroy.xyz', 'www.ilyin-stroy.xyz']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ilyin-stroy.xyz', 'www.ilyin-stroy.xyz']
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
@@ -67,10 +67,10 @@ WSGI_APPLICATION = 'gen.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'default_db',
-        'USER': 'gen_user',
+        'NAME': 'ilyinstroy',#'default_db',
+        'USER': 'asaf', #'gen_user',
         'PASSWORD': 'nuttertools',
-        'HOST': '92.255.109.31',
+        'HOST': 'localhost',#'92.255.109.31',
         'PORT': '5432',
     }
 }
