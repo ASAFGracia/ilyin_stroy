@@ -61,13 +61,14 @@
 
 header {
     font-family: "Montserrat", sans-serif;
-    margin-top: 8vh;
-    margin-left: 2vh;
+    margin-top: 15vh;
+    margin-left: 2vw;
     filter: drop-shadow(0 0 0.04rem white);
     display: flex;
     height: 70vh;
     position: fixed;
     border-radius: 0.5vw;
+    justify-content: space-around;
     width: 9vw;
     flex-direction: column;
     z-index: 1000;
@@ -87,16 +88,13 @@ header {
     margin-bottom: 6vh;
 }
 
-.logo-left {
-    height: 8vh;
+.index-div-photo1 {
     width: auto;
-    align-self: center;
-    transition: all 1s ease;
-    margin-top: 6vh;
-    margin-bottom: 6vh;
-}
-
-.logo-left:hover {
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    display: flex;
+    filter: drop-shadow(0 0 0.03rem white);
     transform: scale(1.1);
     cursor: pointer;
     transition: all 1s ease;
@@ -122,6 +120,7 @@ footer {
     margin-top: auto;
     width: 76vw;
     border-top: #fff solid 1px;
+    font-family: Montserrat, sans-serif;
 }
 
 #content {
@@ -225,10 +224,10 @@ footer {
 }
 
 .photo-div3 img {
-    max-width: 70%;
-    margin-top: 13vh;
+    max-width: 60%;
+    margin-top: 8vh;
     max-height: 70%;
-    margin-left: 33vw;
+    margin-left: 23vw;
     position: absolute;
     filter: drop-shadow(1vw 1vw 0.9rem snow);
     z-index: 0;
@@ -277,7 +276,7 @@ footer {
 .index-div4 {
     font-family: "Montserrat", sans-serif;
     display: flex;
-    margin-top: 5vh;
+    margin-top: 0;
     width: 75vw;
     flex-direction: column;
     padding: 2vh;
@@ -309,6 +308,7 @@ footer {
     display: flex;
     margin-top: 10vh;
     flex-direction: column;
+    align-items: center;
     padding: 2vh;
     color: #fff;
 }
@@ -335,28 +335,16 @@ footer {
     margin-left: 30vh;
 }
 
-.index-div-photo1 {
-    width: 30vw;
-    height: 10vh;
-    margin-left: 19vw;
-    margin-top: 2vh;
-    display: flex;
-    filter: drop-shadow(0 0 0.03rem white);
-    position: absolute;
-}
-
 .index-div-photo1 p {
     letter-spacing: 0.1em;
     font-family: "Montserrat", sans-serif;
     color: #fff;
-    position: fixed;
-    border: 2px solid #fff;
-    margin-left: 67vw;
-    font-size: 5vh;
-    padding: 3vh;
-    font-weight: 600;
+    position: relative;
+    border: 2px solid #fff;;
+    font-size: 2vh;
+    padding: 1vh;
+    font-weight: 550;
     border-radius: 1vh;
-    align-self: center;
 }
 
 .index-div-photo2 {
@@ -736,27 +724,24 @@ a {
 }
 
 .onas-gen1 {
-    position: relative;
     height: 430vh;
 }
 
 .o-nas-gen {
     display: flex;
-    filter: drop-shadow(0 0 0.40rem white);
     height: 70vh;
     width: 60vw;
-    opacity: 0.7;
+    border: #fff solid 1px;
     margin-left: 15vw;
     border-radius: 0.5vw;
     flex-direction: column;
-    background-color: #fff;
-    position: absolute;
-    margin-top: 5vh;
+    position: relative;
+    margin-top: 0;
     padding: 3vh;
 }
 
 .o-nas-gen h3 {
-    color: #000;
+    color: #fff;
     font-family: Montserrat, sans-serif;
     font-size: 10vh;
     align-items: center;
@@ -765,7 +750,7 @@ a {
 }
 
 .o-nas-gen p {
-    color: #000;
+    color: #fff;
     font-family: Montserrat, sans-serif;
     font-size: 3vh;
     font-weight: 300;
@@ -780,20 +765,20 @@ a {
     height: 50vh;
     width: 40vw;
     border-radius: 0.5vw;
-    position: absolute;
+    position: relative;
     display: block;
-    margin-top: 45vh;
+    margin-top: -30vh;
     margin-left: 45vw;
     filter: grayscale(50%);
 }
 
 .missiya {
     display: block;
-    position: absolute;
+    position: relative;
     padding: 3vh;
     width: 34vw;
     margin-left: 12vw;
-    margin-top: 80vh;
+    margin-top: -20vh;
 }
 
 .missiya h3, p {
@@ -809,20 +794,20 @@ a {
     background-repeat: no-repeat;
     height: 70vh;
     width: 30vw;
-    position: absolute;
+    position: relative;
     display: block;
     border-radius: 0.5vw;
-    margin-top: 116vh;
+    margin-top: 0;
     margin-left: 13vw;
 }
 
 .onas-uslugi {
     display: flex;
-    position: absolute;
+    position: relative;
     padding: 3vh;
     width: 34vw;
     margin-left: 50vw;
-    margin-top: 117vh;
+    margin-top: -70vh;
     flex-direction: column;
 }
 
@@ -846,10 +831,10 @@ a {
 .primeri {
     display: flex;
     flex-direction: column;
-    margin-top: 195vh;
+    margin-top: 10vh;
     margin-left: 17vw;
-    position: absolute;
-    height: 60vh;
+    position: relative;
+    height: auto;
     width: 66vw;
 }
 
@@ -868,7 +853,7 @@ a {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    height: 60vh;
+    height: auto;
     width: 66vw;
 }
 
@@ -882,9 +867,9 @@ a {
 
 .map {
     width: 70vw;
-    height:80vh;
-    position: absolute;
-    margin-top: 345vh;
+    height: 80vh;
+    position: relative;
+    margin-top: 10vh;
     display: flex;
     flex-direction: column;
     margin-left: 15vw;
@@ -908,6 +893,10 @@ a {
 }
 
 .otstup {
+    height: 0;
+}
+
+#contactsot {
     height: 7vh;
 }
 
@@ -1021,18 +1010,18 @@ a {
 }
 
 .support-gen {
-    height: 55vh;
+    height: auto;
 }
 
 .ques {
     width: 50vw;
     height: 4vh;
     margin-left: 25vw;
-    margin-top: 5vh;
-    position: absolute;
+    margin-top: 0;
+    position: relative;
     background-color: #fff;
     display: flex;
-    margin-bottom: 10vh;
+    margin-bottom: 0;
     border-radius: 1vw;
     flex-direction: column;
     filter: drop-shadow(0 0 0.3rem white);
@@ -1050,14 +1039,16 @@ a {
 }
 
 .sup1 {
-    position: absolute;
-    margin: 20vh 0 10vh 30vw;
+    position: relative;
+    margin: 10vh 0 5vh 0;
 
 }
 
 .form-sup {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-bottom: 10vh;
 }
 
 .labelfsup{
@@ -1070,6 +1061,8 @@ a {
 
 .inputfsup {
     width: 40vw;
+    font-size: 3vh;
+    height: 10vw;
     margin-top: 2vh;
     border-radius: 0.4vh;
     border: 1px solid #fff;
@@ -1192,7 +1185,7 @@ a {
     border-radius: 1vw;
 }
 
-@media (max-width: 480px) {
+@media (max-aspect-ratio: 9/15) and (orientation: portrait) {
     header {
         margin-top: 2vh;
         margin-left: 2vw;
@@ -1200,6 +1193,7 @@ a {
         height: 10vh;
         width: 96vw;
         display: flex;
+        position: fixed;
         border-radius: 2vw;
         flex-direction: row;
         justify-content: center;
@@ -1210,6 +1204,7 @@ a {
         flex-direction: row;
         display: flex;
         width: 90%;
+        position: fixed;
         align-items: center;
         padding-top: 5vh;
         justify-content: space-between;
@@ -1232,6 +1227,7 @@ a {
     }
 
     footer {
+        font-family: Montserrat, sans-serif;
         margin-left: 5vw;
         margin-top: auto;
         width: 90vw;
@@ -1251,17 +1247,49 @@ a {
 
     .index-div4 h2 {
         font-size: 3.5vh;
-        margin-top: -4vh;
+        margin-top: 2vh;
     }
 
     .znach4 {
-        display: none;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        border: #fff solid 1px;
+        padding: 1vh;
+    }
+
+    .div-znach {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+    }
+
+    .div-znach h3 {
+        width: 100%;
+        text-align: center;
+        font-size: 2vh;
+    }
+
+    .div-znach p {
+        line-height: 1.5;
+        font-size: 2vh;
+        border-bottom: #fff solid 1px;
+    }
+
+    .div-znach:last-child p {
+        margin-bottom: 0;
     }
 
     .txt-footer {
-        font-size: 1.5vh;
+        font-size: 1vh;
         margin-bottom: 0;
-        filter: opacity(0.6);
+        filter: opacity(0.7);
+        line-height: 1;
+    }
+
+    .txt-footer p {
         line-height: 1;
     }
 
@@ -1270,7 +1298,7 @@ a {
     }
 
     .index-div-photo2 p {
-        font-size: 2.4vh;
+        font-size: 2vh;
     }
 
     .index-gen {
@@ -1301,88 +1329,124 @@ a {
         content: "Мы — строительная компания с многолетним опытом, предоставляющая полный спектр строительных и ремонтных услуг.";
     }
 
+    .index-divdob1 {
+        margin-top: 5vh;
+        margin-left: -4vw;
+    }
+
     .index-divdob1-txt {
-        width: 45vw;
-        padding: 1vw;
+        width: 35vw;
+        height: 25vh;
+        padding: 2vh;
     }
 
     .index-divdob1-txt h2 {
-        font-weight: 600;
+        font-weight: 550;
         font-size: 1.6vh;
-        padding: 1.5vw;
     }
 
     .index-divdob1-txt p {
-        margin-top: 1vh;
-        font-size: 1.6vh;
+        margin-top: 0;
+        font-size: 1.4vh;
+        padding-bottom: 0;
     }
 
     .index-divdob1-photo img {
         height: 25vh;
         width: 25vh;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .index-divdob2 {
+        margin-top: 5vh;
+        margin-left: -4vw;
     }
 
     .index-divdob2-txt {
-        width: 45vw;
-        padding: 1vw;
+        width: 35vw;
+        height: 25vh;
+        padding: 2vh;
     }
 
     .index-divdob2-txt h2 {
-        font-weight: 600;
+        font-weight: 550;
         font-size: 1.6vh;
-        padding: 1.5vw;
     }
 
     .index-divdob2-txt p {
-        margin-top: 1vh;
-        font-size: 1.6vh;
+        margin-top: 0;
+        font-size: 1.4vh;
+        padding-bottom: 0;
     }
 
     .index-divdob2-photo img {
         height: 25vh;
         width: 25vh;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .index-divdob3 {
+        margin-top: 5vh;
+        margin-left: -4vw;
     }
 
     .index-divdob3-txt {
-        width: 45vw;
-        padding: 1vw;
+        width: 35vw;
+        height: 25vh;
+        padding: 2vh;
     }
 
     .index-divdob3-txt h2 {
-        font-weight: 600;
+        font-weight: 550;
         font-size: 1.6vh;
-        padding: 1.5vw;
     }
 
     .index-divdob3-txt p {
-        margin-top: 1vh;
-        font-size: 1.6vh;
+        margin-top: 0;
+        font-size: 1.4vh;
+        padding-bottom: 0;
     }
 
     .index-divdob3-photo img {
         height: 25vh;
         width: 25vh;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .index-divdob4 {
+        margin-top: 5vh;
+        margin-left: -4vw;
     }
 
     .index-divdob4-txt {
-        width: 45vw;
-        padding: 1vw;
+        width: 35vw;
+        height: 25vh;
+        padding: 2vh;
     }
 
     .index-divdob4-txt h2 {
-        font-weight: 600;
+        font-weight: 550;
         font-size: 1.6vh;
-        padding: 1.5vw;
     }
 
     .index-divdob4-txt p {
-        margin-top: 1vh;
-        font-size: 1.6vh;
+        margin-top: 0;
+        font-size: 1.4vh;
+        padding-bottom: 0;
     }
 
     .index-divdob4-photo img {
         height: 25vh;
         width: 25vh;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
     .index-div3 {
@@ -1394,7 +1458,7 @@ a {
     .index-div3 h2 {
         align-self: center;
         margin-top: -7vh;
-        font-size: 3.5vh;
+        font-size: 3vh;
     }
 
     .photo-div3 img {
@@ -1404,7 +1468,7 @@ a {
     .limyi {
         margin-bottom: 3.5vh;
         max-width: 90%;
-        border-bottom: #262626 solid 2px;
+        border-bottom: #262626 solid 1px;
     }
 
     .limyi p {
@@ -1417,7 +1481,7 @@ a {
     .limyi h3 {
         margin-bottom: 2vh;
         font-weight: 500;
-        font-size: 2.7vh;
+        font-size: 2.2vh;
     }
 
     .imgvan img {
@@ -1428,7 +1492,7 @@ a {
     .svyaz {
         display: block;
         width: 90%;
-        margin-bottom: 2vh;
+        margin-bottom: 5vh;
     }
 
     .form1 {
@@ -1490,61 +1554,72 @@ a {
         font-size: 2vh;
     }
 
+    .onas-gen1 {
+        height: auto;
+    }
+
     .o-nas-gen {
-        background-color: #1C1C1C;
+        display: flex;
         height: 40vh;
         width: 60vw;
-        opacity: 0.7;
+        border: #fff solid 1px;
         margin-left: 15vw;
         border-radius: 2vw;
-        margin-top: 15vh;
+        flex-direction: column;
+        position: relative;
+        margin-top: 0;
         padding: 3vh;
     }
 
     .o-nas-gen h3 {
-        font-size: 5vh;
-        align-items: center;
         color: #fff;
+        font-family: Montserrat, sans-serif;
+        font-size: 3vh;
+        align-items: center;
         font-weight: 500;
         justify-content: center;
     }
 
     .o-nas-gen p {
-        font-size: 1.8vh;
         color: #fff;
+        font-family: Montserrat, sans-serif;
+        font-size: 1.7vh;
         font-weight: 300;
     }
 
     .o-nas-photo1 {
+        background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.8)),
+        url('/static/base/img/onas-1.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         height: 20vh;
         width: 50vw;
         border-radius: 2vw;
+        position: relative;
         display: block;
-        margin-top: 50vh;
+        margin-top: -5vh;
         margin-left: 45vw;
         filter: grayscale(50%);
     }
 
     .missiya {
         display: block;
+        position: relative;
         padding: 3vh;
         width: 90vw;
         margin-left: 5vw;
-        margin-top: 62vh;
+        margin-top: 0;
     }
 
     .missiya h3 {
-        color: #fff;
-        width: 30vw;
-        font-family: Montserrat, sans-serif;
         font-size: 3vh;
+        font-weight: 500;
     }
 
     .missiya p {
-        color: #fff;
-        margin-top: 2vh;
-        font-family: Montserrat, sans-serif;
-        font-size: 2vh;
+        font-size: 1.7vh;
+        font-weight: 400;
     }
 
     .o-nas-photo2 {
@@ -1553,17 +1628,23 @@ a {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        height: 70vh;
-        width: 45vw;
-        border-radius: 2vw;
-        margin-top: 105vh;
+        height: 65vh;
+        width: 40vw;
+        position: relative;
+        display: block;
+        border-radius: 0.5vw;
+        margin-top: 0;
         margin-left: 5vw;
     }
 
     .onas-uslugi {
-        width: 34vw;
-        margin-left: 50vw;
-        margin-top: 100vh;
+        display: flex;
+        position: relative;
+        padding: 1vh;
+        width: 55vw;
+        margin-left: 45vw;
+        margin-top: -66vh;
+        flex-direction: column;
     }
 
     .onas-uslugi h3, p, li{
@@ -1574,33 +1655,28 @@ a {
     .onas-uslugi h3 {
         align-self: center;
         font-weight: 500;
-        font-size: 3vh;
-        margin-left: 10vw;
-        width: 50vw;
-        margin-bottom: 0;
+        font-size: 2vh;
+        padding: 1vh;
     }
 
     .onas-uslugi p, li {
         font-weight: 300;
-        font-size: 1.7vh;
-        width: 40vw;
-        margin-bottom: 0.5vh;
-    }
-    .onas-uslugi li {
-        margin-left: -7vw;
+        font-size: 1.6vh;
     }
 
     .primeri {
-        margin-top: 175vh;
+        display: flex;
+        flex-direction: column;
+        margin-top: 5vh;
         margin-left: 5vw;
-        position: absolute;
-        height: 60vh;
+        position: relative;
+        height: auto;
         width: 90vw;
     }
 
     .primeri h3 {
         font-family: Montserrat, sans-serif;
-        font-size: 3vh;
+        font-size: 2.5vh;
         padding: 3vh 1vw 1vh 1vw;
         margin-bottom: 2vh;
         color: #fff;
@@ -1610,9 +1686,11 @@ a {
     }
 
     .foto-primerov {
+        display: flex;
+        flex-wrap: wrap;
         flex-direction: row;
-        height: 60vh;
-        width: 90vw;
+        height: auto;
+        width: 100%;
     }
 
     .foto-primerov img {
@@ -1625,9 +1703,9 @@ a {
 
     .map {
         width: 90vw;
-        height:80vh;
-        position: absolute;
-        margin-top: 255vh;
+        height: 80vh;
+        position: relative;
+        margin-top: 5vh;
         display: flex;
         flex-direction: column;
         margin-left: 5vw;
@@ -1636,22 +1714,18 @@ a {
 
     #map-google {
         filter: drop-shadow(0 0 0.40rem white);
-        height: 50vh;
+        height: 60vh;
         width: 90vw;
     }
 
     .map h3 {
+        color: #fff;
         margin-bottom: 5vh;
         align-self: center;
         padding-top: 2vh;
         font-family: Montserrat, sans-serif;
         font-weight: 500;
-        font-size: 3vh;
-    }
-
-    .onas-gen1 {
-        position: relative;
-        height: 325vh;
+        font-size: 2.5vh;
     }
 
     .otstup {
@@ -1659,9 +1733,9 @@ a {
     }
 
     .cont {
-        width: 70vw;
-        height: 7vh;
-        margin-left: 15vw;
+        width: 80vw;
+        height: 6vh;
+        margin-left: 10vw;
         margin-bottom: 5vh;
         border-radius: 2vw;
         filter: drop-shadow(0 0 0.15rem white);
@@ -1669,7 +1743,12 @@ a {
 
     .cont h3 {
         padding: 1.5vh;
-        font-size: 3vh;
+        font-size: 2.5vh;
+        font-weight: 550;
+    }
+
+    #contactsot {
+        height: 15vh;
     }
 
     .santehnik {
@@ -1710,7 +1789,7 @@ a {
         background-color: #f8f8f8;
         margin-bottom: 7vh;
         border-radius: 2vw;
-        padding: 2vh;
+        padding: 1vh;
         background-image: url('/static/base/img/stariyboh.png');
         transition: all 0.5s ease;
         border: 1px solid #fff;
@@ -1726,32 +1805,34 @@ a {
     .stariybog h3 {
         align-self: center;
         font-family: Montserrat, sans-serif;
-        font-size: 3vh;
-        margin-top: 2vh;
+        filter: drop-shadow(0 0 0.03rem #fff);
+        font-size: 2.5vh;
+        margin-top: 5vh;
         font-weight: 550;
-        padding: 0.5vw;
+        padding: 0;
         color: #fff;
     }
 
     .stariybog p {
         font-family: Montserrat, sans-serif;
-        font-size: 3vh;
+        filter: drop-shadow(0 0 0.03rem limegreen);
+        font-size: 2.5vh;
         font-weight: 500;
         margin: 2vh 0 2vh 0;
         align-self: flex-start;
         color: #fff;
-        opacity: 0.7;
+        opacity: 1;
     }
 
     .support-gen {
-        height: 67vh;
+        height: auto;
     }
 
     .ques {
         width: 90vw;
         height: 9vh;
         margin-left: 5vw;
-        margin-top: 15vh;
+        margin-top: 0;
         padding: 1vw 0 1vw 3vw;
         margin-bottom: 10vh;
         border-radius: 2vw;
@@ -1763,7 +1844,7 @@ a {
     }
 
     .sup1 {
-        margin: 30vh 0 10vh 5vw;
+        margin: 0 0 5vh 0;
     }
 
     .labelfsup{
@@ -1774,11 +1855,12 @@ a {
         align-self: center;
     }
 
-    .inputfsup {
+    .form-sup #predi {
         width: 90vw;
+        height: 20vh;
         border-radius: 2vw;
         padding: 1vw;
-        filter: drop-shadow(0 0 0.0.5rem snow);
+        filter: drop-shadow(0 0 0.5rem snow);
     }
 
     .butfsup {
