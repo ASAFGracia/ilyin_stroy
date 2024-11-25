@@ -1525,6 +1525,7 @@ a {
     display: flex;
     flex-direction: row;
     margin-left: 15vw;
+    margin-bottom: 5vh;
 }
 
 .otoplf2 {
