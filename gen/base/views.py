@@ -19,3 +19,6 @@ def contacts(request):
 
 def support(request):
     return render (request, "base/support.html")
+
+def sistemaotopleniya(request):
+    return render (request, "base/sistema-otopleniya.html")

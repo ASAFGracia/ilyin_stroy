@@ -224,10 +224,10 @@ footer {
 }
 
 .photo-div3 img {
-    max-width: 60%;
+    max-width: 100%;
     margin-top: 8vh;
-    max-height: 70%;
-    margin-left: 23vw;
+    height: 60%;
+    margin-left: 28vw;
     position: absolute;
     filter: drop-shadow(1vw 1vw 0.9rem snow);
     z-index: 0;
@@ -552,6 +552,49 @@ footer {
     cursor: pointer;
 }
 
+.index-divdob5 {
+    transition: all 0.8s ease;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5vh;
+}
+
+.index-divdob5-txt {
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    width: 45vw;
+    height: auto;
+    padding: 2vh;
+    border-top: #fff solid 1px;
+    border-bottom: #fff solid 1px;
+    border-left: #fff solid 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+.index-divdob5-txt h2 {
+    font-weight: 600;
+    font-size: 3vh;
+    align-self: center;
+}
+
+.index-divdob5-txt p {
+    margin-top: 10vh;
+    align-self: center;
+    font-size: 2.5vh;
+}
+
+.index-divdob5-photo img {
+    height: 40vh;
+    width: 25vw;
+}
+
+.index-divdob5:hover {
+    transform: scale(1.02);
+    background-color: #1C1C1C;
+    cursor: pointer;
+}
+
 .div-znach h3 {
     text-align: center;
     font-size: 3vh;
@@ -703,12 +746,13 @@ a {
     color: #fff;
     border: 3px solid #fff;
     font-family: Montserrat, sans-serif;
-    font-size: 20vh;
-    font-weight: 700;
-    margin-left: 32vw;
+    font-size: 10vh;
+    font-weight: 600;
+    margin-left: 60vw;
     margin-top: 40vh;
     padding: 3vh;
     position: absolute;
+    width: auto;
 }
 
 .pfound-index {
@@ -718,7 +762,7 @@ a {
     font-size: 3vh;
     font-weight: 400;
     margin-left: 75vw;
-    margin-top: 70vh;
+    margin-top: 60vh;
     padding: 3vh;
     position: absolute;
 }
@@ -1095,7 +1139,7 @@ a {
 }
 
 .fund-gen {
-    height: 600vh;
+    height: auto;
 }
 
 .fund-ques {
@@ -1122,7 +1166,7 @@ a {
     margin: 5vh 0 5vh 17vw;
     border: 1px solid #fff;
     width: 66vw;
-    height: 60vh;
+    height: 70vh;
     background-image: url('/static/base/img/fund.jpg');
     background-size: cover;
     background-position: center;
@@ -1171,6 +1215,7 @@ a {
 
 .fundaat1 ol li {
     font-size: 2.4vh;
+    font-weight: 300;
 }
 
 .fundf1 {
@@ -1180,9 +1225,330 @@ a {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin: 10vh 0 5vh 3vw;
+    margin: 10vh 0 0 3vw;
     border: 1px solid #fff;
     border-radius: 1vw;
+}
+
+.fundat2 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vh;
+    width: 70vw;
+    margin-left: 15vw;
+}
+
+.fundaat2 h1, p {
+    font-family: Montserrat, sans-serif;
+    color: #fff;
+}
+
+.fundaat2 h1 {
+    font-size: 4.2vh;
+    font-weight: 400;
+    align-self: center;
+}
+
+.fundaat2 p {
+    font-size: 2.2vh;
+    margin: 1vw;
+}
+
+.photo-fund2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.fundf2 {
+    width: 30vw;
+    height: 35vw;
+    background-image: url('/static/base/img/opalubka.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 5vh 0 0 3vw;
+    border: 1px solid #fff;
+    border-radius: 0.5vw;
+}
+
+.fundf3 {
+    width: 30vw;
+    height: 35vw;
+    background-image: url('/static/base/img/armirovanie.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 5vh 0 0 3vw;
+    border: 1px solid #fff;
+    border-radius: 0.5vw;
+}
+
+.fundat3 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vh;
+    width: 70vw;
+    margin-left: 15vw;
+}
+
+.fundaat3 h1, p {
+    font-family: Montserrat, sans-serif;
+    color: #fff;
+}
+
+.fundaat3 h1 {
+    font-size: 4.2vh;
+    font-weight: 400;
+    align-self: center;
+}
+
+.fundaat3 p {
+    font-size: 2.2vh;
+    margin: 1vw;
+}
+
+.fundf4 {
+    width: 50vw;
+    height: 28vw;
+    align-self: center;
+    background-image: url('/static/base/img/fund3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 5vh 0 0 3vw;
+    border: 1px solid #fff;
+    border-radius: 0.5vw;
+}
+
+.fundat4 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10vh;
+    width: 70vw;
+    margin-left: 15vw;
+}
+
+.fundaat4 {
+    margin-left: 5vw;
+    width: 35vw;
+    margin-top: 5vh;
+}
+
+.fundaat4 h1, p {
+    font-family: Montserrat, sans-serif;
+    color: #fff;
+}
+
+.fundaat4 h1 {
+    font-size: 4.2vh;
+    font-weight: 400;
+    align-self: center;
+}
+
+.fundaat4 p {
+    font-size: 2.2vh;
+    margin: 1vw;
+}
+
+.fundaat4 ol li {
+    font-size: 2.4vh;
+    font-weight: 300;
+}
+
+.fundf5 {
+    width: 30vw;
+    height: auto;
+    background-image: url('/static/base/img/fund4.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 5vh 0 0 3vw;
+    border: 1px solid #fff;
+    border-radius: 0.5vw;
+}
+
+.fundat5 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10vh;
+    width: 70vw;
+    margin-left: 15vw;
+    margin-bottom: 5vh;
+}
+
+.fundaat5 {
+}
+
+.fundaat5 h1, p {
+    font-family: Montserrat, sans-serif;
+    color: #fff;
+}
+
+.fundaat5 h1 {
+    font-size: 4.2vh;
+    font-weight: 400;
+    align-self: center;
+}
+
+.fundaat5 p {
+    font-size: 2.2vh;
+    margin: 1vw;
+}
+
+.otopl-photo {
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0.8)),
+    url('/static/base/img/otopl-gen.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.otopl1 {
+    margin: 5vh 0 5vh 17vw;
+    border: 1px solid #fff;
+    width: 66vw;
+    height: 70vh;
+    background-image: url('/static/base/img/otoplenie2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.h3otopl-index {
+    color: #fff;
+    border: 3px solid #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 10vh;
+    font-weight: 600;
+    margin-left: 40vw;
+    margin-top: 40vh;
+    padding: 3vh;
+    position: absolute;
+    width: auto;
+}
+
+.potopl-index {
+    color: #fff;
+    border-bottom: 3px solid #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 3vh;
+    font-weight: 400;
+    margin-left: 75vw;
+    margin-top: 60vh;
+    padding: 3vh;
+    position: absolute;
+}
+
+.otoplat1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.otoplaat1 {
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 0 0 15vw;
+    justify-content: center;
+    width: 30vw;
+}
+
+.otoplaat1 h1, p, ol li {
+    font-family: Montserrat, sans-serif;
+    color: #fff;
+}
+
+.otoplaat1 h1 {
+    font-size: 4.2vh;
+    font-weight: 400;
+    align-self: center;
+}
+
+.otoplaat1 p {
+    font-size: 2.2vh;
+    margin: 1vw;
+}
+
+.otoplaat1 ol li {
+    font-size: 2.4vh;
+    font-weight: 300;
+}
+
+.otoplf1 {
+    width: 35vw;
+    height: 35vw;
+    background-image: url('/static/base/img/otopl1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 5vh 0 0 3vw;
+    border: 1px solid #fff;
+    border-radius: 1vw;
+}
+
+.otoplat2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.otoplaat2 {
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 0 0 15vw;
+    justify-content: center;
+    width: 70vw;
+}
+
+.otoplaat2 h1, p, ol li {
+    font-family: Montserrat, sans-serif;
+    color: #fff;
+}
+
+.otoplaat2 h1 {
+    font-size: 4.2vh;
+    font-weight: 400;
+    align-self: center;
+}
+
+.otoplaat2 p {
+    font-size: 2.2vh;
+    margin: 1vw;
+}
+
+.otoplaat2 ol li {
+    font-size: 2.4vh;
+    font-weight: 300;
+}
+
+.photo-otopl2 {
+    display: flex;
+    flex-direction: row;
+    margin-left: 15vw;
+}
+
+.otoplf2 {
+    width: 30vw;
+    height: 35vw;
+    background-image: url('/static/base/img/otopl2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 5vh 0 0 3vw;
+    border: 1px solid #fff;
+    border-radius: 0.5vw;
+}
+
+.otoplf3 {
+    width: 30vw;
+    height: 35vw;
+    background-image: url('/static/base/img/otopl3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 5vh 0 0 3vw;
+    border: 1px solid #fff;
+    border-radius: 0.5vw;
 }
 
 @media (max-aspect-ratio: 9/15) and (orientation: portrait) {
@@ -1442,6 +1808,36 @@ a {
     }
 
     .index-divdob4-photo img {
+        height: 25vh;
+        width: 25vh;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .index-divdob5 {
+        margin-top: 5vh;
+        margin-left: -4vw;
+    }
+
+    .index-divdob5-txt {
+        width: 35vw;
+        height: 25vh;
+        padding: 2vh;
+    }
+
+    .index-divdob5-txt h2 {
+        font-weight: 550;
+        font-size: 1.6vh;
+    }
+
+    .index-divdob5-txt p {
+        margin-top: 0;
+        font-size: 1.4vh;
+        padding-bottom: 0;
+    }
+
+    .index-divdob5-photo img {
         height: 25vh;
         width: 25vh;
         background-size: cover;
