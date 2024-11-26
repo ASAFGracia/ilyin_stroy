@@ -1552,6 +1552,235 @@ a {
     border-radius: 0.5vw;
 }
 
+.otoplat3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.otoplaat3 {
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 0 0 15vw;
+    justify-content: center;
+    width: 70vw;
+}
+
+.otoplaat3 h1, h5, p, ol li {
+    font-family: Montserrat, sans-serif;
+    color: #fff;
+}
+
+.otoplaat3 h1 {
+    font-size: 4.2vh;
+    font-weight: 400;
+}
+
+.otoplaat3 h5 {
+    font-size: 2.5vh;
+    font-weight: 400;
+    margin-top: 1vh;
+}
+
+.otoplaat3 p {
+    font-size: 2.2vh;
+    margin: 1vw;
+}
+
+.otoplaat3 ol li {
+    font-size: 2.4vh;
+    font-weight: 300;
+}
+
+.otoplf4 {
+    width: 60vw;
+    height: 35vw;
+    background-image: url('/static/base/img/otopl4.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 5vh 0 0 20vw;
+    border: 1px solid #fff;
+    border-radius: 0.5vw;
+}
+
+.otoplat4 {
+    display: flex;
+    flex-direction: column;
+}
+
+.otoplaat4 {
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 0 0 15vw;
+    justify-content: center;
+    width: 70vw;
+}
+
+.otoplaat4 h1, h5, p, ol li {
+    font-family: Montserrat, sans-serif;
+    color: #fff;
+}
+
+.otoplaat4 h1 {
+    font-size: 4.2vh;
+    font-weight: 400;
+}
+
+.otoplaat4 h5 {
+    font-size: 2.5vh;
+    font-weight: 400;
+    margin-top: 1vh;
+}
+
+.otoplaat4 p {
+    font-size: 2.2vh;
+    margin: 1vw;
+}
+
+.otoplaat4 ol li {
+    font-size: 2.4vh;
+    font-weight: 300;
+}
+
+.otoplf5 {
+    width: 60vw;
+    height: 35vw;
+    background-image: url('/static/base/img/otopl5.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 5vh 0 0 20vw;
+    border: 1px solid #fff;
+    border-radius: 0.5vw;
+}
+
+.otoplat5 {
+    display: flex;
+    flex-direction: column;
+}
+
+.otoplaat5 {
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 0 0 15vw;
+    justify-content: center;
+    width: 70vw;
+}
+
+.otoplaat5 h1, h5, p, ol li {
+    font-family: Montserrat, sans-serif;
+    color: #fff;
+}
+
+.otoplaat5 h1 {
+    font-size: 4.2vh;
+    font-weight: 400;
+}
+
+.otoplaat5 h5 {
+    font-size: 2.5vh;
+    font-weight: 400;
+    margin-top: 1vh;
+}
+
+.otoplaat5 p {
+    font-size: 2.2vh;
+    margin: 1vw;
+}
+
+.otoplaat5 ol li {
+    font-size: 2.4vh;
+    font-weight: 300;
+}
+
+.otoplf6 {
+    width: 60vw;
+    height: 35vw;
+    background-image: url('/static/base/img/otopl6.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 5vh 0 0 20vw;
+    border: 1px solid #fff;
+    border-radius: 0.5vw;
+}
+
+.otoplat6 {
+    display: flex;
+    flex-direction: column;
+}
+
+.otoplaat6 {
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 0 0 15vw;
+    justify-content: center;
+    width: 70vw;
+}
+
+.otoplaat6 h1, h5, p, ol li {
+    font-family: Montserrat, sans-serif;
+    color: #fff;
+}
+
+.otoplaat6 h1 {
+    font-size: 4.2vh;
+    font-weight: 400;
+}
+
+.otoplaat6 h5 {
+    font-size: 2.5vh;
+    font-weight: 400;
+    margin-top: 1vh;
+}
+
+.otoplaat6 p {
+    font-size: 2.2vh;
+    margin: 1vw;
+}
+
+.otoplaat6 ol li {
+    font-size: 2.4vh;
+    font-weight: 300;
+}
+
+.otoplf7 {
+    width: 60vw;
+    height: 35vw;
+    background-image: url('/static/base/img/otopl7.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 5vh 0 0 20vw;
+    border: 1px solid #fff;
+    border-radius: 0.5vw;
+}
+
+.otoplat7 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5vh;
+}
+
+.otoplaat7 h5 {
+    font-size: 2.5vh;
+    font-weight: 400;
+    margin-top: 1vh;
+}
+
+.otoplaat7 {
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 0 0 15vw;
+    justify-content: center;
+    width: 70vw;
+}
+
+.otoplaat7 h1, h5, p, ol li {
+    font-family: Montserrat, sans-serif;
+    color: #fff;
+}
+
 @media (max-aspect-ratio: 9/15) and (orientation: portrait) {
     header {
         margin-top: 2vh;
