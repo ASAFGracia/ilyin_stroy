@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Список категорий
+{% endblock %}
+
+{% block content %}
+    
+    <div class="otstup" id="contactsot"></div>
+    
+    <div class="list_prod">
+        <h1>Список категорий</h1>
+        <ul>
+            {% for category in categorys %}
+                <li>
+                    {{ category.category_name }}
+                    <div class="ssilki">
+                        <a href="{% url 'edit_category' category.id %}">Редактировать</a>
+                        <a href="{% url 'delete_category' category.id %}">Удалить</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'add_category' %}">Добавить новую категорию</a>
+    <a href="{% url 'current_month_categories' %}" class="btn btn-primary">Категории за этот месяц</a>
+    </div>
+
+{% endblock %}

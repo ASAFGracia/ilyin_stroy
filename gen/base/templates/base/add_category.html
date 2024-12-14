@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Добавить категорию товаров
+{% endblock %}
+
+{% block content %}
+    
+    <div class="otstup" id="contactsot"></div>
+    
+        <div class="add_prod">
+            <h1>Добавить категорию</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Сохранить</button>
+            </form>
+            <a href="{% url 'category_list' %}">Назад</a>
+        </div>
+
+{% endblock %}

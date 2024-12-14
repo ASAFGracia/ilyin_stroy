@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Что добавить
+{% endblock %}
+
+{% block content %}
+    
+    <div class="otstup" id="contactsot"></div>
+    
+    <div class="vibor">
+        <form method="get" action="{% url 'choose_form' %}">
+            <label for="form_type">Выберите форму:</label>
+            <select name="form_type" id="form_type">
+                <option class="option123" value="product">Список товаров</option>
+                <option class="option123" value="category">Список категорий</option>
+            </select> <br>
+            <button type="submit">Перейти</button>
+        </form>
+    </div>
+    
+{% endblock %}

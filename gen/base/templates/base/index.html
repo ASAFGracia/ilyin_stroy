@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load custom_filters %}
 {% block title %}
 IlyinStroy
 {% endblock %}
@@ -151,16 +152,13 @@ IlyinStroy
 
         <div class="svyaz">
             <div class="formasvyazi">
-                <form class="form1">
-                    <label class="labelf1" for="fio">ФИО</label><br>
-                    <input class="inputf1" type="text" id="fio" placeholder="Введите ФИО" name="fio"><br>
-                    <label class="labelf1" for="email">Email</label><br>
-                    <input class="inputf1" type="text" placeholder="Введите email" id="email" name="email">
-                    <label class="labelf1" for="txt">Сообщение</label><br>
-                    <textarea class="inputf1" id="txt" rows="4" cols="50" placeholder="Отправьте нам сообщение"></textarea>
-                    <input class="butform1" type="submit" value="Отправить">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Отправить</button>
                 </form>
             </div>
+
             <div class="imgvan">
                 <img src="/static/base/img/vannaya.jpg" alt="">
             </div>

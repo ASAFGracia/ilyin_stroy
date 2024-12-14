@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Успешная отправка сообщения
+{% endblock %}
+
+{% block content %}
+    
+    <div class="otstup" id="contactsot"></div>
+    
+    <div class="success_page1">
+        <h1>Ваше сообщение было успешно отправлено</h1>
+        <a href="{% url 'home' %}"><p>Назад на главную</p></a>
+    </div>
+
+{% endblock %}

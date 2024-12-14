@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Редактировать товар
+{% endblock %}
+
+{% block content %}
+    
+    <div class="otstup" id="contactsot"></div>
+    
+        <div class="add_prod">
+            <h1>Редактировать товар: {{ product.product_name }}</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Сохранить изменения</button>
+            </form>
+            <a href="{% url 'product_list' %}">Вернуться к списку товаров</a>
+        </div>
+
+{% endblock %}

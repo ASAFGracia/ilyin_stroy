@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Список категорий за этот месяц
+{% endblock %}
+
+{% block content %}
+    
+    <div class="otstup" id="contactsot"></div>
+    <div class="cat-mes">
+        <h1 class="mes-h1">Категории за этот месяц</h1>
+        <a href="{% url 'category_list' %}" class="btn-mes">Вернуться ко всем категориям</a>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Дата создания</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if categories %}
+                    {% for category in categories %}
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>{{ category.category_name }}</td>
+                        <td>{{ category.category_description }}</td>
+                        <td>{{ category.category_created_at }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="4">Категорий за текущий месяц нет.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

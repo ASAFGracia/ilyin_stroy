@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Список товаров
+{% endblock %}
+
+{% block content %}
+    
+    <div class="otstup" id="contactsot"></div>
+    
+    <div class="list_prod">
+    
+        <h1>Список товаров</h1>
+    
+        <form method="get" action="{% url 'products_by_category' 0 %}" id="categoryFilterForm">
+            <select name="category_id" id="categorySelect" onchange="updateFormAction()">
+                <option value="">-- Выберите категорию --</option>
+                {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.category_name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Показать</button>
+        </form>
+        
+        <script>
+            function updateFormAction() {
+                const select = document.getElementById('categorySelect');
+                const form = document.getElementById('categoryFilterForm');
+                const categoryId = select.value;
+                if (categoryId) {
+                    form.action = `/products/category/${categoryId}/`;
+                }
+            }
+        </script>
+    
+        <ul>
+            {% for product in products %}
+                <li>
+                    {{ product.product_name }} — {{ product.purchase_price }}
+                    <div class="ssilki">
+                        <a href="{% url 'edit_product' product.id %}">Редактировать</a>
+                        <a href="{% url 'delete_product' product.id %}">Удалить</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <a class="prod-but" href="{% url 'add_product' %}">Добавить новый товар</a>
+    </div>
+
+{% endblock %}

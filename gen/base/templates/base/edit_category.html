@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Редактировать категорию
+{% endblock %}
+
+{% block content %}
+    
+    <div class="otstup" id="contactsot"></div>
+    
+        <div class="add_prod">
+            <h1>Редактировать категорию: {{ ProductCategory.category_name }}</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Сохранить изменения</button>
+            </form>
+            <a href="{% url 'category_list' %}">Вернуться к списку категорий</a>
+        </div>
+
+{% endblock %}
