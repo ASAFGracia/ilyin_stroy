@@ -43,9 +43,6 @@ IlyinStroy
                     <dd>Специализируемся
                         на установке систем отопления, водоснабжения, электрики, а также
                         вентиляции и кондиционирования.</dd>
-                <dt>Кровельные работы:</dt>
-                    <dd>Выполняем монтаж и ремонт крыш, обеспечивая
-                        их долговечность и защиту от любых погодных условий.</dd>
                 <dt>Укладка полов и установка дверей и окон:</dt>
                     <dd>Мы предлагаем услуги
                         по установке качественных окон и дверей, а также укладке полов,
@@ -129,42 +126,66 @@ IlyinStroy
             <ul>
                 <div class="limyi">
                     <h3>Многолетний опыт: </h3>
-                    <p>Более десяти лет на рынке позволяют нам решать самые сложные задачи.</p>
+                    <p>Более десяти лет на рынке позволяют нам 
+                        решать самые сложные задачи.</p>
                 </div>
 
                 <div class="limyi">
                     <h3>Индивидуальный подход: </h3>
-                    <p>Мы учитываем все пожелания клиента и создаём решения, которые максимально соответствуют вашим потребностям.</p>
+                    <p>Мы учитываем все пожелания клиента и создаём решения, 
+                        которые максимально соответствуют вашим потребностям.</p>
                 </div>
 
                 <div class="limyi">
                     <h3>Квалифицированные специалисты:</h3>
-                    <p>В нашей команде работают только опытные профессионалы, обладающие знаниями и навыками, необходимыми для выполнения любых задач.</p>
+                    <p>В нашей команде работают только опытные профессионалы, 
+                        обладающие знаниями и навыками, необходимыми для выполнения любых задач.</p>
                 </div>
 
                 <div class="limyi">
                     <h3>Прозрачные цены и сроки:</h3>
-                    <p>Мы честны с нашими клиентами — все работы проводятся в рамках согласованных сроков и бюджета, без скрытых платежей.</p>
+                    <p>Мы честны с нашими клиентами — все работы проводятся 
+                        в рамках согласованных сроков и бюджета, без скрытых платежей.</p>
                 </div>
             </ul>
         </div>
 
         <div class="svyaz">
             <div class="formasvyazi">
-                <form class="form1">
-                    <label class="labelf1" for="fio">ФИО</label><br>
-                    <input class="inputf1" type="text" id="fio" placeholder="Введите ФИО" name="fio"><br>
-                    <label class="labelf1" for="email">Email</label><br>
-                    <input class="inputf1" type="text" placeholder="Введите email" id="email" name="email">
-                    <label class="labelf1" for="txt">Сообщение</label><br>
-                    <textarea class="inputf1" id="txt" rows="4" cols="50" placeholder="Отправьте нам сообщение"></textarea>
+                <form class="form1" method="post">
+                    {% csrf_token %}
+                    <label class="labelf1" for="{{ form.fio.id_for_label }}">{{ form.fio.label }}</label><br>
+                    {{ form.fio }}
+                    {% if form.fio.errors %}
+                        <div class="error">{{ form.fio.errors }}</div>
+                    {% endif %}
+                    <br>
+                    <label class="labelf1" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label><br>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="error">{{ form.email.errors }}</div>
+                    {% endif %}
+                    <br>
+                    <label class="labelf1" for="{{ form.message.id_for_label }}">{{ form.message.label }}</label><br>
+                    {{ form.message }}
+                    {% if form.message.errors %}
+                        <div class="error">{{ form.message.errors }}</div>
+                    {% endif %}
+                    <br>
                     <input class="butform1" type="submit" value="Отправить">
                 </form>
             </div>
+
             <div class="imgvan">
                 <img src="/static/base/img/vannaya.jpg" alt="">
             </div>
         </div>
     
     </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('success')) {
+            alert("Ваше сообщение успешно отправлено! Спасибо!");
+        }
+    </script>
 {% endblock %}

@@ -11,11 +11,13 @@
         <h3>Нашли ошибку на сайте или есть предложения?</h3>
     </div>
     <div class="sup1">
-        <form class="form-sup">
-            <label class="labelfsup" for="predi">Ваши предложения</label><br>
-            <textarea class="inputfsup" id="predi" rows="4" cols="50" placeholder="Напишите нам"></textarea><br>
+        <form class="form-sup" method="post">
+            {% csrf_token %}
+            <label class="labelfsup" for="{{ form.suggestions.id_for_label }}">{{ form.suggestions.label }}</label><br>
+            {{ form.suggestions }}
             <input type="submit" class="butfsup" value="Отправить">
         </form>
     </div>
+
 </div>
 {% endblock %}

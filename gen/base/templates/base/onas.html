@@ -65,4 +65,10 @@
         </div>
     
     </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('success')) {
+            alert("Ваше сообщение успешно отправлено! Спасибо!");
+        }
+    </script>
 {% endblock %}

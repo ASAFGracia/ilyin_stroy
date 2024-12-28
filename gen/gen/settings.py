@@ -17,11 +17,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'ilyin.rostislaw@gmail.com'
-EMAIL_HOST_PASSWORD = 'nuttertoolsN1'
+EMAIL_HOST_USER = 'ilyinstroy@gmail.com'
+EMAIL_HOST_PASSWORD = 'aokp ytxy klie klad '
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'gen/../staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -69,7 +69,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ilyinstroy',#'default_db',
         'USER': 'asaf', #'gen_user',
-        'PASSWORD': 'nuttertools',
+        'PASSWORD': '123',
         'HOST': 'localhost',#'92.255.109.31',
         'PORT': '5432',
     }
