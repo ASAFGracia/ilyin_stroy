@@ -11,6 +11,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ilyin-stroy.xyz', 'www.ilyin-stroy.xyz']
 
+CSRF_TRUSTED_ORIGINS = ['https://ilyin-stroy.xyz', 'https://www.ilyin-stroy.xyz']
+
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
