@@ -68,12 +68,7 @@ WSGI_APPLICATION = 'gen.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ilyinstroy',#'default_db',
-        'USER': 'asaf', #'gen_user',
-        'PASSWORD': '123',
-        'HOST': 'localhost',#'92.255.109.31',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.dummy',
     }
 }
 
