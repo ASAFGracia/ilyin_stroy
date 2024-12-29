@@ -21,7 +21,7 @@ EMAIL_HOST_USER = 'ilyinstroy@gmail.com'
 EMAIL_HOST_PASSWORD = 'aokp ytxy klie klad '
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = "/root/ilyin_stroy/gen/staticfiles/"
 
 INSTALLED_APPS = [
     'django.contrib.admin',
