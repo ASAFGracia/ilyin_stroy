@@ -2,8 +2,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from base import views
+from django.contrib.sitemaps.views import sitemap
+from gen.sitemaps import StaticViewSitemap
+
+# Определение карты сайта
+sitemaps = {
+    'static': StaticViewSitemap,
+}
 
 urlpatterns = [
-    path('', include('base.urls')),
+    path('', include('base.urls')),  # Подключение маршрутов приложения base
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),  # Путь к sitemap.xml
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
