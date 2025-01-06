@@ -67,12 +67,14 @@ header {
     display: flex;
     height: 70vh;
     position: fixed;
-    border-radius: 0.5vw;
     justify-content: space-around;
     width: 9vw;
     flex-direction: column;
     z-index: 1000;
-    border: #fff solid 2px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+    border-radius: 0.5vw;
+    border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .ul-gen {
@@ -98,6 +100,11 @@ header {
     transform: scale(1.1);
     cursor: pointer;
     transition: all 1s ease;
+}
+
+.index-div-photo1 img {
+    width: 5vw;
+    margin-bottom: 4vh;
 }
 
 body {
@@ -297,7 +304,7 @@ footer {
 }
 
 .index-photo {
-    background-image: url("/static/base/img/photo-index.jpg");
+    background-image: url("/static/base/img/newIndPhoto2.jpeg");
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -310,23 +317,11 @@ footer {
     margin-left: 30vh;
 }
 
-.index-div-photo1 p {
-    letter-spacing: 0.1em;
-    font-family: "Montserrat", sans-serif;
-    color: #fff;
-    position: relative;
-    border: 2px solid #fff;
-    font-size: 2vh;
-    padding: 1vh;
-    font-weight: 550;
-    border-radius: 1vh;
-}
-
 .index-div-photo2 {
     width: 30vw;
     height: 10vh;
-    margin-left: 60vw;
-    margin-top: 80vh;
+    margin-left: 65vw;
+    margin-top: 27vh;
     display: flex;
     position: absolute;
 }
@@ -334,13 +329,13 @@ footer {
 .index-div-photo2 p {
     font-family: "Montserrat", sans-serif;
     font-size: 4vh;
-    color: #fff;
+    color: black;
     justify-content: center;
     align-self: center;
 }
 
 .photo-div1 {
-    background-image: url("/static/base/img/pod-div1.png");
+    background-image: url("/static/base/img/newIndPhoto1.jpeg");
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -800,11 +795,24 @@ a {
     margin-top: -20vh;
 }
 
-.missiya h3,
-p {
+.missiya h3, p {
     color: #fff;
     font-family: Montserrat, sans-serif;
 }
+
+.missiya h3 {
+    font-size: 2.5vh;
+    font-weight: 450;
+}
+
+.missiya p {
+    font-size: 1.7vh;
+    font-weight: 350;
+    text-indent: 1vw;
+    opacity: 0.8;
+}
+
+
 
 .o-nas-photo2 {
     background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.5)),
@@ -1045,7 +1053,7 @@ li {
     position: relative;
     background-color: #fff;
     display: flex;
-    margin-bottom: 0;
+    margin-bottom: 5vh;
     border-radius: 1vw;
     flex-direction: column;
     filter: drop-shadow(0 0 0.3rem white);
@@ -1909,10 +1917,6 @@ ol li {
         display: none;
     }
 
-    .index-div-photo1 p {
-        display: none;
-    }
-
     footer {
         font-family: Montserrat, sans-serif;
         margin-left: 5vw;
@@ -1983,6 +1987,7 @@ ol li {
 
     .index-div-photo2 {
         margin-left: 55vw;
+        margin-top: 65vw;
     }
 
     .index-div-photo2 p {
@@ -1992,6 +1997,12 @@ ol li {
     .index-gen {
         width: 90%;
         margin-left: 5%;
+    }
+
+    .photo-div1 {
+        height: 120vw;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
     }
 
     .index-divdob1 {
