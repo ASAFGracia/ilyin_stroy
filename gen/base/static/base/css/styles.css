@@ -1785,6 +1785,72 @@ ol li {
     color: #fff;
 }
 
+.table-sant {
+    margin: 5vh 0 5vh 20vw;
+    width: 60vw;
+    border: #fff solid 1px;
+    border-radius: 2vw;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+}
+
+.table-sant thead tr th {
+    padding: 2vh;
+    font-weight: 600;
+    font-size: 2.2vh
+}
+
+.table-sant thead tr {
+    border-bottom: #fff solid 1px;
+}
+
+.table-sant tbody tr td {
+    padding: 0.7vh 0 0.7vh 2vh;
+    font-weight: 400;
+    font-size: 1.8vh;
+}
+
+.table-sant tbody tr {
+    border-bottom: #2F2A30 solid 1px;
+}
+
+.table-sant tbody tr:last-child {
+    border-bottom: none;
+}
+
+.sant-block1 {
+    color: #fff;
+    width: 70vw;
+    margin: 5vh 0 0 15vw;
+}
+
+.sant-block1 p {
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2vh;
+    opacity: 0.7;
+}
+
+.sant-block2 {
+    margin: 0 0 3vh 15vw;
+    width: 70vw;
+}
+
+.sant-block2 h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 4vh;
+    color: #fff;
+}
+
+.sant-block2 p {
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2vh;
+    opacity: 0.7;
+    width: 70vw;
+}
+
 @media (orientation: portrait) {
     header {
         margin-top: 2vh;
