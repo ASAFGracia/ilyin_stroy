@@ -6,14 +6,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-7af$b@npurf1ue_*v(x38@#2(sns(une*(46m*(@_qlqd*&_9k'
 
+
 DEBUG = False
 
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ilyin-stroy.xyz', 'www.ilyin-stroy.xyz']
 
+
 CSRF_TRUSTED_ORIGINS = ['https://ilyin-stroy.xyz', 'https://www.ilyin-stroy.xyz']
 
+
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -23,7 +27,9 @@ EMAIL_HOST_USER = 'ilyinstroy@gmail.com'
 EMAIL_HOST_PASSWORD = 'aokp ytxy klie klad '
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +43,7 @@ INSTALLED_APPS = [
     'prices',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -47,7 +54,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'gen.urls'
+
 
 TEMPLATES = [
     {
@@ -64,6 +73,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'gen.wsgi.application'
 
@@ -89,6 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 LANGUAGE_CODE = 'ru'
 
