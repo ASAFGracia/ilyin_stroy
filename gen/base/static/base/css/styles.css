@@ -109,11 +109,12 @@ header {
 }
 
 .index-div-photo1 {
+    display: none;
     width: auto;
     align-items: center;
     justify-content: center;
     height: auto;
-    display: flex;
+    /*display: flex;*/
     filter: drop-shadow(0 0 0.03rem white);
     transform: scale(1.1);
     cursor: pointer;
