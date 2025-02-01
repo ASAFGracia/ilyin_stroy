@@ -1,13 +1,14 @@
 from pathlib import Path
 import os
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = 'django-insecure-7af$b@npurf1ue_*v(x38@#2(sns(une*(46m*(@_qlqd*&_9k'
 
 
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ilyin-stroy.xyz', 'www.ilyin-stroy.xyz']
@@ -15,6 +16,8 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ilyin-stroy.xyz', 'www.ilyin-stroy.x
 
 CSRF_TRUSTED_ORIGINS = ['https://ilyin-stroy.xyz', 'https://www.ilyin-stroy.xyz']
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
@@ -31,6 +34,21 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
+SITE_ID = 1
+
+
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False  # поскольку будем использовать никнейм отдельно
+SOCIALACCOUNT_AUTO_SIGNUP = False  # чтобы можно было редактировать форму после соцрегистрации
+
+
+AUTH_USER_MODEL = 'base.CustomUser'
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +57,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'django.contrib.sites',
     'base',
     'prices',
 ]
@@ -47,6 +70,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # Поднимаем выше
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -80,9 +104,16 @@ WSGI_APPLICATION = 'gen.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.dummy',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydb',             # Имя базы данных
+        'USER': 'asafgracia',       # Логин
+        'PASSWORD': 'nuttertools',  # Пароль
+        'HOST': 'localhost',        # Хост
+        'PORT': '5432',             # Порт (обычно 5432)
     }
 }
+
+#sudo docker run --name postgres -e POSTGRES_USER=asafgracia -e POSTGRES_PASSWORD=nuttertools -e POSTGRES_DB=mydb -p 5432:5432 -d postgres
 
 
 AUTH_PASSWORD_VALIDATORS = [

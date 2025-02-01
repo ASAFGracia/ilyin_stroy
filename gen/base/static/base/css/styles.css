@@ -982,7 +982,7 @@ li {
     margin-bottom: 10vh;
     border-radius: 1vw;
     padding: 2vh;
-    background-image: url("/static/base/img/santehnik.jpg");
+    background-image: url("/static/base/img/for_batya.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -996,10 +996,9 @@ li {
     align-self: center;
     font-family: Montserrat, sans-serif;
     font-size: 3.5vh;
-    margin-top: 2vh;
+    margin-top: 1vh;
     font-weight: 550;
-    background-image: linear-gradient(to left, #777777, #fff);
-    opacity: 0.8;
+    opacity: 1;
     color: #000;
 }
 
@@ -1011,7 +1010,6 @@ li {
 .santehnik p {
     font-family: Montserrat, sans-serif;
     font-size: 3vh;
-    background-image: linear-gradient(to left, #777777, #fff);
     font-weight: 450;
     opacity: 1;
     margin: 5vh 0 3vh 0;
@@ -1901,6 +1899,94 @@ ol li {
     width: 70vw;
 }
 
+.list-article {
+    margin: 5vh 0 2vh 15vw;
+    width: 70vw;
+    height: 20vh;
+    border: snow solid 1px;
+    padding: 2vw;
+    border-radius: 0.3vw;
+    transition: all 1s ease;
+}
+
+.list-article:hover {
+    transform: scale(1.02);
+    background-color: #1c1c1c;
+}
+
+.list-article h2 {
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 2vw;
+    font-weight: 500;
+}
+
+.list-article p {
+    margin: 3vh;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 1vw;
+}
+
+.art-detail {
+    width: 70vw;
+    margin: 3vh 0 5vh 15vw;
+}
+
+.art-detail img {
+    height: 40vh;
+    width: auto;
+    border-radius: 1vw;
+}
+
+.art-detail h1 {
+    font-family: Montserrat, sans-serif;
+    font-size: 4vh;
+    color: #fff;
+    font-weight: 550;
+}
+
+.art-detail p {
+    font-family: Montserrat, sans-serif;
+    font-size: 2vh;
+    color: #fff;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.new-art {
+    margin: 5vh 0 5vh 25vw;
+    width: 50vw;
+}
+
+.new-art h2{
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 3vh;
+    margin: 3vh 0 3vh 4vw;
+}
+
+.register-form {
+    width: 70vw;
+    margin: 5vh 0 5vh 15vw;
+}
+
+.profile {
+    width: 50vw;
+    margin: 5vh 0 5vh 25vw;
+}
+
+.login-form {
+    width: 50vw;
+    margin: 5vh 0 5vh 25vw;
+}
+
+.but-art-create {
+    margin: 1vh;
+    padding: 1vw;
+}
+
 @media (orientation: portrait) {
     header {
         margin-top: 2vh;
@@ -2508,19 +2594,18 @@ ol li {
     }
 
     .santehnik h3 {
-        font-size: 2.4vh;
-        margin-top: 2vh;
+        align-self: center;
+        font-size: 2.6vh;
+        margin-top: 5vh;
         font-weight: 550;
-        background-image: linear-gradient(to left, #777777, #fff);
-        opacity: 0.8;
+        opacity: 1;
     }
 
     .santehnik p {
-        font-size: 2.7vh;
-        background-image: linear-gradient(to left, #777777, #fff);
+        font-size: 2.5vh;
         opacity: 1;
-        font-weight: 450;
-        margin: 5vh 0 3vh 0;
+        font-weight: 500;
+        margin: 2vh 0 2vh 0;
     }
 
     .stariybog {

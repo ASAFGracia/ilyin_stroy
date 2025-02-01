@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Верификация почты
+{% endblock %}
+
+{% block content %}
+<div class="support-gen">
+
+    <div class="otstup" id="contactsot"></div>
+
+    <div class="ques-sup">
+        <h3>Верификация вашей почты</h3>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="code" placeholder="Введите код">
+        <button type="submit">Подтвердить</button>
+    </form>
+
+
+</div>
+{% endblock %}

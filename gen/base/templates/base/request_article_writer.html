@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Создание статьи
+{% endblock %}
+
+{% block content %}
+<div class="support-gen">
+    <div class="otstup" id="contactsot"></div>
+    <div class="ques-sup">
+        <h3>Заявка на возможность писать статьи</h3>
+    </div>
+
+      <h1>Хотите писать статьи?</h1>
+      <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить заявку</button>
+      </form>
+
+</div>
+{% endblock %}

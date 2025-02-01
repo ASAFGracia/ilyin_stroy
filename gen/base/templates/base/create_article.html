@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Создание статьи
+{% endblock %}
+
+{% block content %}
+<div class="support-gen">
+    <div class="otstup" id="contactsot"></div>
+    <div class="ques-sup">
+        <h3>Напиши новую статью</h3>
+    </div>
+
+        <div class="new-art">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <h2>Новая статья</h2>
+            {{ article_form.as_p }}
+
+            <h2>Изображения</h2>
+            {{ image_formset.management_form }}
+            {% for form in image_formset %}
+                <div class="image-form">
+                    {{ form.as_p }}
+                </div>
+            {% endfor %}
+
+            <button type="submit">Создать</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
