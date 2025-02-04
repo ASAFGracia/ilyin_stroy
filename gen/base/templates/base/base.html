@@ -17,9 +17,6 @@
     <header>
 
         <div class="ul-gen">
-{#                <div class="index-div-photo1">#}
-{#                    <a href="{% url 'home' %}"><img src="{% static "base/img/LOGO.png" %}" alt=""></a>#}
-{#                </div>#}
                 {% if user.is_authenticated %}
                     <!-- Если пользователь вошёл в аккаунт -->
                     <a href="{% url 'profile' %}" class="ssgen">Профиль</a>
@@ -35,7 +32,7 @@
                 <a href="{% url 'article_list' %}" class="ssgen"><p>Статьи</p></a>
                 <a href="{% url 'support' %}" class="ssgen"><p>Поддержка</p></a>
                 {% if user.is_staff %}
-                    <a href="/admin/">Админка</a>
+                    <a href="/admin/" class="but-admin"><p>Админка</p></a>
                 {% endif %}
         </div>
     </header>

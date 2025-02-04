@@ -46,6 +46,8 @@ ACCOUNT_USERNAME_REQUIRED = False  # поскольку будем исполь�
 SOCIALACCOUNT_AUTO_SIGNUP = False  # чтобы можно было редактировать форму после соцрегистрации
 
 
+LOGIN_URL = "/login/"
+
 AUTH_USER_MODEL = 'base.CustomUser'
 
 

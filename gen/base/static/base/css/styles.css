@@ -3,6 +3,21 @@
     padding: 0;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+}
+
+a {
+    color: cadetblue;
+    font-family: Montserrat, sans-serif;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: aqua;
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -1928,6 +1943,10 @@ ol li {
     font-size: 1vw;
 }
 
+.list-but-info {
+    margin: 5vh 0 5vh 15vw;
+}
+
 .art-detail {
     width: 70vw;
     margin: 3vh 0 5vh 15vw;
@@ -1978,13 +1997,91 @@ ol li {
 }
 
 .login-form {
-    width: 50vw;
-    margin: 5vh 0 5vh 25vw;
+    width: 30vw;
+    margin: 5vh 0 5vh 35vw;
+}
+
+.p-to-login-user {
+    justify-content: center;
+    margin: 3vh 0 2vh 0.4vw;
+}
+
+.but-login {
+    width: 7vw;
+    height: 3vh;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 0.6vw;
+    transition: all 0.5s ease;
+    margin: 2vh 0 3vh 0;
+    align-self: center;
+}
+
+.but-login:hover {
+    transform: scale(1.1);
+    background-color: #1c1c1c;
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-login input {
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-bottom: #fff solid 1px;
+    margin: 0 0 2vh 0;
+    font-size: 2vh;
+    font-family: Montserrat, sans-serif;
+    padding: 0.2vw;
+}
+
+.register-form input {
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-bottom: #fff solid 1px;
+    margin: 0 0 2vh 0;
+    font-size: 2vh;
+    font-family: Montserrat, sans-serif;
+    padding: 0.2vw;
+}
+
+.but-reg {
+    width: 10vw;
+    height: 4vh;
+    background-color: #000;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    border: 1px solid #fff;
+    border-radius: 0.8vw;
+    transition: all 0.5s ease;
+    margin: 2vh 0 3vh 0;
 }
 
 .but-art-create {
     margin: 1vh;
     padding: 1vw;
+}
+
+.but-admin {
+    text-decoration: none;
+    transition: all 1s ease;
+}
+
+.but-admin p {
+    border: #fff solid 1px;
+    color: snow;
+    border-radius: 2vw;
+    padding: 0.3vw;
+}
+
+.but-admin:hover {
+    color: #818181;
+    transition: all 1s ease;
 }
 
 @media (orientation: portrait) {
