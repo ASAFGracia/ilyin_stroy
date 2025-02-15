@@ -22,8 +22,8 @@ class Article(models.Model):
         return reverse('article_detail', args=[str(self.slug)])
 
     def save(self, *args, **kwargs):
-        if not self.author.is_approved:
-            raise ValueError("Only approved users can create articles.")
+        if not self.pk:  # Только при первом создании статьи
+            self.status = 'pending'  # Статья сохраняется как "На проверке"
         super().save(*args, **kwargs)
 
     def __str__(self):

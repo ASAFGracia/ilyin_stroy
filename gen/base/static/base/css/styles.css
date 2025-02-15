@@ -78,6 +78,11 @@ a:hover {
     font-style: italic;
 }
 
+text {
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+}
+
 .montserrat-<uniquifier > {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -87,11 +92,11 @@ a:hover {
 
 header {
     font-family: "Montserrat", sans-serif;
-    margin-top: 15vh;
+    margin-top: 12.5vh;
     margin-left: 2vw;
     filter: drop-shadow(0 0 0.04rem white);
     display: flex;
-    height: 70vh;
+    height: 75vh;
     position: fixed;
     justify-content: space-around;
     width: 9vw;
@@ -1992,8 +1997,8 @@ ol li {
 }
 
 .profile {
-    width: 50vw;
-    margin: 5vh 0 5vh 25vw;
+    width: 30vw;
+    margin: 5vh 0 5vh 40vw;
 }
 
 .login-form {
@@ -2050,6 +2055,14 @@ ol li {
     padding: 0.2vw;
 }
 
+.register-form input:focus::placeholder {
+    color: transparent;
+}
+
+.register-form input:focus {
+    outline: none;
+}
+
 .but-reg {
     width: 10vw;
     height: 4vh;
@@ -2062,9 +2075,24 @@ ol li {
     margin: 2vh 0 3vh 0;
 }
 
+.dost-atr {
+    margin: 2vh 0 0 0;
+    font-size: 1vw;
+}
+
 .but-art-create {
-    margin: 1vh;
-    padding: 1vw;
+    margin: 2vh 0 4vh 0;
+    padding: 0.5vw;
+    font-size: 0.86vw;
+    border: 1px #fff solid;
+    width: 10vw;
+    border-radius: 0.8vw;
+    color: #fff;
+    text-decoration: solid;
+}
+
+.create-art-req {
+    margin: 3vh 0 5vh 25vh;
 }
 
 .but-admin {
@@ -2081,6 +2109,56 @@ ol li {
 
 .but-admin:hover {
     color: #818181;
+    transition: all 1s ease;
+}
+
+.verif-email {
+    width: 20vw;
+    margin: 3vh 0 5vh 40vw;
+}
+
+.verif-email form input {
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-bottom: #fff solid 1px;
+    margin: 5vh 0 2vh 0;
+    font-size: 2vh;
+    font-family: Montserrat, sans-serif;
+    padding: 0.2vw;
+}
+
+.verif-email form input:focus::placeholder {
+    color: transparent;
+}
+
+.verif-email form {
+    display: flex;
+    flex-direction: column;
+}
+
+.verif-email form input:focus {
+    outline: none;
+}
+
+.verif-email form button {
+    background-color: #000;
+    color: #fff;
+    width: 9vw;
+    align-self: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.8vh;
+    font-weight: 400;
+    padding: 0.5vh;
+    border: #fff solid 1px;
+    border-radius: 1vh;
+    margin-bottom: 2vh;
+    transition: all 1s ease;
+}
+
+.verif-email form button:hover {
+    filter: drop-shadow(0 0 0.4rem white);
+    transform: scale(1.05);
     transition: all 1s ease;
 }
 

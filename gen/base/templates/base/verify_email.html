@@ -13,12 +13,13 @@
         <h3>Верификация вашей почты</h3>
     </div>
 
-    <form method="post">
-        {% csrf_token %}
-        <input type="text" name="code" placeholder="Введите код">
-        <button type="submit">Подтвердить</button>
-    </form>
-
+    <div class="verif-email">
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="code" placeholder="Введите код">
+            <button type="submit">Подтвердить</button>
+        </form>
+    </div>
 
 </div>
 {% endblock %}

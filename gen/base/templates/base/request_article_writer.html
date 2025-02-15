@@ -11,12 +11,14 @@
         <h3>Заявка на возможность писать статьи</h3>
     </div>
 
-      <h1>Хотите писать статьи?</h1>
-      <form method="POST">
+    <div class="create-art-req">
+        <h3>Хотите писать статьи?</h3>
+        <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Отправить заявку</button>
-      </form>
+        </form>
+    </div>
 
 </div>
 {% endblock %}

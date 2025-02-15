@@ -76,76 +76,76 @@ def sistemaotopleniya(request):
     return render (request, "base/sistema-otopleniya.html")
 
 
-@login_required
 def article_list(request):
-    articles = Article.objects.all().order_by('-created_at')
-    approved_requests = ArticleWriterRequest.objects.filter(user=request.user, status='approved')
+    """Список статей доступен всем пользователям"""
+    articles = Article.objects.filter(status='approved').order_by('-created_at')
+    approved_requests = None
+    if request.user.is_authenticated:
+        approved_requests = ArticleWriterRequest.objects.filter(user=request.user, status='approved')
 
-    # Передаем одобренные заявки в шаблон
     return render(request, 'base/article_list.html', {
         'articles': articles,
         'approved_requests': approved_requests,
     })
 
-@login_required
+
 def article_detail(request, slug):
+    """Детальная информация о статье доступна всем пользователям"""
     article = get_object_or_404(Article, slug=slug)
     return render(request, 'base/article_detail.html', {'article': article})
 
+
 @login_required
 def create_article(request):
+    """Создание статьи доступно только зарегистрированным пользователям с одобренным статусом"""
     if request.method == 'POST':
         article_form = ArticleForm(request.POST)
         image_formset = ArticleImageFormSet(request.POST, request.FILES)
 
         if article_form.is_valid() and image_formset.is_valid():
-            # Получаем текущего пользователя
             user = request.user
 
-            # Создаем статью и устанавливаем автора
             if user.is_approved:
                 article = article_form.save(commit=False)
-                article.author = user  # Устанавливаем текущего пользователя как автора
+                article.author = user
+                article.status = 'pending'  # Новая статья всегда "На проверке"
                 article.save()
 
-                # Сохраняем изображения, привязывая их к статье
+                # Сохраняем изображения
                 images = image_formset.save(commit=False)
                 for img in images:
                     img.article = article
                     img.save()
 
-                # Обработка удаления изображений
+                # Удаление изображений
                 for form in image_formset.deleted_forms:
                     if form.instance.pk:
                         form.instance.delete()
 
-                return redirect('article_list')  # Перенаправление, например, на страницу со списком статей
+                return redirect('article_list')
 
-            # Проверяем, существует ли пользователь в базе данных
             return render(request, 'base/error.html', {'message': 'Your account is not approved yet.'})
 
     else:
         article_form = ArticleForm()
         image_formset = ArticleImageFormSet()
 
-    context = {
+    return render(request, 'base/create_article.html', {
         'article_form': article_form,
         'image_formset': image_formset,
-    }
-    return render(request, 'base/create_article.html', context)
-
+    })
 
 
 @login_required
 def request_to_write_article(request):
+    """Только зарегистрированные пользователи могут отправить запрос на написание статей"""
     if request.method == 'POST':
         form = ArticleWriterRequestForm(request.POST)
         if form.is_valid():
-            # Устанавливаем пользователя как автора заявки
             request_to_write = form.save(commit=False)
             request_to_write.user = request.user
             request_to_write.save()
-            return redirect('article_list')  # Перенаправление на список статей
+            return redirect('article_list')
 
     else:
         form = ArticleWriterRequestForm()
@@ -155,11 +155,19 @@ def request_to_write_article(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def approve_article_writer(request, pk):
+    """Одобрение запроса на написание статей (только для суперпользователей)"""
     request_to_approve = get_object_or_404(ArticleWriterRequest, pk=pk)
     request_to_approve.status = 'approved'
     request_to_approve.save()
-    return redirect('article_list')  # Можно перенаправить на страницу со списком статей
+    return redirect('article_list')
 
+@user_passes_test(lambda u: u.is_superuser)
+def approve_article(request, pk):
+    """Одобрение статьи (только для суперпользователей)"""
+    article = get_object_or_404(Article, pk=pk)
+    article.status = 'approved'
+    article.save()
+    return redirect('article_list')
 
 def register(request):
     if request.method == "POST":

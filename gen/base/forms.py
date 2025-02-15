@@ -5,7 +5,7 @@ from .models import Article, ArticleImage
 from .models import CustomUser
 from django import forms
 from .models import ArticleWriterRequest
-
+import random
 
 class ContactForm(forms.Form):
     fio = forms.CharField(
@@ -83,31 +83,56 @@ ArticleImageFormSet = inlineformset_factory(
 class ArticleWriterRequestForm(forms.ModelForm):
     class Meta:
         model = ArticleWriterRequest
-        fields = ['status']
-        widgets = {
-            'status': forms.HiddenInput(attrs={'value': 'pending'}),
-        }
+        fields = []
 
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
-    unique_id = forms.CharField(max_length=7, required=True)
+    unique_id = forms.CharField(
+        max_length=7,
+        required=False,  # Убираем обязательность, так как будет авто-генерация
+        widget=forms.TextInput(attrs={"placeholder": "Число от 1 до 9999999"})
+    )
+    random_unique_id = forms.BooleanField(
+        required=False,
+        initial=False,
+        label="Сгенерировать ID автоматически"
+    )
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'unique_id', 'password1', 'password2']
+        fields = ['username', 'email', 'unique_id', 'random_unique_id', 'password1', 'password2']
+        labels = {
+            "username": "Имя пользователя",
+            "email": "Email",
+            "unique_id": "Уникальный идентификатор",
+            "random_unique_id": "Сгенерировать ID автоматически",
+            "password1": "Пароль",
+            "password2": "Подтверждение пароля",
+        }
 
     def clean_unique_id(self):
-        unique_id = self.cleaned_data['unique_id']
+        unique_id = self.cleaned_data.get("unique_id")
+        random_unique = self.cleaned_data.get("random_unique_id")
+
+        if random_unique:
+            existing_ids = set(CustomUser.objects.values_list("unique_id", flat=True))
+            available_ids = set(range(1, 10000000)) - existing_ids
+            if available_ids:
+                return str(random.choice(list(available_ids)))
+            raise forms.ValidationError("Не удалось сгенерировать ID. Все заняты.")
+
+        if not unique_id:
+            raise forms.ValidationError("Введите ID или включите автогенерацию.")
+
+        if not unique_id.isdigit() or not (1 <= int(unique_id) <= 9999999):
+            raise forms.ValidationError("ID должен быть числом от 1 до 9999999.")
+
         if CustomUser.objects.filter(unique_id=unique_id).exists():
             raise forms.ValidationError("Этот ID уже занят. Выберите другой.")
+
         return unique_id
 
-    def clean_username(self):
-        username = self.cleaned_data['username']
-        if CustomUser.objects.filter(username=username).exists():
-            raise forms.ValidationError("Этот никнейм уже занят. Выберите другой.")
-        return username
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label="Логин", widget=forms.TextInput(attrs={'class': 'form-control'}))

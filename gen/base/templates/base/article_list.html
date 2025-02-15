@@ -14,23 +14,22 @@
     </div>
 
     <div class="list-but-info">
-        {% if user.is_approved %}
-            <a href="{% url 'create_article' %}" class="but-art-create">Создать статью</a>
-        {% endif %}
-
-        {% if not user.is_authenticated %}
-          <p>Чтобы подавать заявку на написание статьи, нужно <a href="{% url 'login' %}">войти</a>.</p>
-
+        {% if user.is_authenticated %}
+            {% if user.is_approved %}
+                <a href="{% url 'create_article' %}">Создать статью</a>
+            {% else %}
+                <a href="{% url 'request_to_write_article' %}">
+                    <p class="but-art-create">Хочу писать статью</p>
+                </a>
+            {% endif %}
         {% else %}
-          <a href="{% url 'request_to_write_article' %}">
-              <p>Хочу писать статью</p>
-          </a>
+            <p>Чтобы подавать заявку на написание статьи, нужно <a href="{% url 'login' %}">войти</a>.</p>
         {% endif %}
 
     {% if approved_requests %}
-        <p>Вы одобрены для написания статей!</p>
+        <p class="dost-atr">Вы одобрены для написания статей!</p>
     {% else %}
-        <p>Вы еще не одобрены для написания статей.</p>
+        <p class="dost-atr">Вы еще не одобрены для написания статей.</p>
     {% endif %}
     </div>
 
