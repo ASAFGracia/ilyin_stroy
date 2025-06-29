@@ -52,8 +52,11 @@ def index(request):
 def fundament(request):
     return render (request, "base/fundament.html")
 
-def onas(request):
-    return render (request, "base/onas.html")
+def installation(request):
+    return render (request, "base/installation.html")
+
+def service(request):
+    return render (request, "base/service.html")
 
 def contacts(request):
     return render (request, "base/contacts.html")
@@ -63,3 +66,6 @@ def support(request):
 
 def sistemaotopleniya(request):
     return render (request, "base/sistema-otopleniya.html")
+
+def shop(request):
+    return render (request, "base/shop.html")

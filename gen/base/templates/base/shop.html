@@ -1,0 +1,77 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Магазин
+{% endblock %}
+
+{% block content %}
+<div class="gen-shop">
+    <div class="otstup" id="contactsot"></div>
+
+    <div class="ques-shop">
+        <h3>Здесь вы сможете приобрести широкий ассортимент сантехнических устройств и заказать их монтаж:</h3>
+    </div>
+
+    <div class="cards-shop">
+        <div class="card" style='background-image: url("/static/base/img/kotel228.png");'><div class="divider"><h3>Котлы</h3></div></div>
+        <div class="card" style='background-image: url("/static/base/img/tepl-pol.jpg");'><div class="divider"><h3>Отопление и тёплый пол</h3></div></div>
+        <div class="card" style='background-image: url("/static/base/img/nasos.png");'><div class="divider"><h3>Насосы и насосные станции</h3></div></div>
+        <div class="card" style='background-image: url("/static/base/img/smesitel.jpg");'><div class="divider"><h3>Смесители</h3></div></div>
+        <div class="card" style='background-image: url("/static/base/img/vodosnab.jpg");'><div class="divider"><h3>Водоснабжение</h3></div></div>
+        <div class="card" style='background-image: url("/static/base/img/kanaliz.jpg");'><div class="divider"><h3>Канализация</h3></div></div>
+        <div class="card" style='background-image: url("/static/base/img/trybi.jpg");'><div class="divider"><h3>Трубы и комплектующие</h3></div></div>
+        <div class="card" style='background-image: url("/static/base/img/tools.jpg");'><div class="divider"><h3>Инструмент</h3></div></div>
+    </div>
+
+    <div class="otstup" id="contactsot"></div>
+
+    <div class="shop-text">
+        <p>
+            Наши менеджеры ответят на все ваши вопросы касающиеся монтажа,
+            сервиса и всегда помогут с выбором. Не смогли найти нужный товар?
+            Будем благодарны, если вы предложите нам добавить новый. Это можно
+            сделать в форме по кнопке ниже. Ваши рекомендации очень важны для нас!
+        </p>
+        <a href="{% url 'support' %}"><button class="but-shop">Сделать заказ</button></a>
+    </div>
+
+    <div class="otstup" id="contactsot"></div>
+
+    <div class="ques">
+        <h3>У нас вы также можете заказать:</h3>
+    </div>
+
+    <div class="shop-orders">
+        <div class="order" style='background-image: url("/static/base/img/kotel1337.jpg");'><div class="divider"><h3>Монтаж электрического и газового котла</h3></div></div>
+        <div class="order" style='background-image: url("/static/base/img/tverd_kotel.jpg");'><div class="divider"><h3>Монтаж твердотопливного котла</h3></div></div>
+        <div class="order" style='background-image: url("/static/base/img/kanalizzz.jpg");'><div class="divider"><h3>Монтаж водопровода в квартире или доме</h3></div></div>
+        <div class="order" style='background-image: url("/static/base/img/vodoprovod.jpg");'><div class="divider"><h3>Монтаж канализации в квартире или доме</h3></div></div>
+        <div class="order" style='background-image: url("/static/base/img/teppol.jpg");'><div class="divider"><h3>Монтаж теплого пола</h3></div></div>
+        <div class="order" style='background-image: url("/static/base/img/kotelnaya.jpg");'><div class="divider"><h3>Монтаж котельной</h3></div></div>
+        <div class="order" style='background-image: url("/static/base/img/otopl.png");'><div class="divider"><h3>Монтаж отопления под ключ</h3></div></div>
+        <div class="order" style='background-image: url("/static/base/img/radiatori.jpg");'><div class="divider"><h3>Монтаж радиаторов в квартире</h3></div></div>
+        <div class="order" style='background-image: url("/static/base/img/kabina.jpg");'><div class="divider"><h3>Монтаж душевых кабин, ванн, унитазов, смесителей,
+            водонагревателей, умывальников</h3></div></div>
+        <div class="order" style='background-image: url("/static/base/img/promivka.jpg");'><div class="divider"><h3>Сервисное обслуживание и промывку отопления</h3></div></div>
+    </div>
+
+    <div class="otstup" id="contactsot"></div>
+
+    <div class="shop-text">
+        <h3>
+            Мы готовы ответить на любые вопросы,
+            касающиеся монтажа систем отопления под ключ,
+            по телефону в Витебске +375 (29) 595-92-63
+        </h3>
+    </div>
+
+    <div class="otstup" id="contactsot"></div>
+
+    <div class="magaaa">
+        <div class="magaz-photo" style='background-image: url("/static/base/img/magaz.jpg");'></div>
+    </div>
+
+    <div class="otstup" id="contactsot"></div>
+
+</div>
+{% endblock %}

@@ -17,11 +17,13 @@
     <header>
 
         <div class="ul-gen">
-                <div class="index-div-photo1">
-                    <a href="{% url 'home' %}"><img src="{% static "base/img/LOGO.png" %}" alt=""></a>
-                </div>
+{#                <div class="index-div-photo1">#}
+{#                    <a href="{% url 'home' %}"><img src="{% static "base/img/LOGO.png" %}" alt=""></a>#}
+{#                </div>#}
                 <a href="{% url 'home' %}" class="ssgen"><p>Главная</p></a>
-                <a href="{% url 'onas' %}" class="ssgen"><p>О нас</p></a>
+                <a href="{% url 'shop' %}" class="ssgen"><p>Магазин</p></a>
+                <a href="{% url 'installation' %}" class="ssgen"><p>Монтаж</p></a>
+                <a href="{% url 'service' %}" class="ssgen"><p>Сервис</p></a>
                 <a href="{% url 'contacts' %}" class="ssgen"><p>Контакты</p></a>
                 <a href="{% url 'support' %}" class="ssgen"><p>Поддержка</p></a>
         </div>
@@ -37,11 +39,11 @@
             <div class="znach4">
                 <div class="div-znach">
                     <h3>Позвоните <br> сегодня</h3>
-                    <p>+375(29)595-92-63</p>
+                    <p>+375 (29) 595-92-63</p>
                 </div>
                 <div class="div-znach">
                     <h3>Адрес</h3>
-                    <p>г. Витебск пр.Фунзе,д.55 помещение-21</p>
+                    <p>г. Витебск <br>пр.Фунзе, д.55<br>помещение - 21</p>
                 </div>
                 <div class="div-znach">
                     <h3>Электронная <br> почта</h3>
@@ -49,7 +51,7 @@
                 </div>
                 <div class="div-znach">
                     <h3>Часы <br> работы</h3>
-                    <p>ПН-СБ: 9:00-18:00<br>ВС:выходной</p>
+                    <p>ПН-СБ: 9:00-18:00<br>ВС: выходной</p>
                 </div>
             </div>
             <div class="txt-footer">

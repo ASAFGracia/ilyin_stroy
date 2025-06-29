@@ -263,10 +263,14 @@ footer {
     max-width: 50%;
 }
 
+.limyi:last-child {
+    border: none;
+}
+
 .limyi p {
-    max-width: 20vw;
-    font-size: 1.7vh;
-    opacity: 60%;
+    max-width: 30vw;
+    font-size: 2vh;
+    opacity: 0.7;
     margin-bottom: 3vh;
 }
 
@@ -325,7 +329,7 @@ footer {
 }
 
 .index-photo {
-    background-image: url("/static/base/img/newIndPhoto2.jpeg");
+    background-image: url("/static/base/img/new_ph_ind1337.png");
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -342,7 +346,7 @@ footer {
     width: 30vw;
     height: 10vh;
     margin-left: 65vw;
-    margin-top: 27vh;
+    margin-top: 21vh;
     display: flex;
     position: absolute;
 }
@@ -350,7 +354,7 @@ footer {
 .index-div-photo2 p {
     font-family: "Montserrat", sans-serif;
     font-size: 4vh;
-    color: black;
+    color: ghostwhite;
     justify-content: center;
     align-self: center;
 }
@@ -603,9 +607,11 @@ footer {
 }
 
 .div-znach {
+    white-space: nowrap;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .div-znach p {
@@ -759,7 +765,7 @@ a {
 }
 
 .onas-gen1 {
-    height: 430vh;
+    height: auto;
 }
 
 .o-nas-gen {
@@ -781,13 +787,17 @@ a {
     font-size: 10vh;
     align-items: center;
     font-weight: 500;
+    opacity: 0.9;
     justify-content: center;
+    border-bottom: 1px solid #fff;
+    width: auto;
 }
 
 .o-nas-gen p {
     color: #fff;
     font-family: Montserrat, sans-serif;
     font-size: 3vh;
+    opacity: 0.8;
     font-weight: 300;
 }
 
@@ -801,19 +811,22 @@ a {
     width: 40vw;
     border-radius: 0.5vw;
     position: relative;
-    display: block;
-    margin-top: -30vh;
+    /*display: block;*/
+    margin-top: -20vh;
     margin-left: 45vw;
     filter: grayscale(50%);
 }
 
 .missiya {
-    display: block;
     position: relative;
     padding: 3vh;
     width: 34vw;
     margin-left: 12vw;
-    margin-top: -20vh;
+    margin-top: -30vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .missiya h3, p {
@@ -824,16 +837,16 @@ a {
 .missiya h3 {
     font-size: 2.5vh;
     font-weight: 450;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 1vh;
 }
 
 .missiya p {
-    font-size: 1.7vh;
+    font-size: 2vh;
     font-weight: 350;
     text-indent: 1vw;
     opacity: 0.8;
 }
-
-
 
 .o-nas-photo2 {
     background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.5)),
@@ -846,7 +859,7 @@ a {
     position: relative;
     display: block;
     border-radius: 0.5vw;
-    margin-top: 0;
+    margin-top: 3vh;
     margin-left: 13vw;
 }
 
@@ -856,7 +869,7 @@ a {
     padding: 3vh;
     width: 34vw;
     margin-left: 50vw;
-    margin-top: -70vh;
+    margin-top: -74vh;
     flex-direction: column;
 }
 
@@ -870,14 +883,68 @@ li {
 .onas-uslugi h3 {
     align-self: center;
     font-weight: 500;
-    font-size: 5vh;
-    padding: 3vh;
+    border-bottom: 1px solid #fff;
+    font-size: 3vh;
+    padding-bottom: 1vh;
+    margin: 3vh;
 }
 
-.onas-uslugi p,
-li {
+.onas-uslugi p {
+    font-weight: 400;
+    font-size: 2.4vh;
+}
+
+.onas-uslugi li {
     font-weight: 300;
     font-size: 2.3vh;
+}
+
+.check-gar {
+    margin-left: 13vw;
+    width: 74vw;
+    margin-top: 3vh;
+}
+
+.check-gar h3 {
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    text-indent: 1vw;
+    font-size: 3.6vh;
+    font-weight: 500;
+}
+
+.check-gar p {
+    font-size: 2.5vh;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.remont-kotlov {
+    margin-left: 13vw;
+    width: 74vw;
+    margin-top: 7vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.remont-kotlov h3, p {
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+}
+
+.remont-kotlov h3 {
+    font-size: 3.6vh;
+    border-bottom: 1px solid #fff;
+    font-weight: 500;
+    padding: 1vh;
+}
+
+.remont-kotlov p {
+    font-size: 2.5vh;
+    font-weight: 400;
+    opacity: 0.8;
 }
 
 .primeri {
@@ -917,11 +984,89 @@ li {
     margin: 1vw;
 }
 
+.table-mont {
+    width: 74vw;
+    margin: 5vh 0 0 13vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-mont1 {
+    width: 74vw;
+    margin: 0 0 0 13vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-mont h3 {
+    font-family: Montserrat, sans-serif;
+    font-size: 4vh;
+    color: #fff;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.table-moont {
+    margin: 2vh 0 5vh;
+    width: 50vw;
+    border: #fff solid 1px;
+    /*border-radius: 2vw;*/
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+}
+
+.table-moont thead tr th {
+    padding: 2vh;
+    font-weight: 600;
+    font-size: 2.2vh
+}
+
+.table-moont thead tr {
+    border-bottom: #fff solid 1px;
+}
+
+.table-moont tbody tr td {
+    padding: 0.7vh 0 0.7vh 2vh;
+    font-weight: 400;
+    font-size: 1.8vh;
+}
+
+.table-moont tbody tr {
+    border-bottom: #2F2A30 solid 1px;
+}
+
+.table-moont tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table-mont-but {
+    background-color: #000;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.8vh;
+    font-weight: 400;
+    padding: 0.5vh;
+    border: #fff solid 1px;
+    border-radius: 1vh;
+    margin-bottom: 2vh;
+    transition: all 1s ease;
+}
+
+.table-mont-but:hover {
+    filter: drop-shadow(0 0 0.4rem white);
+    transform: scale(1.05);
+    transition: all 1s ease;
+}
+
 .map {
     width: 70vw;
     height: 80vh;
     position: relative;
-    margin-top: 10vh;
+    margin-top: 4vh;
     display: flex;
     flex-direction: column;
     margin-left: 15vw;
@@ -1895,10 +2040,276 @@ ol li {
 
 .sant-block2 p {
     font-weight: 400;
+    text-indent: 1vw;
     font-family: 'Montserrat', sans-serif;
     font-size: 2.2vh;
     opacity: 0.7;
     width: 70vw;
+}
+
+.gen-shop {
+    height: auto;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    /*height: 100vh;*/
+    margin: 0;
+}
+
+.ques-shop {
+    width: 50vw;
+    height: 10vh;
+    margin-left: 25vw;
+    margin-top: 0;
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+    margin-bottom: 5vh;
+    border-radius: 0.6vw;
+    filter: drop-shadow(0 0 0.3rem white);
+}
+
+.ques-shop h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 550;
+    color: #000;
+    font-size: 3vh;
+    margin: 0; /* Убираем отступы */
+    /*flex-grow: 1; !* Позволяет заголовку занимать доступное пространство *!*/
+    text-align: center;
+}
+
+.cards-shop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80vw;
+    margin-left: 10vw;
+}
+
+.card:hover {
+    filter: drop-shadow(0 0 0.75rem goldenrod);
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.card {
+    transition: all 1s ease;
+    background-color: #fff;
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    border: 1px solid #ccc;
+    border-radius: 0.5vw;
+    width: 20%;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.5);
+}
+
+.card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 550;
+    margin: 0;
+    color: #000;
+    font-size: 2.6vh;
+}
+
+.divider {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+    height: 10vh;
+    background-color: rgba(100, 100, 100, 0.7);
+}
+
+.shop-text {
+    height: auto;
+    width: 70vw;
+    margin-left: 15vw;
+    font-size: 2.3vh;
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.shop-text h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    opacity: 0.9;
+    margin-bottom: 3vh;
+    color: #fff;
+    font-size: 3vh;
+}
+
+.shop-text p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin-bottom: 3vh;
+    color: #fff;
+    text-indent: 3vw;
+    font-size: 2.6vh;
+}
+
+.but-shop {
+    background-color: #000;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.1vh;
+    font-weight: 500;
+    padding: 0.5vh;
+    border: #fff solid 1px;
+    border-radius: 1vh;
+    margin-bottom: 2vh;
+    transition: all 1s ease;
+}
+
+.but-shop:hover {
+    filter: drop-shadow(0 0 0.4rem white);
+    transform: scale(1.05);
+    transition: all 1s ease;
+}
+
+.shop-orders {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80vw;
+    margin-left: 10vw;
+}
+
+.order {
+    transition: all 1s ease;
+    background-color: #fff;
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    border: 1px solid #ccc;
+    border-radius: 0.5vw;
+    width: 40%;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 10);
+}
+
+.order h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 550;
+    /*margin-top: 1vh;*/
+    margin: 0;
+    color: #000;
+    font-size: 2.6vh;
+}
+
+.magaz-photo {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 68vw;
+    border: 1px solid #fff;
+    border-radius: 3vh;
+    height: 70vh;
+}
+
+.magaaa {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #fff;
+    border-top: 1px solid #fff;
+    width: 70vw;
+    margin-left: 15vw;
+
+}
+
+.text-service {
+    width: 70vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 15vw;
+}
+
+.text-service p {
+    text-indent: 1vw;
+    font-family: Montserrat, sans-serif;
+    font-size: 2.3vh;
+    font-weight: 400;
+    opacity: 0.9;
+    color: white;
+}
+
+.text-service h3 {
+    text-indent: 1vw;
+    font-family: Montserrat, sans-serif;
+    color: white;
+    font-size: 3vh;
+    font-weight: 550;
+}
+
+.text-service p:first-child {
+    margin-bottom: 5vh;
+}
+
+.text-service2 {
+    width: 70vw;
+    margin-left: 15vw;
+}
+
+.text-service2 p {
+    text-indent: 1vw;
+    font-family: Montserrat, sans-serif;
+    font-size: 2.3vh;
+    font-weight: 400;
+    opacity: 0.9;
+    color: white;
+}
+
+.image-service {
+    width: 60vw;
+    height: 22vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 5vh 0 8vh 20vw;
+    border: 1px solid #fff;
+    border-radius: 0.5vw;
+    background-image: url("/static/base/img/rad.jpg");
+}
+
+.serv-mi {
+    width: 70vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 5vh 15vw;
+}
+
+.serv-mi h3 {
+    font-family: Montserrat, sans-serif;
+    font-size: 5vh;
+    color: white;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 1vh;
+    font-weight: 550;
 }
 
 @media (orientation: portrait) {
@@ -2332,7 +2743,7 @@ ol li {
         border-radius: 2vw;
         position: relative;
         display: block;
-        margin-top: -5vh;
+        margin-top: 10vh;
         margin-left: 45vw;
         filter: grayscale(50%);
     }
