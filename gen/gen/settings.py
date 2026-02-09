@@ -10,10 +10,10 @@ SECRET_KEY = 'django-insecure-7af$b@npurf1ue_*v(x38@#2(sns(une*(46m*(@_qlqd*&_9k
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ilyin-stroy.xyz', 'www.ilyin-stroy.xyz']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'mastersvarki.com', 'www.mastersvarki.com']
 
 
-CSRF_TRUSTED_ORIGINS = ['https://ilyin-stroy.xyz', 'https://www.ilyin-stroy.xyz']
+CSRF_TRUSTED_ORIGINS = ['https://mastersvarki.com', 'https://www.mastersvarki.com']
 
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
@@ -80,7 +80,8 @@ WSGI_APPLICATION = 'gen.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.dummy',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
