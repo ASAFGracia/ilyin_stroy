@@ -17,72 +17,78 @@
     <link rel="icon" type="image/png" href="{% static "base/img/logo123.svg" %}">
 </head>
 <body>
-    <header>
-        <div class="ul-gen">
-            <a href="{% url 'home' %}" class="ssgen brand-chip"><p>{{ site_brand }}</p></a>
-            <a href="{% url 'home' %}" class="ssgen"><p>Главная</p></a>
-            <a href="{% url 'shop' %}" class="ssgen"><p>Магазин</p></a>
-            <a href="{% url 'orders' %}" class="ssgen"><p>Заказы</p></a>
-            <a href="{% url 'articles' %}" class="ssgen"><p>Статьи</p></a>
-            <a href="{% url 'installation' %}" class="ssgen"><p>Монтаж</p></a>
-            <a href="{% url 'service' %}" class="ssgen"><p>Сервис</p></a>
-            <a href="{% url 'contacts' %}" class="ssgen"><p>Контакты</p></a>
-            <a href="{% url 'support' %}" class="ssgen"><p>Поддержка</p></a>
+    <div class="site-layout">
+        <header>
+            <div class="ul-gen">
+                <a href="{% url 'home' %}" class="ssgen brand-chip"><p>{{ site_brand }}</p></a>
+                <a href="{% url 'home' %}" class="ssgen"><p>Главная</p></a>
+                <a href="{% url 'shop' %}" class="ssgen"><p>Магазин</p></a>
+                <a href="{% url 'orders' %}" class="ssgen"><p>Заказы</p></a>
+                <a href="{% url 'articles' %}" class="ssgen"><p>Статьи</p></a>
+                <a href="{% url 'installation' %}" class="ssgen"><p>Монтаж</p></a>
+                <a href="{% url 'service' %}" class="ssgen"><p>Сервис</p></a>
+                <a href="{% url 'contacts' %}" class="ssgen"><p>Контакты</p></a>
+                <a href="{% url 'support' %}" class="ssgen"><p>Поддержка</p></a>
 
-            {% if user.is_authenticated %}
-                <a href="{% url 'profile' %}" class="ssgen auth-chip"><p>Профиль</p></a>
-                <a href="{% url 'profile_settings' %}" class="ssgen auth-chip"><p>Настройки</p></a>
-                <a href="{% url 'article_submit_request' %}" class="ssgen auth-chip"><p>Заявка на статью</p></a>
-                {% if user_is_owner %}
-                    <a href="{% url 'article_templates' %}" class="ssgen auth-chip"><p>Шаблоны статей</p></a>
-                    <a href="{% url 'owner_dashboard' %}" class="ssgen auth-chip"><p>Owner панель</p></a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="ssgen auth-chip"><p>Профиль</p></a>
+                    <a href="{% url 'profile_settings' %}" class="ssgen auth-chip"><p>Настройки</p></a>
+                    <a href="{% url 'article_submit_request' %}" class="ssgen auth-chip"><p>Заявка на статью</p></a>
+                    {% if user_is_owner %}
+                        <a href="{% url 'article_templates' %}" class="ssgen auth-chip"><p>Шаблоны статей</p></a>
+                        <a href="{% url 'owner_dashboard' %}" class="ssgen auth-chip"><p>Owner панель</p></a>
+                    {% endif %}
+                    <a href="{% url 'auth_logout' %}" class="ssgen auth-chip"><p>Выйти</p></a>
+                {% else %}
+                    <a href="{% url 'auth_login_request' %}" class="ssgen auth-chip"><p>Войти по коду</p></a>
                 {% endif %}
-                <a href="{% url 'auth_logout' %}" class="ssgen auth-chip"><p>Выйти</p></a>
-            {% else %}
-                <a href="{% url 'auth_login_request' %}" class="ssgen auth-chip"><p>Войти по коду</p></a>
-            {% endif %}
+            </div>
+        </header>
+
+        <div class="site-main">
+            <main id="content">
+                {% if messages %}
+                    <div class="flash-list">
+                        {% for message in messages %}
+                            <div class="flash-item flash-{{ message.tags|default:'info' }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% block content %}
+                {% endblock %}
+            </main>
+
+            <footer class="site-footer">
+                <div class="index-div4">
+                    <h2>Свяжитесь с нами</h2>
+                    <p class="ind-div4"></p>
+                    <div class="znach4">
+                        <div class="div-znach">
+                            <h3>Позвоните <br> сегодня</h3>
+                            <p>{{ contact_phone }}</p>
+                        </div>
+                        <div class="div-znach">
+                            <h3>Адрес</h3>
+                            <p>г. Витебск <br>пр.Фунзе, д.55<br>помещение - 21</p>
+                        </div>
+                        <div class="div-znach">
+                            <h3>Электронная <br> почта</h3>
+                            <p>{{ contact_email }}</p>
+                        </div>
+                        <div class="div-znach">
+                            <h3>Часы <br> работы</h3>
+                            <p>ПН-СБ: 9:00-18:00<br>ВС: выходной</p>
+                        </div>
+                    </div>
+                    <div class="txt-footer">
+                        <p>Магазин по продаже сантехнических товаров и услуг</p>
+                        <p>© {% now "Y" %} {{ site_brand }}. Все права защищены.</p>
+                        <p>По всем вопросам пишите на {{ contact_email }}</p>
+                        <p>{{ site_brand }}. Витебск</p>
+                    </div>
+                </div>
+            </footer>
         </div>
-    </header>
-    <main id="content">
-        {% if messages %}
-            <div class="flash-list">
-                {% for message in messages %}
-                    <div class="flash-item flash-{{ message.tags|default:'info' }}">{{ message }}</div>
-                {% endfor %}
-            </div>
-        {% endif %}
-        {% block content %}
-        {% endblock %}
-    </main>
-    <footer class="site-footer">
-        <div class="index-div4">
-            <h2>Свяжитесь с нами</h2>
-            <p class="ind-div4"></p>
-            <div class="znach4">
-                <div class="div-znach">
-                    <h3>Позвоните <br> сегодня</h3>
-                    <p>{{ contact_phone }}</p>
-                </div>
-                <div class="div-znach">
-                    <h3>Адрес</h3>
-                    <p>г. Витебск <br>пр.Фунзе, д.55<br>помещение - 21</p>
-                </div>
-                <div class="div-znach">
-                    <h3>Электронная <br> почта</h3>
-                    <p>{{ contact_email }}</p>
-                </div>
-                <div class="div-znach">
-                    <h3>Часы <br> работы</h3>
-                    <p>ПН-СБ: 9:00-18:00<br>ВС: выходной</p>
-                </div>
-            </div>
-            <div class="txt-footer">
-                <p>Магазин по продаже сантехнических товаров и услуг</p>
-                <p>© {% now "Y" %} {{ site_brand }}. Все права защищены.</p>
-                <p>По всем вопросам пишите на {{ contact_email }}</p>
-                <p>{{ site_brand }}. Витебск</p>
-            </div>
-        </div>
-    </footer>
+    </div>
 </body>
 </html>

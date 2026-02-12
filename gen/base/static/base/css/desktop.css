@@ -14,14 +14,10 @@
 
 @media (min-width: 1025px) {
     :root {
-        --ms-nav-width: clamp(196px, 12vw, 250px);
-        --ms-gap: clamp(24px, 2.8vw, 46px);
+        --ms-nav-width: clamp(188px, 11vw, 236px);
+        --ms-gap: clamp(20px, 2.3vw, 36px);
         --ms-main-max: 1180px;
-        --ms-main-width: min(
-            var(--ms-main-max),
-            calc(100vw - var(--ms-nav-width) - (var(--ms-gap) * 2))
-        );
-        --ms-main-left: calc(var(--ms-nav-width) + var(--ms-gap));
+        --ms-layout-max: 1500px;
     }
 
     body {
@@ -31,13 +27,28 @@
             #000;
     }
 
+    .site-layout {
+        width: min(var(--ms-layout-max), calc(100vw - 28px));
+        margin: 16px auto 22px;
+        display: grid;
+        grid-template-columns: var(--ms-nav-width) minmax(0, 1fr);
+        gap: var(--ms-gap);
+        align-items: start;
+    }
+
+    .site-main {
+        min-width: 0;
+    }
+
     header {
-        margin-top: clamp(18px, 6vh, 60px);
-        margin-left: clamp(14px, 1.8vw, 30px);
-        width: var(--ms-nav-width);
-        height: calc(100vh - clamp(36px, 11vh, 110px));
+        position: sticky !important;
+        top: 16px !important;
+        margin: 0 !important;
+        left: auto !important;
+        width: 100% !important;
+        height: calc(100vh - 44px);
         min-height: 560px;
-        max-height: 900px;
+        max-height: calc(100vh - 44px);
         padding: 12px 10px;
         border-radius: 18px;
         border: 1px solid rgba(255, 255, 255, 0.24);
@@ -108,18 +119,15 @@
     }
 
     #content {
-        margin-left: var(--ms-main-left);
-        margin-right: var(--ms-gap);
-        width: var(--ms-main-width);
+        margin: 0 !important;
+        width: 100% !important;
         min-height: calc(100vh - 70px);
-        padding: clamp(14px, 2vh, 22px) 0 24px;
+        padding: clamp(8px, 1.2vh, 14px) 0 10px !important;
     }
 
     footer.site-footer {
-        margin-left: var(--ms-main-left);
-        margin-right: var(--ms-gap);
-        width: var(--ms-main-width);
-        margin-top: 14px;
+        margin: 14px 0 0 !important;
+        width: 100% !important;
         border-top: 1px solid rgba(255, 255, 255, 0.45);
     }
 
