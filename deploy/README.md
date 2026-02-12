@@ -75,6 +75,20 @@ For local testing without `git pull`:
 SKIP_GIT=1 ./scripts/update_from_git.sh
 ```
 
+## Manual process start/status (fallback)
+
+If you need to manually raise processes without full update:
+
+```bash
+./scripts/start_services.sh
+```
+
+To inspect current process state and HTTP health:
+
+```bash
+./scripts/status_services.sh
+```
+
 ## Optional GitHub auto-deploy
 
 The workflow `.github/workflows/deploy.yml` connects via SSH and executes `./scripts/update_from_git.sh`.

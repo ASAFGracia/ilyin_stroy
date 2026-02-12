@@ -40,6 +40,13 @@
         min-width: 0;
     }
 
+    .site-layout,
+    .site-main,
+    #content,
+    .site-footer {
+        overflow-x: clip;
+    }
+
     header {
         position: sticky !important;
         top: 16px !important;
@@ -123,6 +130,23 @@
         width: 100% !important;
         min-height: calc(100vh - 70px);
         padding: clamp(8px, 1.2vh, 14px) 0 10px !important;
+    }
+
+    #content > *,
+    .site-footer > * {
+        width: min(100%, var(--ms-main-max));
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #content img,
+    #content video {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #content iframe {
+        max-width: 100%;
     }
 
     footer.site-footer {
@@ -211,6 +235,16 @@
         font-size: clamp(34px, 2.8vw, 48px);
     }
 
+    .photo-div3 img {
+        position: static !important;
+        width: min(100%, 440px);
+        max-width: 100%;
+        height: auto !important;
+        margin: 18px auto 0 !important;
+        display: block;
+        filter: drop-shadow(0 0 0.6rem rgba(255, 255, 255, 0.45));
+    }
+
     .index-div3 ul {
         width: min(100%, 980px);
         margin: 0 auto;
@@ -238,6 +272,17 @@
     .table-mont,
     .table-mont1 {
         width: min(100%, var(--ms-main-max)) !important;
+    }
+
+    .index-photo,
+    .photo-div1,
+    .found-photo,
+    .otopl-photo {
+        width: min(100%, var(--ms-main-max));
+        margin-left: auto !important;
+        margin-right: auto !important;
+        overflow: hidden;
+        border-radius: 14px;
     }
 
     .ques,
@@ -841,6 +886,27 @@
 }
 
 @media (min-width: 1025px) and (max-width: 1360px) {
+    .site-layout {
+        width: min(100vw - 16px, 1320px);
+        grid-template-columns: clamp(170px, 18vw, 206px) minmax(0, 1fr);
+        gap: clamp(10px, 1.5vw, 18px);
+    }
+
+    header {
+        top: 8px !important;
+        height: calc(100vh - 24px);
+        max-height: calc(100vh - 24px);
+        min-height: 500px;
+    }
+
+    .ul-gen p {
+        font-size: clamp(13px, 1vw, 15px);
+    }
+
+    .ssgen {
+        padding: 9px 11px;
+    }
+
     .znach4 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 14px;
