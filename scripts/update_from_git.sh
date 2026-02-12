@@ -48,6 +48,7 @@ fi
 "$VENV_DIR/bin/python" "$PROJECT_DIR/manage.py" migrate --noinput
 "$VENV_DIR/bin/python" "$PROJECT_DIR/manage.py" collectstatic --noinput
 "$VENV_DIR/bin/python" "$PROJECT_DIR/manage.py" check
+mkdir -p "$PROJECT_DIR/media"
 
 restart_agent "com.ilyin-stroy.gunicorn"
 restart_agent "com.ilyin-stroy.nginx"

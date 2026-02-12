@@ -21,11 +21,69 @@
         <p class="page-subtitle">{{ article.summary }}</p>
     {% endif %}
 
-    <div class="article-content">{{ article.content|linebreaksbr }}</div>
+    {% if article.images.all %}
+        <div class="article-image-grid">
+            {% for image in article.images.all %}
+                {% if not preview_only or forloop.counter <= 2 %}
+                    <figure class="article-image-card">
+                        <img src="{{ image.image.url }}" alt="{{ image.caption|default:article.title }}">
+                        {% if image.caption %}
+                            <figcaption>{{ image.caption }}</figcaption>
+                        {% endif %}
+                    </figure>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
 
-    <p style="margin-top:16px;">
-        <a href="{% url 'articles' %}" class="btn-link">К списку статей</a>
-        <a href="{% url 'orders' %}" class="btn-ghost">Оставить заявку</a>
-    </p>
+    {% if preview_only %}
+        <div class="article-content">{{ preview_text|linebreaksbr }}</div>
+        <div class="quick-info">
+            <p><strong>Это предпросмотр.</strong> Чтобы читать статью полностью, выполните вход по коду из письма.</p>
+            <a href="{% url 'auth_login_request' %}?next={{ request.path }}" class="btn-main">Войти и читать полностью</a>
+        </div>
+    {% else %}
+        <div class="article-content">{{ article.content|linebreaksbr }}</div>
+    {% endif %}
+
+    <hr>
+
+    <div class="page-header" style="margin-top: 18px;">
+        <h2 class="page-title" style="font-size: 26px;">Заказ услуги по статье</h2>
+        <p class="page-subtitle">Оставьте заявку прямо под статьёй. Мы получим её на почту и в базу данных.</p>
+    </div>
+
+    <form method="post" class="form-shell">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-field">
+                <label class="form-label" for="{{ order_form.name.id_for_label }}">{{ order_form.name.label }}</label>
+                {{ order_form.name }}
+                {{ order_form.name.errors }}
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="{{ order_form.phone.id_for_label }}">{{ order_form.phone.label }}</label>
+                {{ order_form.phone }}
+                {{ order_form.phone.errors }}
+            </div>
+        </div>
+
+        <div class="form-field">
+            <label class="form-label" for="{{ order_form.email.id_for_label }}">{{ order_form.email.label }}</label>
+            {{ order_form.email }}
+            {{ order_form.email.errors }}
+        </div>
+
+        <div class="form-field">
+            <label class="form-label" for="{{ order_form.message.id_for_label }}">{{ order_form.message.label }}</label>
+            {{ order_form.message }}
+            {{ order_form.message.errors }}
+        </div>
+
+        <div>
+            <button type="submit" class="btn-main">Отправить заявку</button>
+            <a href="{% url 'articles' %}" class="btn-link">К списку статей</a>
+        </div>
+    </form>
 </section>
 {% endblock %}

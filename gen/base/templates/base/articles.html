@@ -9,38 +9,42 @@
     <div class="page-header">
         <h1 class="page-title">Статьи и полезные материалы</h1>
         <p class="page-subtitle">
-            Здесь публикуются инструкции и практические рекомендации по фундаментам, стенам, полам и инженерным системам.
+            Для незарегистрированных пользователей показывается только предпросмотр. Полный текст доступен после входа по коду.
         </p>
     </div>
 
-    {% if user.is_staff %}
-        <p>
+    <p>
+        {% if user.is_authenticated %}
+            <a href="{% url 'article_submit_request' %}" class="btn-ghost">Отправить заявку на статью</a>
+        {% else %}
+            <a href="{% url 'auth_login_request' %}?next={% url 'article_submit_request' %}" class="btn-ghost">Войти и отправить заявку на статью</a>
+        {% endif %}
+
+        {% if can_create_articles %}
             <a href="{% url 'article_templates' %}" class="btn-main">Создать статью по шаблону</a>
-            <a href="{% url 'article_create' %}" class="btn-ghost">Пустая форма статьи</a>
-        </p>
-    {% endif %}
+            <a href="{% url 'article_create' %}" class="btn-link">Пустая форма статьи</a>
+        {% endif %}
+    </p>
 
     <div class="grid-cards">
         {% for article in articles %}
             <article class="article-card">
                 <h3>{{ article.title }}</h3>
-                <p>{{ article.summary|default:"Без краткого описания." }}</p>
+                <p>{{ article.summary|default:article.content|truncatechars:220 }}</p>
                 <div class="article-meta">
-                    <span class="meta-chip">Шаблон: {{ article.get_template_key_display }}</span>
-                    {% if article.is_published %}
-                        <span class="meta-chip">Опубликовано</span>
-                    {% else %}
-                        <span class="meta-chip">Черновик</span>
+                    <span class="meta-chip">Раздел: {{ article.get_template_key_display }}</span>
+                    {% if article.images.first %}
+                        <span class="meta-chip">Фото: {{ article.images.count }}</span>
                     {% endif %}
                 </div>
                 <p style="margin-top:12px;">
-                    <a href="{% url 'article_detail' article.slug %}" class="btn-link">Открыть статью</a>
+                    <a href="{% url 'article_detail' article.slug %}" class="btn-link">Открыть</a>
                 </p>
             </article>
         {% empty %}
             <article class="article-card">
                 <h3>Пока нет статей</h3>
-                <p>Добавьте первую публикацию через панель управления или шаблоны статей.</p>
+                <p>Добавьте первую публикацию через owner-панель.</p>
             </article>
         {% endfor %}
     </div>

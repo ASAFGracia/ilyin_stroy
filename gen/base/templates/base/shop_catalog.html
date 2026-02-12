@@ -1,0 +1,110 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Магазин | {{ site_brand }}
+{% endblock %}
+
+{% block content %}
+<section class="page-shell">
+    <div class="page-header">
+        <h1 class="page-title">Каталог магазина</h1>
+        <p class="page-subtitle">
+            Выберите категорию и товар. Если нужной позиции нет — оформите предзаказ, и мы свяжемся с вами.
+        </p>
+    </div>
+
+    <div class="chip-row" style="margin-bottom: 14px;">
+        <a href="{% url 'shop' %}" class="btn-link">Все категории</a>
+        {% for category in categories %}
+            <a href="{% url 'shop' %}?category={{ category.slug }}" class="btn-ghost">{{ category.name }}</a>
+        {% endfor %}
+    </div>
+
+    {% if selected_category %}
+        <p class="text-muted">Показана категория: <strong>{{ selected_category.name }}</strong></p>
+    {% endif %}
+
+    <div class="grid-cards" style="margin-top: 14px;">
+        {% for product in products %}
+            <article class="article-card">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description|default:"Описание скоро появится." }}</p>
+                <div class="chip-row">
+                    <span class="meta-chip">Категория: {{ product.category.name }}</span>
+                    {% if product.price %}
+                        <span class="meta-chip">{{ product.price }} BYN</span>
+                    {% else %}
+                        <span class="meta-chip">Цена по запросу</span>
+                    {% endif %}
+                </div>
+            </article>
+        {% empty %}
+            <article class="article-card">
+                <h3>В этой категории пока нет товаров</h3>
+                <p>Вы можете оставить предзаказ через форму ниже.</p>
+            </article>
+        {% endfor %}
+    </div>
+
+    <div class="page-header" style="margin-top: 22px;">
+        <h2 class="page-title" style="font-size: 28px;">Предзаказ товара</h2>
+        <p class="page-subtitle">Предзаказ сохраняется в БД и отправляется на почту менеджеру.</p>
+    </div>
+
+    <form method="post" class="form-shell">
+        {% csrf_token %}
+
+        <div class="form-row">
+            <div class="form-field">
+                <label class="form-label" for="{{ preorder_form.category.id_for_label }}">{{ preorder_form.category.label }}</label>
+                {{ preorder_form.category }}
+                {{ preorder_form.category.errors }}
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="{{ preorder_form.product.id_for_label }}">{{ preorder_form.product.label }}</label>
+                {{ preorder_form.product }}
+                {{ preorder_form.product.errors }}
+            </div>
+        </div>
+
+        <div class="form-field">
+            <label class="form-label" for="{{ preorder_form.desired_item.id_for_label }}">{{ preorder_form.desired_item.label }}</label>
+            {{ preorder_form.desired_item }}
+            {{ preorder_form.desired_item.errors }}
+        </div>
+
+        <div class="form-row">
+            <div class="form-field">
+                <label class="form-label" for="{{ preorder_form.quantity.id_for_label }}">{{ preorder_form.quantity.label }}</label>
+                {{ preorder_form.quantity }}
+                {{ preorder_form.quantity.errors }}
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="{{ preorder_form.phone.id_for_label }}">{{ preorder_form.phone.label }}</label>
+                {{ preorder_form.phone }}
+                {{ preorder_form.phone.errors }}
+            </div>
+        </div>
+
+        <div class="form-field">
+            <label class="form-label" for="{{ preorder_form.email.id_for_label }}">{{ preorder_form.email.label }}</label>
+            {{ preorder_form.email }}
+            {{ preorder_form.email.errors }}
+        </div>
+
+        <div class="form-field">
+            <label class="form-label" for="{{ preorder_form.comment.id_for_label }}">{{ preorder_form.comment.label }}</label>
+            {{ preorder_form.comment }}
+            {{ preorder_form.comment.errors }}
+        </div>
+
+        {% if preorder_form.non_field_errors %}
+            <ul class="form-errors">{{ preorder_form.non_field_errors }}</ul>
+        {% endif %}
+
+        <div>
+            <button type="submit" class="btn-main">Отправить предзаказ</button>
+        </div>
+    </form>
+</section>
+{% endblock %}

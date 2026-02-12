@@ -1,0 +1,32 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Подтверждение кода | {{ site_brand }}
+{% endblock %}
+
+{% block content %}
+<section class="page-shell allauth-box">
+    <div class="page-header">
+        <h1 class="page-title">Подтвердите код</h1>
+        <p class="page-subtitle">
+            Мы отправили код на <strong>{{ pending_email }}</strong>. Осталось попыток: {{ attempts_left }}.
+        </p>
+    </div>
+
+    <form method="post" class="form-shell">
+        {% csrf_token %}
+        {{ form.email }}
+
+        <div class="form-field">
+            <label class="form-label" for="{{ form.code.id_for_label }}">{{ form.code.label }}</label>
+            {{ form.code }}
+            {{ form.code.errors }}
+        </div>
+
+        <div>
+            <button type="submit" class="btn-main">Подтвердить и войти</button>
+            <a href="{% url 'auth_login_request' %}" class="btn-link">Запросить новый код</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

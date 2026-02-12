@@ -1,0 +1,142 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Owner панель | {{ site_brand }}
+{% endblock %}
+
+{% block content %}
+<section class="page-shell">
+    <div class="page-header">
+        <h1 class="page-title">Owner панель</h1>
+        <p class="page-subtitle">Доступ только для {{ owner_email }}. Здесь вы модерируете статьи и видите пользователей.</p>
+    </div>
+
+    <div class="page-header">
+        <h2 class="page-title" style="font-size:26px;">Заявки на статьи</h2>
+    </div>
+
+    <div class="grid-cards">
+        {% for submission in submissions %}
+            <article class="order-card">
+                <h3>{{ submission.title }}</h3>
+                <p><strong>Автор:</strong> {{ submission.user.email|default:"аноним" }}</p>
+                <p><strong>Статус:</strong> {{ submission.get_status_display }}</p>
+                <p>{{ submission.summary|default:"Без краткого описания"|truncatechars:200 }}</p>
+                <p><strong>Изображений:</strong> {{ submission.images.count }}</p>
+
+                {% if submission.status == "pending" %}
+                    <form method="post" action="{% url 'owner_submission_approve' submission.id %}" class="form-shell" style="margin-top: 8px;">
+                        {% csrf_token %}
+                        {{ review_form.review_comment }}
+                        <button type="submit" class="btn-main">Одобрить и опубликовать</button>
+                    </form>
+
+                    <form method="post" action="{% url 'owner_submission_reject' submission.id %}" class="form-shell" style="margin-top: 8px;">
+                        {% csrf_token %}
+                        {{ review_form.review_comment }}
+                        <button type="submit" class="btn-link">Отклонить</button>
+                    </form>
+                {% elif submission.approved_article %}
+                    <p><a class="btn-link" href="{% url 'article_detail' submission.approved_article.slug %}">Открыть опубликованную статью</a></p>
+                {% endif %}
+            </article>
+        {% empty %}
+            <article class="order-card"><h3>Нет заявок на модерацию</h3></article>
+        {% endfor %}
+    </div>
+
+    <div class="page-header" style="margin-top:20px;">
+        <h2 class="page-title" style="font-size:26px;">Пользователи</h2>
+    </div>
+    <div class="owner-table-wrap">
+        <table class="owner-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Логин</th>
+                    <th>Имя</th>
+                    <th>Дата регистрации</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in users %}
+                    <tr>
+                        <td>{{ u.id }}</td>
+                        <td>{{ u.email }}</td>
+                        <td>{{ u.username }}</td>
+                        <td>{{ u.get_full_name|default:"-" }}</td>
+                        <td>{{ u.date_joined|date:"d.m.Y H:i" }}</td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="5">Пользователей нет</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page-header" style="margin-top:20px;">
+        <h2 class="page-title" style="font-size:26px;">Заявки на услуги</h2>
+    </div>
+    <div class="owner-table-wrap">
+        <table class="owner-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Клиент</th>
+                    <th>Телефон</th>
+                    <th>Статья</th>
+                    <th>Статус</th>
+                    <th>Дата</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.name }}</td>
+                        <td>{{ order.phone }}</td>
+                        <td>{{ order.article.title|default:"-" }}</td>
+                        <td>{{ order.get_status_display }}</td>
+                        <td>{{ order.created_at|date:"d.m.Y H:i" }}</td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="6">Заявок нет</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page-header" style="margin-top:20px;">
+        <h2 class="page-title" style="font-size:26px;">Предзаказы магазина</h2>
+    </div>
+    <div class="owner-table-wrap">
+        <table class="owner-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Пользователь</th>
+                    <th>Категория</th>
+                    <th>Товар/Запрос</th>
+                    <th>Количество</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for preorder in preorders %}
+                    <tr>
+                        <td>{{ preorder.id }}</td>
+                        <td>{{ preorder.user.email|default:"-" }}</td>
+                        <td>{{ preorder.category.name|default:"-" }}</td>
+                        <td>{{ preorder.product.name|default:preorder.desired_item|default:"-" }}</td>
+                        <td>{{ preorder.quantity }}</td>
+                        <td>{{ preorder.get_status_display }}</td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="6">Предзаказов нет</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

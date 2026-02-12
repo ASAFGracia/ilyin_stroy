@@ -3,7 +3,7 @@
 ## Current runtime model
 
 - `gunicorn` serves Django on `127.0.0.1:8000`
-- `nginx` proxies on `127.0.0.1:8081` and serves `/static/`
+- `nginx` proxies on `127.0.0.1:8081` and serves `/static/` + `/media/`
 - `cloudflared` publishes `mastersvarki.com` to the nginx origin
 - `launchd` keeps all services alive and restarts them on login/reboot/network changes
 - PostgreSQL runs locally (`postgresql@16`) and stores users/profiles/orders/articles
@@ -31,7 +31,7 @@ brew services start postgresql@16
 ```bash
 cd /Users/server/projects/ilyin_stroy
 cp .env.example .env.local
-# edit .env.local (POSTGRES_*, email creds, GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET)
+# edit .env.local (POSTGRES_*, email creds, OWNER_EMAIL, AUTH_CODE_* limits)
 ```
 
 4. Install Python dependencies and run migrations:

@@ -8,9 +8,7 @@
 <section class="page-shell">
     <div class="page-header">
         <h1 class="page-title">Личный кабинет</h1>
-        <p class="page-subtitle">
-            Здесь отображаются ваши персональные данные и последние заявки.
-        </p>
+        <p class="page-subtitle">Здесь хранятся ваши данные, заявки и предзаказы.</p>
     </div>
 
     <div class="profile-grid">
@@ -27,32 +25,70 @@
         </article>
 
         <article class="profile-card">
-            <h3>Действия</h3>
-            <p>Через меню можно перейти к статьям, созданию заявки и настройкам аккаунта.</p>
+            <h3>Быстрые действия</h3>
+            <p>
+                Отправляйте заявки на услуги, создавайте предложения для статей и оставляйте предзаказы товаров.
+            </p>
             <p style="margin-top:12px;">
                 <a href="{% url 'orders' %}" class="btn-ghost">Оставить заявку</a>
-                <a href="{% url 'articles' %}" class="btn-link">Смотреть статьи</a>
+                <a href="{% url 'article_submit_request' %}" class="btn-link">Предложить статью</a>
+                <a href="{% url 'shop' %}" class="btn-link">Предзаказ товара</a>
             </p>
         </article>
     </div>
 
     <div style="margin-top:14px;">
-        <h3>Последние заявки</h3>
+        <h3>Последние заявки на услуги</h3>
         <div class="grid-cards">
             {% for order in user_orders %}
                 <article class="order-card">
                     <h3>Заявка #{{ order.id }}</h3>
                     <p><strong>Статус:</strong> {{ order.get_status_display }}</p>
-                    <p><strong>Способ связи:</strong> {{ order.get_contact_method_display }}</p>
-                    <p><strong>Телефон:</strong> {{ order.phone }}</p>
-                    {% if order.message %}
-                        <p><strong>Комментарий:</strong> {{ order.message|truncatechars:150 }}</p>
+                    {% if order.article %}
+                        <p><strong>По статье:</strong> {{ order.article.title }}</p>
                     {% endif %}
+                    <p><strong>Телефон:</strong> {{ order.phone }}</p>
                 </article>
             {% empty %}
                 <article class="order-card">
                     <h3>Заявок пока нет</h3>
-                    <p>Вы можете оформить первую заявку на странице заказов.</p>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div style="margin-top:14px;">
+        <h3>Последние предзаказы магазина</h3>
+        <div class="grid-cards">
+            {% for preorder in user_preorders %}
+                <article class="order-card">
+                    <h3>Предзаказ #{{ preorder.id }}</h3>
+                    <p><strong>Статус:</strong> {{ preorder.get_status_display }}</p>
+                    <p><strong>Товар:</strong> {{ preorder.product.name|default:preorder.desired_item|default:"-" }}</p>
+                    <p><strong>Количество:</strong> {{ preorder.quantity }}</p>
+                </article>
+            {% empty %}
+                <article class="order-card">
+                    <h3>Предзаказов пока нет</h3>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div style="margin-top:14px;">
+        <h3>Заявки на публикацию статей</h3>
+        <div class="grid-cards">
+            {% for submission in user_submissions %}
+                <article class="order-card">
+                    <h3>{{ submission.title }}</h3>
+                    <p><strong>Статус:</strong> {{ submission.get_status_display }}</p>
+                    {% if submission.review_comment %}
+                        <p><strong>Комментарий модератора:</strong> {{ submission.review_comment|truncatechars:160 }}</p>
+                    {% endif %}
+                </article>
+            {% empty %}
+                <article class="order-card">
+                    <h3>Заявок на статьи пока нет</h3>
                 </article>
             {% endfor %}
         </div>

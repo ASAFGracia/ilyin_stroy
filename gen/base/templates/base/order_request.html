@@ -9,7 +9,10 @@
     <div class="page-header">
         <h1 class="page-title">Оформление заказа</h1>
         <p class="page-subtitle">
-            Заказ можно оформить двумя способами: позвонить по номеру телефона или отправить заявку через форму.
+            Заказ можно оформить по телефону или через форму ниже.
+            {% if article %}
+                Вы оформляете заявку по статье: <strong>{{ article.title }}</strong>.
+            {% endif %}
         </p>
     </div>
 
@@ -18,13 +21,16 @@
             <h3>Быстрый способ</h3>
             <p>Позвоните нам и сразу согласуйте детали:</p>
             <p><strong><a href="tel:{{ contact_phone }}" class="btn-link">{{ contact_phone }}</a></strong></p>
-            <p class="text-muted">Если удобнее, заполните форму справа. Заявка попадет в систему и будет отправлена на рабочую почту.</p>
+            <p class="text-muted">Также можете отправить заявку, она сохранится в базе данных.</p>
         </article>
 
         <article class="order-card">
             <h3>Отправить заявку</h3>
             <form method="post" class="form-shell">
                 {% csrf_token %}
+                {% if article %}
+                    <input type="hidden" name="article_id" value="{{ article.id }}">
+                {% endif %}
 
                 <div class="form-field">
                     <label class="form-label" for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
