@@ -92,3 +92,20 @@ Required secrets:
 - `cloudflared` and watchdog are network-aware
 - watchdog script checks and restarts gunicorn/nginx/cloudflared periodically
 - PostgreSQL runs as `brew services` launch agent and auto-starts on login
+
+### If launch agents were created earlier
+
+If your old plist files still contain `KeepAlive` as a dictionary with `SuccessfulExit=false`,
+replace it with `KeepAlive=true` and reload jobs:
+
+```bash
+for f in "$HOME/Library/LaunchAgents/com.ilyin-stroy.gunicorn.plist" \
+         "$HOME/Library/LaunchAgents/com.ilyin-stroy.nginx.plist" \
+         "$HOME/Library/LaunchAgents/com.ilyin-stroy.cloudflared.plist"; do
+  perl -0pi -e 's#<key>KeepAlive</key>\s*<dict>\s*<key>SuccessfulExit</key>\s*<false/>\s*<key>NetworkState</key>\s*<true/>\s*</dict>#<key>KeepAlive</key>\n    <true/>#s' "$f"
+done
+uid="$(id -u)"
+for label in com.ilyin-stroy.gunicorn com.ilyin-stroy.nginx com.ilyin-stroy.cloudflared; do
+  launchctl kickstart -k "gui/${uid}/${label}"
+done
+```

@@ -48,8 +48,15 @@ ensure_nginx() {
   fi
 }
 
+is_launchd_job_running() {
+  local label="$1"
+  local uid
+  uid="$(id -u)"
+  launchctl print "gui/${uid}/${label}" 2>/dev/null | grep -q "state = running"
+}
+
 is_cloudflared_running() {
-  pgrep -f "cloudflared.*tunnel run mastersvarki" >/dev/null 2>&1
+  is_launchd_job_running "$CLOUDFLARED_LABEL"
 }
 
 ensure_cloudflared() {
