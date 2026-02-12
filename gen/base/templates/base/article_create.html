@@ -1,0 +1,59 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Новая статья | {{ site_brand }}
+{% endblock %}
+
+{% block content %}
+<section class="page-shell">
+    <div class="page-header">
+        <h1 class="page-title">Создание статьи</h1>
+        <p class="page-subtitle">
+            Заполните форму и опубликуйте материал на сайте. Для ускорения можно вернуться к шаблонам и выбрать готовую структуру.
+        </p>
+    </div>
+
+    <p>
+        <a href="{% url 'article_templates' %}" class="btn-ghost">К шаблонам</a>
+        <a href="{% url 'articles' %}" class="btn-link">К списку статей</a>
+    </p>
+
+    <form method="post" class="form-shell">
+        {% csrf_token %}
+
+        <div class="form-field">
+            <label class="form-label" for="{{ form.template_key.id_for_label }}">{{ form.template_key.label }}</label>
+            {{ form.template_key }}
+            {{ form.template_key.errors }}
+        </div>
+
+        <div class="form-field">
+            <label class="form-label" for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+            {{ form.title }}
+            {{ form.title.errors }}
+        </div>
+
+        <div class="form-field">
+            <label class="form-label" for="{{ form.summary.id_for_label }}">{{ form.summary.label }}</label>
+            {{ form.summary }}
+            {{ form.summary.errors }}
+        </div>
+
+        <div class="form-field">
+            <label class="form-label" for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
+            {{ form.content }}
+            {{ form.content.errors }}
+        </div>
+
+        <div class="form-field">
+            <label class="form-label" for="{{ form.is_published.id_for_label }}">{{ form.is_published.label }}</label>
+            {{ form.is_published }}
+            {{ form.is_published.errors }}
+        </div>
+
+        <div>
+            <button type="submit" class="btn-main">Сохранить статью</button>
+        </div>
+    </form>
+</section>
+{% endblock %}

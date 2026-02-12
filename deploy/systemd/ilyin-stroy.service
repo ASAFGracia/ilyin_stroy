@@ -1,0 +1,26 @@
+[Unit]
+Description=Ilyin Stroy Django via Gunicorn
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/ilyin_stroy/gen
+EnvironmentFile=/etc/ilyin_stroy/ilyin_stroy.env
+ExecStart=/var/www/ilyin_stroy/venv/bin/gunicorn \
+  --workers 3 \
+  --bind unix:/run/ilyin_stroy/gunicorn.sock \
+  --access-logfile - \
+  --error-logfile - \
+  gen.wsgi:application
+RuntimeDirectory=ilyin_stroy
+Restart=always
+RestartSec=5
+KillSignal=SIGQUIT
+TimeoutStopSec=30
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

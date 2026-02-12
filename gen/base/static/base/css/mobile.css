@@ -1,0 +1,427 @@
+/* Mobile and tablet overrides. Loaded after styles.css. */
+
+@media (max-width: 1024px) {
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    header {
+        margin: 0;
+        width: 100%;
+        height: auto;
+        min-height: 64px;
+        left: 0;
+        top: 0;
+        border-radius: 0;
+        padding: 10px 12px;
+    }
+
+    .ul-gen {
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        padding: 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .ul-gen p {
+        margin: 0;
+        white-space: nowrap;
+        font-size: 14px;
+    }
+
+    .ssgen {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 999px;
+        padding: 6px 10px;
+        line-height: 1;
+    }
+
+    #content {
+        padding-top: 88px;
+    }
+
+    footer,
+    .index-div4,
+    .index-gen,
+    .gen-shop,
+    .gen-service,
+    .support-gen,
+    .contacts-gen,
+    .fund-gen,
+    .otopl-gen,
+    .onas-gen1 {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .index-photo,
+    .photo-div1,
+    .found-photo,
+    .otopl-photo {
+        background-attachment: scroll;
+    }
+
+    .ques,
+    .ques-shop,
+    .ques-sup,
+    .fund-ques {
+        width: calc(100% - 24px);
+        margin: 12px;
+        min-height: 56px;
+        height: auto;
+        border-radius: 12px;
+    }
+
+    .ques h3,
+    .ques-shop h3,
+    .ques-sup h3,
+    .fund-ques h3 {
+        padding: 10px 12px;
+        line-height: 1.2;
+        text-align: center;
+        font-size: clamp(18px, 4.5vw, 24px);
+    }
+
+    .index-div2,
+    .index-div3,
+    .index-divdob,
+    .shop-text,
+    .text-service,
+    .text-service2,
+    .serv-mi,
+    .fundp1,
+    .check-gar,
+    .remont-kotlov,
+    .primeri,
+    .table-mont,
+    .table-mont1,
+    .map,
+    .sant-block1,
+    .sant-block2 {
+        width: calc(100% - 24px);
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+
+    .index-div3 h2,
+    .index-div4 h2,
+    .primeri h3,
+    .serv-mi h3 {
+        position: static;
+        margin-top: 0;
+        text-align: center;
+        font-size: clamp(26px, 6vw, 36px);
+    }
+
+    .photo-div3 img,
+    .imgvan img {
+        display: none;
+    }
+
+    .index-divdob1,
+    .index-divdob2,
+    .index-divdob3,
+    .index-divdob4,
+    .index-divdob5 {
+        width: 100%;
+        margin: 14px 0;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .index-divdob1-txt,
+    .index-divdob2-txt,
+    .index-divdob3-txt,
+    .index-divdob4-txt,
+    .index-divdob5-txt {
+        width: 100%;
+        height: auto;
+        border-right: 1px solid #fff;
+        padding: 14px;
+    }
+
+    .index-divdob1-txt p,
+    .index-divdob2-txt p,
+    .index-divdob3-txt p,
+    .index-divdob4-txt p,
+    .index-divdob5-txt p {
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    .index-divdob1-photo img,
+    .index-divdob2-photo img,
+    .index-divdob3-photo img,
+    .index-divdob4-photo img,
+    .index-divdob5-photo img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+
+    .svyaz {
+        display: block;
+        margin-bottom: 32px;
+    }
+
+    .formasvyazi {
+        width: calc(100% - 24px);
+        margin: 0 12px;
+    }
+
+    .form1 {
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    .inputf1,
+    .form1 #txt {
+        width: 100%;
+    }
+
+    .cards-shop,
+    .shop-orders {
+        width: calc(100% - 24px);
+        margin: 0 12px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .card,
+    .order {
+        width: 100%;
+        margin: 0;
+        border-radius: 12px;
+    }
+
+    .card {
+        height: 220px;
+    }
+
+    .order {
+        height: 280px;
+    }
+
+    .divider {
+        min-height: 86px;
+        height: auto;
+        padding: 12px;
+    }
+
+    .card h3,
+    .order h3 {
+        font-size: clamp(18px, 4.2vw, 24px);
+    }
+
+    .shop-text p {
+        text-indent: 0;
+        font-size: 18px;
+    }
+
+    .magaaa {
+        width: calc(100% - 24px);
+        margin: 12px;
+        height: auto;
+        padding: 16px 0;
+    }
+
+    .magaz-photo {
+        width: 100%;
+        height: 260px;
+        border-radius: 14px;
+    }
+
+    .santehnik,
+    .stariybog {
+        width: calc(100% - 24px);
+        margin: 12px;
+        min-height: 280px;
+        height: auto;
+        border-radius: 12px;
+    }
+
+    .santehnik h3,
+    .stariybog h3 {
+        font-size: 26px;
+    }
+
+    .santehnik p,
+    .stariybog p {
+        font-size: 20px;
+    }
+
+    .o-nas-gen,
+    .missiya,
+    .o-nas-photo1,
+    .o-nas-photo2,
+    .onas-uslugi {
+        width: calc(100% - 24px);
+        margin: 12px;
+    }
+
+    .o-nas-gen {
+        height: auto;
+        border-radius: 12px;
+    }
+
+    .o-nas-photo1,
+    .o-nas-photo2 {
+        height: 260px;
+        margin-top: 0;
+        filter: none;
+    }
+
+    .onas-uslugi {
+        margin-top: 12px;
+    }
+
+    .table-mont,
+    .table-mont1 {
+        overflow-x: auto;
+    }
+
+    .table-moont {
+        min-width: 640px;
+        width: 100%;
+    }
+
+    #map-google {
+        width: 100%;
+        height: 320px;
+    }
+
+    .fund1,
+    .otopl1 {
+        width: calc(100% - 24px);
+        margin: 12px;
+        height: 260px;
+    }
+
+    .h3found-index,
+    .h3otopl-index,
+    .pfound-index,
+    .potopl-index {
+        position: static;
+        margin: 12px;
+        width: auto;
+        border-width: 1px;
+        padding: 10px;
+    }
+
+    .h3found-index,
+    .h3otopl-index {
+        font-size: clamp(24px, 6vw, 30px);
+    }
+
+    .pfound-index,
+    .potopl-index {
+        font-size: clamp(16px, 4.2vw, 20px);
+    }
+
+    .fundat1,
+    .fundat2,
+    .fundat3,
+    .fundat4,
+    .fundat5,
+    .otoplat1,
+    .otoplat2,
+    .otoplat3,
+    .otoplat4,
+    .otoplat5,
+    .otoplat6,
+    .otoplat7 {
+        width: calc(100% - 24px);
+        margin: 12px;
+        flex-direction: column;
+    }
+
+    .fundaat1,
+    .fundaat2,
+    .fundaat3,
+    .fundaat4,
+    .fundaat5,
+    .otoplaat1,
+    .otoplaat2,
+    .otoplaat3,
+    .otoplaat4,
+    .otoplaat5,
+    .otoplaat6,
+    .otoplaat7 {
+        width: 100%;
+        margin: 0;
+    }
+
+    .photo-fund2,
+    .photo-otopl2 {
+        flex-direction: column;
+    }
+
+    .fundf1,
+    .fundf2,
+    .fundf3,
+    .fundf4,
+    .fundf5,
+    .otoplf1,
+    .otoplf2,
+    .otoplf3,
+    .otoplf4,
+    .otoplf5,
+    .otoplf6,
+    .otoplf7 {
+        width: 100%;
+        height: 220px;
+        margin: 0 0 12px;
+        border-radius: 10px;
+    }
+
+    .otstup,
+    #contactsot {
+        height: 84px;
+    }
+}
+
+@media (max-width: 640px) {
+    .ul-gen {
+        gap: 8px;
+    }
+
+    .ssgen {
+        padding: 6px 8px;
+    }
+
+    .ul-gen p {
+        font-size: 13px;
+    }
+
+    #content {
+        padding-top: 82px;
+    }
+
+    .card {
+        height: 200px;
+    }
+
+    .order {
+        height: 240px;
+    }
+
+    .shop-text p {
+        font-size: 16px;
+    }
+
+    .santehnik h3,
+    .stariybog h3 {
+        font-size: 22px;
+    }
+
+    .santehnik p,
+    .stariybog p {
+        font-size: 18px;
+    }
+}

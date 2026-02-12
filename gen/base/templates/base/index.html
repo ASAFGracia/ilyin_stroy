@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block title %}
-IlyinStroy
+{{ site_brand }}
 {% endblock %}
 
 {% block content %}
@@ -58,7 +58,7 @@ IlyinStroy
                 </div>
             </div></a>
 
-            <div class="index-divdob2" style="cursor: not-allowed">
+            <a href="{% url 'article_detail' 'drainage-and-communications' %}"><div class="index-divdob2">
                 <div class="index-divdob2-txt">
                     <h2>Дренажная система и коммуникации</h2>
                     <p>- Прокладка систем водоотведения, канализации
@@ -67,9 +67,9 @@ IlyinStroy
                 <div class="index-divdob2-photo">
                     <img src="/static/base/img/drenaj.png" alt="">
                 </div>
-            </div>
+            </div></a>
 
-            <div class="index-divdob3" style="cursor: not-allowed">
+            <a href="{% url 'article_detail' 'lower-floor-floors' %}"><div class="index-divdob3">
                 <div class="index-divdob3-txt">
                     <h2>Полы нижнего этажа</h2>
                     <p>- Укладка чернового пола на фундамент, обычно
@@ -78,9 +78,9 @@ IlyinStroy
                 <div class="index-divdob3-photo">
                     <img src="/static/base/img/bet-pol.jpg" alt="">
                 </div>
-            </div>
+            </div></a>
 
-            <div class="index-divdob4" style="cursor: not-allowed">
+            <a href="{% url 'article_detail' 'outer-and-inner-walls' %}"><div class="index-divdob4">
                 <div class="index-divdob4-txt">
                     <h2>Наружные и внутренние стены</h2>
                     <p>- Возведение внешних несущих стен и внутренних
@@ -89,7 +89,7 @@ IlyinStroy
                 <div class="index-divdob4-photo">
                     <img src="/static/base/img/steni.jpg" alt="">
                 </div>
-            </div>
+            </div></a>
             
             <a href="{% url 'sistemaotoplenia' %}"><div class="index-divdob5">
                 <div class="index-divdob5-txt">
@@ -181,8 +181,8 @@ IlyinStroy
         {
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "Ильин Строй",
-          "url": "https://ilyin-stroy.xyz",
+          "name": "Mastersvarki",
+          "url": "https://mastersvarki.com",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Витебск",

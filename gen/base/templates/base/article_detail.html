@@ -1,0 +1,31 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+{{ article.title }} | {{ site_brand }}
+{% endblock %}
+
+{% block content %}
+<section class="page-shell">
+    <div class="page-header">
+        <h1 class="page-title">{{ article.title }}</h1>
+        <div class="chip-row">
+            <span class="meta-chip">Раздел: {{ article.get_template_key_display }}</span>
+            <span class="meta-chip">Создано: {{ article.created_at|date:"d.m.Y H:i" }}</span>
+            {% if article.author %}
+                <span class="meta-chip">Автор: {{ article.author.get_full_name|default:article.author.username }}</span>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if article.summary %}
+        <p class="page-subtitle">{{ article.summary }}</p>
+    {% endif %}
+
+    <div class="article-content">{{ article.content|linebreaksbr }}</div>
+
+    <p style="margin-top:16px;">
+        <a href="{% url 'articles' %}" class="btn-link">К списку статей</a>
+        <a href="{% url 'orders' %}" class="btn-ghost">Оставить заявку</a>
+    </p>
+</section>
+{% endblock %}

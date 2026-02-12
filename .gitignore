@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+
+# Django runtime artifacts
+gen/staticfiles/
+gen/db.sqlite3
+
+# Local environment
+.env.local
+
+# Logs
+*.log
+*.err
+cloudflared_stdout.log
+cloudflared_stderr.log
+gunicorn_stdout.log
+gunicorn_stderr.log
+nginx_stdout.log
+nginx_stderr.log
+watchdog_stdout.log
+watchdog_stderr.log

@@ -1,45 +1,66 @@
 <!doctype html>
 {% load static %}
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Ильин Строй — строительные услуги и сантехника в Витебске. Фундаменты, ремонты под ключ, установка сантехники. Качественно и в срок.">
-    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="Mastersvarki — строительные и монтажные услуги в Витебске. Фундаменты, стены, полы, сантехника и инженерные системы.">
+    <title>{% block title %}{{ site_brand }}{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'base/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/mobile.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="{% static "base/img/logo123.svg" %}">
 </head>
 <body>
     <header>
-
         <div class="ul-gen">
-{#                <div class="index-div-photo1">#}
-{#                    <a href="{% url 'home' %}"><img src="{% static "base/img/LOGO.png" %}" alt=""></a>#}
-{#                </div>#}
-                <a href="{% url 'home' %}" class="ssgen"><p>Главная</p></a>
-                <a href="{% url 'shop' %}" class="ssgen"><p>Магазин</p></a>
-                <a href="{% url 'installation' %}" class="ssgen"><p>Монтаж</p></a>
-                <a href="{% url 'service' %}" class="ssgen"><p>Сервис</p></a>
-                <a href="{% url 'contacts' %}" class="ssgen"><p>Контакты</p></a>
-                <a href="{% url 'support' %}" class="ssgen"><p>Поддержка</p></a>
+            <a href="{% url 'home' %}" class="ssgen brand-chip"><p>{{ site_brand }}</p></a>
+            <a href="{% url 'home' %}" class="ssgen"><p>Главная</p></a>
+            <a href="{% url 'shop' %}" class="ssgen"><p>Магазин</p></a>
+            <a href="{% url 'orders' %}" class="ssgen"><p>Заказы</p></a>
+            <a href="{% url 'articles' %}" class="ssgen"><p>Статьи</p></a>
+            <a href="{% url 'installation' %}" class="ssgen"><p>Монтаж</p></a>
+            <a href="{% url 'service' %}" class="ssgen"><p>Сервис</p></a>
+            <a href="{% url 'contacts' %}" class="ssgen"><p>Контакты</p></a>
+            <a href="{% url 'support' %}" class="ssgen"><p>Поддержка</p></a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="ssgen auth-chip"><p>Профиль</p></a>
+                <a href="{% url 'profile_settings' %}" class="ssgen auth-chip"><p>Настройки</p></a>
+                {% if user.is_staff %}
+                    <a href="{% url 'article_templates' %}" class="ssgen auth-chip"><p>Шаблоны</p></a>
+                    <a href="{% url 'admin:index' %}" class="ssgen auth-chip"><p>Админка</p></a>
+                {% endif %}
+                <a href="{% url 'account_logout' %}" class="ssgen auth-chip"><p>Выйти</p></a>
+            {% else %}
+                <a href="{% url 'account_login' %}" class="ssgen auth-chip"><p>Вход</p></a>
+                <a href="{% url 'account_signup' %}" class="ssgen auth-chip"><p>Регистрация</p></a>
+            {% endif %}
         </div>
     </header>
     <main id="content">
-            {% block content %}
-            {% endblock %}
+        {% if messages %}
+            <div class="flash-list">
+                {% for message in messages %}
+                    <div class="flash-item flash-{{ message.tags|default:'info' }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
     </main>
-    <footer>
+    <footer class="site-footer">
         <div class="index-div4">
             <h2>Свяжитесь с нами</h2>
             <p class="ind-div4"></p>
             <div class="znach4">
                 <div class="div-znach">
                     <h3>Позвоните <br> сегодня</h3>
-                    <p>+375 (29) 595-92-63</p>
+                    <p>{{ contact_phone }}</p>
                 </div>
                 <div class="div-znach">
                     <h3>Адрес</h3>
@@ -47,7 +68,7 @@
                 </div>
                 <div class="div-znach">
                     <h3>Электронная <br> почта</h3>
-                    <p>ilyinstroy@gmail.com</p>
+                    <p>{{ contact_email }}</p>
                 </div>
                 <div class="div-znach">
                     <h3>Часы <br> работы</h3>
@@ -56,9 +77,9 @@
             </div>
             <div class="txt-footer">
                 <p>Магазин по продаже сантехнических товаров и услуг</p><br>
-                <p>© Ильин Р.В., 2025 Все права защищены.</p><br>
-                <p>По всем вопросам пишите на ilyinstroy@gmail.com</p><br>
-                <p>Ильин Строй Витебск</p><br>
+                <p>© {% now "Y" %} {{ site_brand }}. Все права защищены.</p><br>
+                <p>По всем вопросам пишите на {{ contact_email }}</p><br>
+                <p>{{ site_brand }}. Витебск</p><br>
             </div>
         </div>
     </footer>

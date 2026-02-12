@@ -1,0 +1,51 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Настройки профиля | {{ site_brand }}
+{% endblock %}
+
+{% block content %}
+<section class="page-shell">
+    <div class="page-header">
+        <h1 class="page-title">Настройки профиля</h1>
+        <p class="page-subtitle">
+            Обновите телефон, никнейм и персональные данные. Все данные сохраняются в PostgreSQL на сервере.
+        </p>
+    </div>
+
+    <form method="post" class="form-shell">
+        {% csrf_token %}
+
+        <div class="form-row">
+            <div class="form-field">
+                <label class="form-label" for="{{ user_form.first_name.id_for_label }}">{{ user_form.first_name.label }}</label>
+                {{ user_form.first_name }}
+                {{ user_form.first_name.errors }}
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="{{ user_form.last_name.id_for_label }}">{{ user_form.last_name.label }}</label>
+                {{ user_form.last_name }}
+                {{ user_form.last_name.errors }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-field">
+                <label class="form-label" for="{{ profile_form.nickname.id_for_label }}">{{ profile_form.nickname.label }}</label>
+                {{ profile_form.nickname }}
+                {{ profile_form.nickname.errors }}
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="{{ profile_form.phone.id_for_label }}">{{ profile_form.phone.label }}</label>
+                {{ profile_form.phone }}
+                {{ profile_form.phone.errors }}
+            </div>
+        </div>
+
+        <div>
+            <button type="submit" class="btn-main">Сохранить изменения</button>
+            <a href="{% url 'profile' %}" class="btn-link">Вернуться в профиль</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Статьи | {{ site_brand }}
+{% endblock %}
+
+{% block content %}
+<section class="page-shell">
+    <div class="page-header">
+        <h1 class="page-title">Статьи и полезные материалы</h1>
+        <p class="page-subtitle">
+            Здесь публикуются инструкции и практические рекомендации по фундаментам, стенам, полам и инженерным системам.
+        </p>
+    </div>
+
+    {% if user.is_staff %}
+        <p>
+            <a href="{% url 'article_templates' %}" class="btn-main">Создать статью по шаблону</a>
+            <a href="{% url 'article_create' %}" class="btn-ghost">Пустая форма статьи</a>
+        </p>
+    {% endif %}
+
+    <div class="grid-cards">
+        {% for article in articles %}
+            <article class="article-card">
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.summary|default:"Без краткого описания." }}</p>
+                <div class="article-meta">
+                    <span class="meta-chip">Шаблон: {{ article.get_template_key_display }}</span>
+                    {% if article.is_published %}
+                        <span class="meta-chip">Опубликовано</span>
+                    {% else %}
+                        <span class="meta-chip">Черновик</span>
+                    {% endif %}
+                </div>
+                <p style="margin-top:12px;">
+                    <a href="{% url 'article_detail' article.slug %}" class="btn-link">Открыть статью</a>
+                </p>
+            </article>
+        {% empty %}
+            <article class="article-card">
+                <h3>Пока нет статей</h3>
+                <p>Добавьте первую публикацию через панель управления или шаблоны статей.</p>
+            </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

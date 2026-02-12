@@ -1,0 +1,67 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Заказы | {{ site_brand }}
+{% endblock %}
+
+{% block content %}
+<section class="page-shell">
+    <div class="page-header">
+        <h1 class="page-title">Оформление заказа</h1>
+        <p class="page-subtitle">
+            Заказ можно оформить двумя способами: позвонить по номеру телефона или отправить заявку через форму.
+        </p>
+    </div>
+
+    <div class="order-grid">
+        <article class="order-card">
+            <h3>Быстрый способ</h3>
+            <p>Позвоните нам и сразу согласуйте детали:</p>
+            <p><strong><a href="tel:{{ contact_phone }}" class="btn-link">{{ contact_phone }}</a></strong></p>
+            <p class="text-muted">Если удобнее, заполните форму справа. Заявка попадет в систему и будет отправлена на рабочую почту.</p>
+        </article>
+
+        <article class="order-card">
+            <h3>Отправить заявку</h3>
+            <form method="post" class="form-shell">
+                {% csrf_token %}
+
+                <div class="form-field">
+                    <label class="form-label" for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                    {{ form.name }}
+                    {{ form.name.errors }}
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label class="form-label" for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+                        {{ form.phone }}
+                        {{ form.phone.errors }}
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                        {{ form.email }}
+                        {{ form.email.errors }}
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label class="form-label" for="{{ form.contact_method.id_for_label }}">{{ form.contact_method.label }}</label>
+                    {{ form.contact_method }}
+                    {{ form.contact_method.errors }}
+                </div>
+
+                <div class="form-field">
+                    <label class="form-label" for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+                    {{ form.message }}
+                    {{ form.message.errors }}
+                </div>
+
+                <div>
+                    <button type="submit" class="btn-main">Отправить заявку</button>
+                </div>
+            </form>
+        </article>
+    </div>
+</section>
+{% endblock %}

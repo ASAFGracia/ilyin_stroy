@@ -1,0 +1,61 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Профиль | {{ site_brand }}
+{% endblock %}
+
+{% block content %}
+<section class="page-shell">
+    <div class="page-header">
+        <h1 class="page-title">Личный кабинет</h1>
+        <p class="page-subtitle">
+            Здесь отображаются ваши персональные данные и последние заявки.
+        </p>
+    </div>
+
+    <div class="profile-grid">
+        <article class="profile-card">
+            <h3>Данные аккаунта</h3>
+            <p><strong>Email:</strong> {{ user.email|default:"не указан" }}</p>
+            <p><strong>Логин:</strong> {{ user.username }}</p>
+            <p><strong>Имя:</strong> {{ user.get_full_name|default:"не заполнено" }}</p>
+            <p><strong>Никнейм:</strong> {{ user.profile.nickname|default:"не заполнен" }}</p>
+            <p><strong>Телефон:</strong> {{ user.profile.phone|default:"не заполнен" }}</p>
+            <p style="margin-top:12px;">
+                <a href="{% url 'profile_settings' %}" class="btn-main">Редактировать профиль</a>
+            </p>
+        </article>
+
+        <article class="profile-card">
+            <h3>Действия</h3>
+            <p>Через меню можно перейти к статьям, созданию заявки и настройкам аккаунта.</p>
+            <p style="margin-top:12px;">
+                <a href="{% url 'orders' %}" class="btn-ghost">Оставить заявку</a>
+                <a href="{% url 'articles' %}" class="btn-link">Смотреть статьи</a>
+            </p>
+        </article>
+    </div>
+
+    <div style="margin-top:14px;">
+        <h3>Последние заявки</h3>
+        <div class="grid-cards">
+            {% for order in user_orders %}
+                <article class="order-card">
+                    <h3>Заявка #{{ order.id }}</h3>
+                    <p><strong>Статус:</strong> {{ order.get_status_display }}</p>
+                    <p><strong>Способ связи:</strong> {{ order.get_contact_method_display }}</p>
+                    <p><strong>Телефон:</strong> {{ order.phone }}</p>
+                    {% if order.message %}
+                        <p><strong>Комментарий:</strong> {{ order.message|truncatechars:150 }}</p>
+                    {% endif %}
+                </article>
+            {% empty %}
+                <article class="order-card">
+                    <h3>Заявок пока нет</h3>
+                    <p>Вы можете оформить первую заявку на странице заказов.</p>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
