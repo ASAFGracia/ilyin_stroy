@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from .models import (
+    AdminEmailAccess,
     Article,
     ArticleImage,
     ArticleSubmission,
@@ -11,6 +12,7 @@ from .models import (
     Profile,
     ShopPreorder,
     SubmissionImage,
+    TelegramAuthCode,
 )
 
 
@@ -35,6 +37,27 @@ class EmailAuthCodeAdmin(admin.ModelAdmin):
     list_display = ("email", "expires_at", "attempts_left", "is_used", "created_at")
     list_filter = ("is_used", "created_at")
     search_fields = ("email",)
+
+
+@admin.register(TelegramAuthCode)
+class TelegramAuthCodeAdmin(admin.ModelAdmin):
+    list_display = (
+        "email",
+        "chat_id",
+        "expires_at",
+        "attempts_left",
+        "is_used",
+        "created_at",
+    )
+    list_filter = ("is_used", "created_at")
+    search_fields = ("email", "chat_id")
+
+
+@admin.register(AdminEmailAccess)
+class AdminEmailAccessAdmin(admin.ModelAdmin):
+    list_display = ("email", "is_active", "granted_by", "created_at", "updated_at")
+    list_filter = ("is_active", "created_at")
+    search_fields = ("email", "note", "granted_by__email")
 
 
 @admin.register(Article)

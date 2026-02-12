@@ -33,6 +33,9 @@
 
     <div class="quick-info">
         <p><strong>Безопасность:</strong> код действует ограниченное время и имеет лимит попыток.</p>
+        <p style="margin-top: 8px;">
+            <a href="{% url 'auth_telegram_request' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}" class="btn-link">Войти через Telegram</a>
+        </p>
     </div>
 </section>
 {% endblock %}

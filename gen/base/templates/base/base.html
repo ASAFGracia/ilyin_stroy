@@ -36,11 +36,12 @@
                     <a href="{% url 'article_submit_request' %}" class="ssgen auth-chip"><p>Заявка на статью</p></a>
                     {% if user_is_owner %}
                         <a href="{% url 'article_templates' %}" class="ssgen auth-chip"><p>Шаблоны статей</p></a>
-                        <a href="{% url 'owner_dashboard' %}" class="ssgen auth-chip"><p>Owner панель</p></a>
+                        <a href="{% url 'owner_dashboard' %}" class="ssgen auth-chip"><p>Админ-панель</p></a>
                     {% endif %}
                     <a href="{% url 'auth_logout' %}" class="ssgen auth-chip"><p>Выйти</p></a>
                 {% else %}
                     <a href="{% url 'auth_login_request' %}" class="ssgen auth-chip"><p>Войти по коду</p></a>
+                    <a href="{% url 'auth_telegram_request' %}" class="ssgen auth-chip"><p>Войти через Telegram</p></a>
                 {% endif %}
             </div>
         </header>

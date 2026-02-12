@@ -1,17 +1,97 @@
 {% extends "base/base.html" %}
 
 {% block title %}
-Owner панель | {{ site_brand }}
+Админ-панель | {{ site_brand }}
 {% endblock %}
 
 {% block content %}
 <section class="page-shell">
     <div class="page-header">
-        <h1 class="page-title">Owner панель</h1>
-        <p class="page-subtitle">Доступ только для {{ owner_email }}. Здесь вы модерируете статьи и видите пользователей.</p>
+        <h1 class="page-title">Админ-панель</h1>
+        <p class="page-subtitle">Доступ только для пользователей с флагом администратора в БД.</p>
+    </div>
+
+    <div class="grid-cards" style="margin-bottom: 18px;">
+        <article class="order-card"><h3>Пользователи</h3><p>{{ stats.users }}</p></article>
+        <article class="order-card"><h3>Новые заявки</h3><p>{{ stats.orders_new }}</p></article>
+        <article class="order-card"><h3>Новые предзаказы</h3><p>{{ stats.preorders_new }}</p></article>
+        <article class="order-card"><h3>Статьи на модерации</h3><p>{{ stats.submissions_pending }}</p></article>
+        <article class="order-card"><h3>Всего статей</h3><p>{{ stats.articles_total }}</p></article>
     </div>
 
     <div class="page-header">
+        <h2 class="page-title" style="font-size:26px;">Администраторы по email (БД)</h2>
+        <p class="page-subtitle">Добавляйте/отключайте доступ по email. Именно этот список управляет входом в админ-панель.</p>
+    </div>
+
+    <form method="post" action="{% url 'owner_admin_grant' %}" class="form-shell" style="margin-bottom: 16px;">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-field">
+                <label class="form-label" for="{{ admin_form.email.id_for_label }}">{{ admin_form.email.label }}</label>
+                {{ admin_form.email }}
+                {{ admin_form.email.errors }}
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="{{ admin_form.note.id_for_label }}">{{ admin_form.note.label }}</label>
+                {{ admin_form.note }}
+                {{ admin_form.note.errors }}
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn-main">Выдать/обновить админ-доступ</button>
+        </div>
+    </form>
+
+    <div class="owner-table-wrap">
+        <table class="owner-table">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Статус</th>
+                    <th>Комментарий</th>
+                    <th>Кто выдал</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for access in admin_accesses %}
+                    <tr>
+                        <td>{{ access.email }}</td>
+                        <td>{% if access.is_active %}Активен{% else %}Отключен{% endif %}</td>
+                        <td>{{ access.note|default:"-" }}</td>
+                        <td>{{ access.granted_by.email|default:"-" }}</td>
+                        <td>
+                            {% if access.is_active %}
+                                <form method="post" action="{% url 'owner_admin_revoke' access.id %}" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn-link">Отключить</button>
+                                </form>
+                            {% else %}
+                                <form method="post" action="{% url 'owner_admin_activate' access.id %}" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn-main">Включить</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="5">Список администраторов пуст.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page-header" style="margin-top:20px;">
+        <h2 class="page-title" style="font-size:26px;">Telegram управление</h2>
+    </div>
+    <div class="quick-info">
+        <p><strong>Бот:</strong> {% if telegram_bot_username %}@{{ telegram_bot_username }}{% else %}не указан{% endif %}</p>
+        <p><strong>Админ chat id:</strong> {{ telegram_admin_chat_ids|join:", "|default:"не указаны" }}</p>
+        <p><strong>Команды бота:</strong> /help, /orders, /order &lt;id&gt;, /set_order &lt;id&gt; &lt;new|in_progress|done&gt;, /preorders, /set_preorder &lt;id&gt; &lt;new|in_progress|done&gt;, /admins, /grant &lt;email&gt;, /revoke &lt;email&gt;</p>
+    </div>
+
+    <div class="page-header" style="margin-top:20px;">
         <h2 class="page-title" style="font-size:26px;">Заявки на статьи</h2>
     </div>
 
@@ -88,6 +168,7 @@ Owner панель | {{ site_brand }}
                     <th>Статья</th>
                     <th>Статус</th>
                     <th>Дата</th>
+                    <th>Управление</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,9 +180,20 @@ Owner панель | {{ site_brand }}
                         <td>{{ order.article.title|default:"-" }}</td>
                         <td>{{ order.get_status_display }}</td>
                         <td>{{ order.created_at|date:"d.m.Y H:i" }}</td>
+                        <td>
+                            <form method="post" action="{% url 'owner_order_status_update' order.id %}" style="display:flex; gap:8px; align-items:center;">
+                                {% csrf_token %}
+                                <select name="status" class="inputf1" style="max-width: 170px;">
+                                    {% for key, label in order_status_choices %}
+                                        <option value="{{ key }}" {% if order.status == key %}selected{% endif %}>{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                                <button type="submit" class="btn-main">Сохранить</button>
+                            </form>
+                        </td>
                     </tr>
                 {% empty %}
-                    <tr><td colspan="6">Заявок нет</td></tr>
+                    <tr><td colspan="7">Заявок нет</td></tr>
                 {% endfor %}
             </tbody>
         </table>
@@ -120,6 +212,7 @@ Owner панель | {{ site_brand }}
                     <th>Товар/Запрос</th>
                     <th>Количество</th>
                     <th>Статус</th>
+                    <th>Управление</th>
                 </tr>
             </thead>
             <tbody>
@@ -131,9 +224,20 @@ Owner панель | {{ site_brand }}
                         <td>{{ preorder.product.name|default:preorder.desired_item|default:"-" }}</td>
                         <td>{{ preorder.quantity }}</td>
                         <td>{{ preorder.get_status_display }}</td>
+                        <td>
+                            <form method="post" action="{% url 'owner_preorder_status_update' preorder.id %}" style="display:flex; gap:8px; align-items:center;">
+                                {% csrf_token %}
+                                <select name="status" class="inputf1" style="max-width: 170px;">
+                                    {% for key, label in preorder_status_choices %}
+                                        <option value="{{ key }}" {% if preorder.status == key %}selected{% endif %}>{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                                <button type="submit" class="btn-main">Сохранить</button>
+                            </form>
+                        </td>
                     </tr>
                 {% empty %}
-                    <tr><td colspan="6">Предзаказов нет</td></tr>
+                    <tr><td colspan="7">Предзаказов нет</td></tr>
                 {% endfor %}
             </tbody>
         </table>

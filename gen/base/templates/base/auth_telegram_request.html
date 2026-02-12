@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Вход через Telegram | {{ site_brand }}
+{% endblock %}
+
+{% block content %}
+<section class="page-shell allauth-box">
+    <div class="page-header">
+        <h1 class="page-title">Вход через Telegram-код</h1>
+        <p class="page-subtitle">
+            Укажите email и Telegram chat id. Код подтверждения придет в Telegram.
+        </p>
+    </div>
+
+    {% if telegram_bot_username %}
+        <div class="quick-info" style="margin-bottom: 12px;">
+            <p>Перед входом откройте бота <strong>@{{ telegram_bot_username }}</strong> и отправьте <strong>/start</strong>.</p>
+        </div>
+    {% endif %}
+
+    <form method="post" class="form-shell">
+        {% csrf_token %}
+
+        <div class="form-field">
+            <label class="form-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+
+        <div class="form-field">
+            <label class="form-label" for="{{ form.chat_id.id_for_label }}">{{ form.chat_id.label }}</label>
+            {{ form.chat_id }}
+            {{ form.chat_id.errors }}
+        </div>
+
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
+
+        <div>
+            <button type="submit" class="btn-main">Получить код в Telegram</button>
+            <a href="{% url 'auth_login_request' %}{% if request.GET.next %}?next={{ request.GET.next }}{% endif %}" class="btn-link">Войти через email</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

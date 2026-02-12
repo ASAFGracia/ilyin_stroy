@@ -27,3 +27,5 @@ nginx_stdout.log
 nginx_stderr.log
 watchdog_stdout.log
 watchdog_stderr.log
+telegram_bot_stdout.log
+telegram_bot_stderr.log

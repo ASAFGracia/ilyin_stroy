@@ -5,6 +5,7 @@
 - `gunicorn` serves Django on `127.0.0.1:8000`
 - `nginx` proxies on `127.0.0.1:8081` and serves `/static/` + `/media/`
 - `cloudflared` publishes `mastersvarki.com` to the nginx origin
+- `telegram bot` polls admin commands and lets you process orders/preorders from Telegram
 - `launchd` keeps all services alive and restarts them on login/reboot/network changes
 - PostgreSQL runs locally (`postgresql@16`) and stores users/profiles/orders/articles
 
@@ -31,7 +32,8 @@ brew services start postgresql@16
 ```bash
 cd /Users/server/projects/ilyin_stroy
 cp .env.example .env.local
-# edit .env.local (POSTGRES_*, email creds, OWNER_EMAIL, AUTH_CODE_* limits)
+# edit .env.local (POSTGRES_*, email creds, OWNER_EMAIL, AUTH_CODE_* limits,
+# TELEGRAM_BOT_TOKEN, TELEGRAM_BOT_USERNAME, TELEGRAM_ADMIN_CHAT_IDS)
 ```
 
 4. Install Python dependencies and run migrations:
@@ -49,7 +51,15 @@ set -a; source .env.local; set +a
 launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.ilyin-stroy.gunicorn.plist"
 launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.ilyin-stroy.nginx.plist"
 launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.ilyin-stroy.cloudflared.plist"
+cp ./deploy/launchd/com.ilyin-stroy.telegram-bot.plist "$HOME/Library/LaunchAgents/com.ilyin-stroy.telegram-bot.plist"
+launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.ilyin-stroy.telegram-bot.plist"
 launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.ilyin-stroy.watchdog.plist"
+```
+
+Shortcut for Telegram bot launch agent:
+
+```bash
+./scripts/install_telegram_bot_agent.sh
 ```
 
 ## Manual update from Git (recommended)
@@ -66,7 +76,7 @@ What it does:
 - installs dependencies
 - runs `migrate` and `collectstatic`
 - runs `check`
-- restarts gunicorn/nginx/cloudflared/watchdog launchd jobs
+- restarts gunicorn/nginx/cloudflared/telegram-bot/watchdog launchd jobs
 - performs local health check (`http://127.0.0.1:8081/`)
 
 For local testing without `git pull`:
@@ -104,7 +114,7 @@ Required secrets:
 
 - `launchd` jobs use `RunAtLoad=true` and `KeepAlive=true`
 - `cloudflared` and watchdog are network-aware
-- watchdog script checks and restarts gunicorn/nginx/cloudflared periodically
+- watchdog script checks and restarts gunicorn/nginx/cloudflared/telegram-bot periodically
 - PostgreSQL runs as `brew services` launch agent and auto-starts on login
 
 ### If launch agents were created earlier

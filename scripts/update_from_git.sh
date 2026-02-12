@@ -53,6 +53,7 @@ mkdir -p "$PROJECT_DIR/media"
 restart_agent "com.ilyin-stroy.gunicorn"
 restart_agent "com.ilyin-stroy.nginx"
 restart_agent "com.ilyin-stroy.cloudflared"
+restart_agent "com.ilyin-stroy.telegram-bot"
 restart_agent "com.ilyin-stroy.watchdog"
 
 curl -fsS http://127.0.0.1:8081/ >/dev/null

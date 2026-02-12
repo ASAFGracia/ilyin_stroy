@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
 from .models import (
+    AdminEmailAccess,
     Article,
     ArticleSubmission,
     OrderRequest,
@@ -99,6 +100,48 @@ class EmailAuthVerifyForm(forms.Form):
     email = forms.EmailField(widget=forms.HiddenInput())
     code = forms.RegexField(
         label="Код из письма",
+        regex=r"^\d{6}$",
+        error_messages={"invalid": "Введите 6-значный код."},
+        widget=forms.TextInput(
+            attrs={
+                "class": "inputf1",
+                "placeholder": "123456",
+                "inputmode": "numeric",
+                "maxlength": "6",
+            }
+        ),
+    )
+
+
+class TelegramAuthRequestForm(forms.Form):
+    email = forms.EmailField(
+        label="Email",
+        widget=forms.EmailInput(
+            attrs={
+                "class": "inputf1",
+                "placeholder": "you@example.com",
+                "autocomplete": "email",
+            }
+        ),
+    )
+    chat_id = forms.IntegerField(
+        label="Ваш Telegram chat id",
+        min_value=1,
+        widget=forms.NumberInput(
+            attrs={
+                "class": "inputf1",
+                "placeholder": "Например: 8507895419",
+                "inputmode": "numeric",
+            }
+        ),
+    )
+
+
+class TelegramAuthVerifyForm(forms.Form):
+    email = forms.EmailField(widget=forms.HiddenInput())
+    chat_id = forms.IntegerField(widget=forms.HiddenInput())
+    code = forms.RegexField(
+        label="Код из Telegram",
         regex=r"^\d{6}$",
         error_messages={"invalid": "Введите 6-значный код."},
         widget=forms.TextInput(
@@ -406,4 +449,38 @@ class SubmissionReviewForm(forms.Form):
             }
         ),
         label="Комментарий",
+    )
+
+
+class AdminEmailAccessForm(forms.ModelForm):
+    class Meta:
+        model = AdminEmailAccess
+        fields = ("email", "note")
+        widgets = {
+            "email": forms.EmailInput(
+                attrs={"class": "inputf1", "placeholder": "admin@example.com"}
+            ),
+            "note": forms.TextInput(
+                attrs={"class": "inputf1", "placeholder": "Комментарий (необязательно)"}
+            ),
+        }
+        labels = {
+            "email": "Email администратора",
+            "note": "Комментарий",
+        }
+
+
+class OrderStatusUpdateForm(forms.Form):
+    status = forms.ChoiceField(
+        choices=OrderRequest.STATUS_CHOICES,
+        widget=forms.Select(attrs={"class": "inputf1"}),
+        label="Статус",
+    )
+
+
+class PreorderStatusUpdateForm(forms.Form):
+    status = forms.ChoiceField(
+        choices=ShopPreorder.STATUS_CHOICES,
+        widget=forms.Select(attrs={"class": "inputf1"}),
+        label="Статус",
     )

@@ -9,7 +9,9 @@ from django.utils import timezone
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.utils.text import slugify
 
+from .access import is_admin_user, normalize_email
 from .forms import (
+    AdminEmailAccessForm,
     ArticleCreateForm,
     ArticleOrderForm,
     ArticleSubmissionForm,
@@ -18,12 +20,17 @@ from .forms import (
     EmailAuthVerifyForm,
     FeedbackForm,
     OrderRequestForm,
+    OrderStatusUpdateForm,
+    PreorderStatusUpdateForm,
     ProfileSettingsForm,
     ProfileUserForm,
     ShopPreorderForm,
     SubmissionReviewForm,
+    TelegramAuthRequestForm,
+    TelegramAuthVerifyForm,
 )
 from .models import (
+    AdminEmailAccess,
     Article,
     ArticleImage,
     ArticleSubmission,
@@ -34,7 +41,9 @@ from .models import (
     Profile,
     ShopPreorder,
     SubmissionImage,
+    TelegramAuthCode,
 )
+from .telegram import broadcast_admin_message, send_telegram_message
 
 User = get_user_model()
 ORDER_EMAIL = settings.ORDER_RECIPIENT_EMAIL
@@ -100,7 +109,7 @@ ARTICLE_TEMPLATE_PRESETS = {
 
 
 def _is_owner(user) -> bool:
-    return bool(user.is_authenticated and user.email and user.email.lower() == OWNER_EMAIL)
+    return is_admin_user(user)
 
 
 def _owner_or_404(request):
@@ -109,17 +118,47 @@ def _owner_or_404(request):
 
 
 def _notify(subject: str, message: str, from_email: str | None = None) -> None:
+    errors: list[str] = []
+    email_sent = False
+    telegram_sent = False
+
+    try:
+        send_mail(
+            subject=subject,
+            message=message,
+            from_email=from_email or settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[ORDER_EMAIL],
+            fail_silently=False,
+        )
+        email_sent = True
+    except Exception as exc:  # noqa: BLE001
+        errors.append(f"email: {exc}")
+
+    if settings.TELEGRAM_NOTIFICATIONS_ENABLED:
+        sent_count, tg_errors = broadcast_admin_message(f"{subject}\n\n{message}")
+        telegram_sent = sent_count > 0
+        errors.extend([f"telegram: {err}" for err in tg_errors])
+
+    if not email_sent and not telegram_sent:
+        raise RuntimeError("; ".join(errors) or "Notification delivery failed")
+
+
+def _send_auth_code_email(target_email: str, code: str) -> None:
     send_mail(
-        subject=subject,
-        message=message,
-        from_email=from_email or settings.DEFAULT_FROM_EMAIL,
-        recipient_list=[ORDER_EMAIL],
+        subject=f"Код входа в {settings.SITE_BRAND}",
+        message=(
+            f"Ваш код подтверждения: {code}\n"
+            f"Код действует {settings.AUTH_CODE_TTL_MINUTES} минут.\n"
+            "Если это были не вы, просто проигнорируйте письмо."
+        ),
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        recipient_list=[target_email],
         fail_silently=False,
     )
 
 
 def _get_or_create_user_by_email(email: str):
-    normalized = email.strip().lower()
+    normalized = normalize_email(email)
     user = User.objects.filter(email__iexact=normalized).first()
     if user:
         return user, False
@@ -158,7 +197,7 @@ def auth_login_request(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":
         form = EmailAuthRequestForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data["email"].lower().strip()
+            email = normalize_email(form.cleaned_data["email"])
             _get_or_create_user_by_email(email)
             latest_code = (
                 EmailAuthCode.objects.filter(email=email)
@@ -176,20 +215,15 @@ def auth_login_request(request: HttpRequest) -> HttpResponse:
                     ttl_minutes=settings.AUTH_CODE_TTL_MINUTES,
                     max_attempts=settings.AUTH_CODE_MAX_ATTEMPTS,
                 )
-                _notify(
-                    subject=f"Код входа в {settings.SITE_BRAND}",
-                    message=(
-                        f"Ваш код подтверждения: {code}\n"
-                        f"Код действует {settings.AUTH_CODE_TTL_MINUTES} минут.\n"
-                        "Если это были не вы, просто проигнорируйте письмо."
-                    ),
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                )
+                _send_auth_code_email(email, code)
                 request.session["pending_auth_email"] = email
                 messages.success(request, "Код отправлен на вашу почту.")
                 return redirect("auth_verify_code")
-            except Exception:
-                messages.error(request, "Не удалось отправить код. Попробуйте позже.")
+            except Exception:  # noqa: BLE001
+                messages.error(
+                    request,
+                    "Не удалось отправить код на email. Попробуйте вход через Telegram или проверьте SMTP-настройки.",
+                )
     else:
         form = EmailAuthRequestForm()
 
@@ -200,7 +234,7 @@ def auth_verify_code(request: HttpRequest) -> HttpResponse:
     if request.user.is_authenticated:
         return redirect("profile")
 
-    pending_email = request.session.get("pending_auth_email", "").strip().lower()
+    pending_email = normalize_email(request.session.get("pending_auth_email"))
     if not pending_email:
         messages.info(request, "Сначала запросите код входа.")
         return redirect("auth_login_request")
@@ -208,7 +242,7 @@ def auth_verify_code(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":
         form = EmailAuthVerifyForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data["email"].lower().strip()
+            email = normalize_email(form.cleaned_data["email"])
             code = form.cleaned_data["code"].strip()
             auth_code = (
                 EmailAuthCode.objects.filter(email=email, is_used=False)
@@ -250,6 +284,153 @@ def auth_verify_code(request: HttpRequest) -> HttpResponse:
             "form": form,
             "pending_email": pending_email,
             "attempts_left": attempts_left,
+        },
+    )
+
+
+def auth_telegram_request(request: HttpRequest) -> HttpResponse:
+    if request.user.is_authenticated:
+        return redirect("profile")
+
+    if not settings.TELEGRAM_BOT_TOKEN:
+        messages.error(request, "Telegram-авторизация не настроена.")
+        return redirect("auth_login_request")
+
+    next_url = request.GET.get("next") or request.POST.get("next")
+    if next_url and url_has_allowed_host_and_scheme(next_url, allowed_hosts={request.get_host()}):
+        request.session["auth_next"] = next_url
+
+    if request.method == "POST":
+        form = TelegramAuthRequestForm(request.POST)
+        if form.is_valid():
+            email = normalize_email(form.cleaned_data["email"])
+            chat_id = int(form.cleaned_data["chat_id"])
+            _get_or_create_user_by_email(email)
+            latest_code = (
+                TelegramAuthCode.objects.filter(email=email, chat_id=chat_id)
+                .order_by("-created_at")
+                .first()
+            )
+            if latest_code and (
+                timezone.now() - latest_code.created_at
+            ).total_seconds() < settings.TELEGRAM_AUTH_RESEND_SECONDS:
+                messages.info(
+                    request,
+                    f"Код уже недавно отправлялся. Подождите {settings.TELEGRAM_AUTH_RESEND_SECONDS} секунд.",
+                )
+                request.session["pending_tg_email"] = email
+                request.session["pending_tg_chat_id"] = chat_id
+                return redirect("auth_telegram_verify")
+            try:
+                auth_code, code = TelegramAuthCode.issue_code(
+                    email=email,
+                    chat_id=chat_id,
+                    ttl_minutes=settings.TELEGRAM_AUTH_CODE_TTL_MINUTES,
+                    max_attempts=settings.TELEGRAM_AUTH_CODE_MAX_ATTEMPTS,
+                )
+                ok, _error = send_telegram_message(
+                    chat_id,
+                    (
+                        f"Код входа в {settings.SITE_BRAND}: {code}\n"
+                        f"Код действует {settings.TELEGRAM_AUTH_CODE_TTL_MINUTES} минут."
+                    ),
+                )
+                if not ok:
+                    auth_code.is_used = True
+                    auth_code.save(update_fields=["is_used"])
+                    hint = "Убедитесь, что вы нажали /start у бота."
+                    if settings.TELEGRAM_BOT_USERNAME:
+                        hint = f"Убедитесь, что вы нажали /start у бота @{settings.TELEGRAM_BOT_USERNAME}."
+                    messages.error(request, f"Не удалось отправить код в Telegram. {hint}")
+                    return redirect("auth_telegram_request")
+                request.session["pending_tg_email"] = email
+                request.session["pending_tg_chat_id"] = chat_id
+                messages.success(request, "Код отправлен в Telegram.")
+                return redirect("auth_telegram_verify")
+            except Exception:  # noqa: BLE001
+                messages.error(request, "Не удалось отправить код в Telegram. Попробуйте позже.")
+    else:
+        form = TelegramAuthRequestForm()
+
+    return render(
+        request,
+        "base/auth_telegram_request.html",
+        {
+            "form": form,
+            "telegram_bot_username": settings.TELEGRAM_BOT_USERNAME,
+        },
+    )
+
+
+def auth_telegram_verify(request: HttpRequest) -> HttpResponse:
+    if request.user.is_authenticated:
+        return redirect("profile")
+
+    pending_email = normalize_email(request.session.get("pending_tg_email"))
+    pending_chat_id = request.session.get("pending_tg_chat_id")
+    if not pending_email or not pending_chat_id:
+        messages.info(request, "Сначала запросите код в Telegram.")
+        return redirect("auth_telegram_request")
+
+    if request.method == "POST":
+        form = TelegramAuthVerifyForm(request.POST)
+        if form.is_valid():
+            email = normalize_email(form.cleaned_data["email"])
+            chat_id = int(form.cleaned_data["chat_id"])
+            code = form.cleaned_data["code"].strip()
+            auth_code = (
+                TelegramAuthCode.objects.filter(
+                    email=email,
+                    chat_id=chat_id,
+                    is_used=False,
+                )
+                .order_by("-created_at")
+                .first()
+            )
+            if not auth_code or auth_code.is_expired():
+                messages.error(request, "Код истек. Запросите новый код.")
+                return redirect("auth_telegram_request")
+
+            if auth_code.verify_code(code):
+                user, _ = _get_or_create_user_by_email(email)
+                login(request, user, backend="django.contrib.auth.backends.ModelBackend")
+                request.session.pop("pending_tg_email", None)
+                request.session.pop("pending_tg_chat_id", None)
+                next_url = request.session.pop("auth_next", None)
+                messages.success(request, "Вы успешно вошли в аккаунт через Telegram.")
+                if next_url and url_has_allowed_host_and_scheme(
+                    next_url,
+                    allowed_hosts={request.get_host()},
+                ):
+                    return redirect(next_url)
+                return redirect("profile")
+
+            messages.error(request, "Неверный код из Telegram.")
+    else:
+        form = TelegramAuthVerifyForm(
+            initial={"email": pending_email, "chat_id": pending_chat_id}
+        )
+
+    active_code = (
+        TelegramAuthCode.objects.filter(
+            email=pending_email,
+            chat_id=pending_chat_id,
+            is_used=False,
+        )
+        .order_by("-created_at")
+        .first()
+    )
+    attempts_left = active_code.attempts_left if active_code else 0
+
+    return render(
+        request,
+        "base/auth_telegram_verify.html",
+        {
+            "form": form,
+            "pending_email": pending_email,
+            "pending_chat_id": pending_chat_id,
+            "attempts_left": attempts_left,
+            "telegram_bot_username": settings.TELEGRAM_BOT_USERNAME,
         },
     )
 
@@ -633,10 +814,19 @@ def order_request(request):
 @user_passes_test(_is_owner, login_url="auth_login_request")
 def owner_dashboard(request):
     submissions = ArticleSubmission.objects.select_related("user", "approved_article").prefetch_related("images")
-    users = User.objects.order_by("-date_joined")[:300]
+    users = User.objects.order_by("-date_joined")[:500]
     orders = OrderRequest.objects.select_related("user", "article").order_by("-created_at")[:200]
     preorders = ShopPreorder.objects.select_related("user", "category", "product").order_by("-created_at")[:200]
+    admin_accesses = AdminEmailAccess.objects.select_related("granted_by").order_by("email")
     review_form = SubmissionReviewForm()
+    admin_form = AdminEmailAccessForm()
+    stats = {
+        "users": User.objects.count(),
+        "orders_new": OrderRequest.objects.filter(status="new").count(),
+        "preorders_new": ShopPreorder.objects.filter(status="new").count(),
+        "submissions_pending": ArticleSubmission.objects.filter(status="pending").count(),
+        "articles_total": Article.objects.count(),
+    }
     return render(
         request,
         "base/owner_dashboard.html",
@@ -646,8 +836,109 @@ def owner_dashboard(request):
             "orders": orders,
             "preorders": preorders,
             "review_form": review_form,
+            "admin_form": admin_form,
+            "admin_accesses": admin_accesses,
+            "stats": stats,
+            "telegram_bot_username": settings.TELEGRAM_BOT_USERNAME,
+            "telegram_admin_chat_ids": settings.TELEGRAM_ADMIN_CHAT_IDS,
+            "order_status_choices": OrderRequest.STATUS_CHOICES,
+            "preorder_status_choices": ShopPreorder.STATUS_CHOICES,
         },
     )
+
+
+@login_required
+@user_passes_test(_is_owner, login_url="auth_login_request")
+def owner_admin_grant(request):
+    if request.method != "POST":
+        return redirect("owner_dashboard")
+
+    form = AdminEmailAccessForm(request.POST)
+    if form.is_valid():
+        email = normalize_email(form.cleaned_data["email"])
+        note = form.cleaned_data.get("note", "")
+        access, created = AdminEmailAccess.objects.update_or_create(
+            email=email,
+            defaults={
+                "is_active": True,
+                "note": note,
+                "granted_by": request.user,
+            },
+        )
+        action = "добавлен" if created else "обновлен"
+        messages.success(request, f"Администратор {email} {action}.")
+        if access.email == normalize_email(getattr(request.user, "email", "")):
+            messages.info(request, "Вы также есть в списке администраторов.")
+    else:
+        messages.error(request, "Не удалось добавить администратора. Проверьте email.")
+    return redirect("owner_dashboard")
+
+
+@login_required
+@user_passes_test(_is_owner, login_url="auth_login_request")
+def owner_admin_revoke(request, access_id: int):
+    if request.method != "POST":
+        return redirect("owner_dashboard")
+
+    access = get_object_or_404(AdminEmailAccess, pk=access_id)
+    owner_email = normalize_email(settings.OWNER_EMAIL)
+    if access.email == owner_email:
+        messages.error(request, "Нельзя снять доступ с основного владельца из настроек.")
+        return redirect("owner_dashboard")
+
+    if normalize_email(request.user.email) == access.email:
+        messages.error(request, "Нельзя снять доступ у текущего авторизованного администратора.")
+        return redirect("owner_dashboard")
+
+    access.is_active = False
+    access.save(update_fields=["is_active", "updated_at"])
+    messages.success(request, f"Доступ администратора для {access.email} отключен.")
+    return redirect("owner_dashboard")
+
+
+@login_required
+@user_passes_test(_is_owner, login_url="auth_login_request")
+def owner_admin_activate(request, access_id: int):
+    if request.method != "POST":
+        return redirect("owner_dashboard")
+
+    access = get_object_or_404(AdminEmailAccess, pk=access_id)
+    access.is_active = True
+    access.save(update_fields=["is_active", "updated_at"])
+    messages.success(request, f"Доступ администратора для {access.email} включен.")
+    return redirect("owner_dashboard")
+
+
+@login_required
+@user_passes_test(_is_owner, login_url="auth_login_request")
+def owner_order_status_update(request, order_id: int):
+    if request.method != "POST":
+        return redirect("owner_dashboard")
+    order = get_object_or_404(OrderRequest, pk=order_id)
+    form = OrderStatusUpdateForm(request.POST)
+    if not form.is_valid():
+        messages.error(request, "Некорректный статус заказа.")
+        return redirect("owner_dashboard")
+    order.status = form.cleaned_data["status"]
+    order.save(update_fields=["status", "updated_at"])
+    messages.success(request, f"Статус заказа #{order.id} обновлен.")
+    return redirect("owner_dashboard")
+
+
+@login_required
+@user_passes_test(_is_owner, login_url="auth_login_request")
+def owner_preorder_status_update(request, preorder_id: int):
+    if request.method != "POST":
+        return redirect("owner_dashboard")
+    preorder = get_object_or_404(ShopPreorder, pk=preorder_id)
+    form = PreorderStatusUpdateForm(request.POST)
+    if not form.is_valid():
+        messages.error(request, "Некорректный статус предзаказа.")
+        return redirect("owner_dashboard")
+    preorder.status = form.cleaned_data["status"]
+    preorder.save(update_fields=["status", "updated_at"])
+    messages.success(request, f"Статус предзаказа #{preorder.id} обновлен.")
+    return redirect("owner_dashboard")
 
 
 @login_required

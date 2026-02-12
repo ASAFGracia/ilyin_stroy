@@ -6,6 +6,7 @@ LABELS=(
   "com.ilyin-stroy.gunicorn"
   "com.ilyin-stroy.nginx"
   "com.ilyin-stroy.cloudflared"
+  "com.ilyin-stroy.telegram-bot"
   "com.ilyin-stroy.watchdog"
 )
 

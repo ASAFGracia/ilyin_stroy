@@ -1,0 +1,40 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Подтверждение Telegram-кода | {{ site_brand }}
+{% endblock %}
+
+{% block content %}
+<section class="page-shell allauth-box">
+    <div class="page-header">
+        <h1 class="page-title">Подтвердите Telegram-код</h1>
+        <p class="page-subtitle">
+            Email: <strong>{{ pending_email }}</strong>, chat id: <strong>{{ pending_chat_id }}</strong>.
+            Осталось попыток: {{ attempts_left }}.
+        </p>
+    </div>
+
+    <form method="post" class="form-shell">
+        {% csrf_token %}
+        {{ form.email }}
+        {{ form.chat_id }}
+
+        <div class="form-field">
+            <label class="form-label" for="{{ form.code.id_for_label }}">{{ form.code.label }}</label>
+            {{ form.code }}
+            {{ form.code.errors }}
+        </div>
+
+        <div>
+            <button type="submit" class="btn-main">Подтвердить и войти</button>
+            <a href="{% url 'auth_telegram_request' %}" class="btn-link">Запросить новый код</a>
+        </div>
+    </form>
+
+    {% if telegram_bot_username %}
+        <div class="quick-info">
+            <p>Если код не приходит, откройте диалог с <strong>@{{ telegram_bot_username }}</strong> и отправьте <strong>/start</strong>.</p>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}
